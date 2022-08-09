@@ -1,0 +1,98 @@
+version: '3.1'
+
+services:
+
+  hg-dashboard-dendrite-postgres:
+    container_name: hg-dashboard-dendrite-postgres
+    hostname: hg-dashboard-dendrite-postgres
+    image: postgres:14
+    restart: always
+    volumes:
+    - ./io/dendrite/create_db.sh:/docker-entrypoint-initdb.d/20-create_db.sh
+    - ./io/dendrite/postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: PG_P4SSW0RD_123
+      POSTGRES_USER: dendrite
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dendrite"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  hg-dashboard-io-dendrite:
+    container_name: hg-dashboard-io-dendrite
+    hostname: hg-dashboard-io-dendrite
+    image: matrixdotorg/dendrite-monolith:latest
+    command: [
+        "--tls-cert=server.crt",
+        "--tls-key=server.key"
+    ]
+    ports:
+    - "8008:8008"
+    - "8448:8448"
+    volumes:
+    - ./io/dendrite/etc:/etc/dendrite
+    - ./io/dendrite/media:/var/dendrite/media
+    depends_on:
+    - hg-dashboard-dendrite-postgres
+    restart: unless-stopped
+
+  # See also https://hub.docker.com/r/mailhog/mailhog/
+  hg-dashboard-smtp:
+    container_name: hg-dashboard-smtp
+    image: mailhog/mailhog
+    restart: always
+    logging:
+      driver: "none"  # disable saving logs
+    ports:
+    - "1025:1025" # smtp server
+    - "8025:8025" # web ui
+
+  # See also ./backend/README.md
+  hg-dashboard-backend:
+    container_name: hg-dashboard-backend
+    restart: always
+    build: ./backend
+    environment:
+      PORT: "3500"
+      BACKEND_LOG_LEVEL: DEBUG
+      BACKEND_URL: "http://0.0.0.0:3500"
+      BACKEND_IO_SERVER: "http://app:p4sSw0rd123@hg-dashboard-io-dendrite:8008"
+      BACKEND_EMAIL_CONFIG: "smtp://hg-dashboard-smtp:1025"
+      BACKEND_JWT_SECRET: "bwo4eay5ErCnqBV9zimo88UAmDxWTbN8"
+    ports:
+    - "3500:3500"
+    depends_on:
+    - hg-dashboard-smtp
+    - hg-dashboard-io-dendrite
+
+  # See also ./frontend/README.md
+  hg-dashboard-frontend-image:
+    container_name: hg-dashboard-frontend-image
+    image: "hg-dashboard-frontend-image:latest"
+    build:
+      context: "./frontend"
+      args:
+        DEFAULT_PUBLIC_URL: "http://localhost:3000"
+    entrypoint: "sh -c"
+    command: "exit 0"
+    restart: "no"
+
+  # See also https://hub.docker.com/_/nginx
+  hg-dashboard-nginx:
+    container_name: hg-dashboard-nginx
+    restart: always
+    image: "hg-dashboard-nginx:latest"
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        FRONTEND_IMAGE: "hg-dashboard-frontend-image:latest"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - hg-dashboard-frontend-image
+      - hg-dashboard-backend
+    environment:
+      NGINX_PORT: 8080
+      NGINX_API_URL: "http://hg-dashboard-backend:3500"

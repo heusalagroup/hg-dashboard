@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  # See also https://hub.docker.com/r/mailhog/mailhog/
+  hg-dashboard-smtp:
+    image: mailhog/mailhog
+    restart: always
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+    - "1025:1025" # smtp server
+    - "8025:8025" # web ui
+
+  # See also https://hub.docker.com/r/matrixdotorg/synapse/
+  hg-dashboard-io:
+    image: matrixdotorg/synapse
+    restart: always
+    volumes:
+      - ../io/data:/data
+    ports:
+    - "8008:8008" # matrix io server
+    depends_on:
+      - hg-dashboard-smtp
+
+  hg-dashboard-backend:
+    build: .
+    environment:
+      PORT: "3500"
+      BACKEND_LOG_LEVEL: DEBUG
+      BACKEND_URL: "http://0.0.0.0:3500"
+      BACKEND_IO_SERVER: "http://app:p4sSw0rd123@hg-dashboard-io:8008"
+      BACKEND_EMAIL_CONFIG: "smtp://hg-dashboard-smtp:1025"
+    ports:
+    - "3500:3500"
+    depends_on:
+    - hg-dashboard-smtp
+    - hg-dashboard-io

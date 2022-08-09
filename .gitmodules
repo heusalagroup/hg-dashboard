@@ -1,0 +1,39 @@
+[submodule "backend/src/fi/hg/dashboard"]
+	path = backend/src/fi/hg/dashboard
+	url = git@github.com:heusalagroup/fi.hg.dashboard.git
+	branch = main
+[submodule "frontend/src/fi/hg/dashboard"]
+	path = frontend/src/fi/hg/dashboard
+	url = git@github.com:heusalagroup/fi.hg.dashboard.git
+	branch = main
+[submodule "testing/src/fi/hg/dashboard"]
+	path = testing/src/fi/hg/dashboard
+	url = git@github.com:heusalagroup/fi.hg.dashboard.git
+	branch = main
+[submodule "frontend/src/fi/hg/frontend"]
+	branch = main
+	path = frontend/src/fi/hg/frontend
+	url = git@github.com:heusalagroup/fi.hg.frontend.git
+[submodule "testing/src/fi/hg/frontend"]
+	path = testing/src/fi/hg/frontend
+	url = git@github.com:heusalagroup/fi.hg.frontend.git
+	branch = main
+[submodule "backend/src/fi/hg/core"]
+	path = backend/src/fi/hg/core
+	url = git@github.com:heusalagroup/fi.hg.core.git
+	branch = main
+[submodule "frontend/src/fi/hg/core"]
+	path = frontend/src/fi/hg/core
+	url = git@github.com:heusalagroup/fi.hg.core.git
+	branch = main
+[submodule "testing/src/fi/hg/core"]
+	path = testing/src/fi/hg/core
+	url = git@github.com:heusalagroup/fi.hg.core.git
+	branch = main
+[submodule "backend/src/fi/hg/matrix"]
+	path = backend/src/fi/hg/matrix
+	url = git@github.com:heusalagroup/fi.hg.matrix.git
+	branch = main
+[submodule "backend/src/fi/hg/backend"]
+	path = backend/src/fi/hg/backend
+	url = git@github.com:heusalagroup/fi.hg.backend.git

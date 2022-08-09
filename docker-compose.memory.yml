@@ -1,0 +1,62 @@
+version: '3.1'
+
+services:
+
+  # See also https://hub.docker.com/r/mailhog/mailhog/
+  hg-dashboard-smtp:
+    container_name: hg-dashboard-smtp
+    image: mailhog/mailhog
+    restart: always
+    logging:
+      driver: "none"  # disable saving logs
+    ports:
+    - "1025:1025" # smtp server
+    - "8025:8025" # web ui
+
+  # See also ./backend/README.md
+  hg-dashboard-backend:
+    container_name: hg-dashboard-backend
+    restart: always
+    build: ./backend
+    environment:
+      PORT: "3500"
+      BACKEND_LOG_LEVEL: DEBUG
+      BACKEND_URL: "http://0.0.0.0:3500"
+      BACKEND_IO_SERVER: "memory://"
+      BACKEND_EMAIL_CONFIG: "smtp://hg-dashboard-smtp:1025"
+      BACKEND_JWT_SECRET: "bwo4eay5ErCnqBV9zimo88UAmDxWTbN8"
+    ports:
+    - "3500:3500"
+    depends_on:
+    - hg-dashboard-smtp
+
+  # See also ./frontend/README.md
+  hg-dashboard-frontend-image:
+    container_name: hg-dashboard-frontend-image
+    image: "hg-dashboard-frontend-image:latest"
+    build:
+      context: "./frontend"
+      args:
+        DEFAULT_PUBLIC_URL: "http://localhost:3000"
+    entrypoint: "sh -c"
+    command: "exit 0"
+    restart: "no"
+
+  # See also https://hub.docker.com/_/nginx
+  hg-dashboard-nginx:
+    container_name: hg-dashboard-nginx
+    restart: always
+    image: "hg-dashboard-nginx:latest"
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        FRONTEND_IMAGE: "hg-dashboard-frontend-image:latest"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - hg-dashboard-frontend-image
+      - hg-dashboard-backend
+    environment:
+      NGINX_PORT: 8080
+      NGINX_API_URL: "http://hg-dashboard-backend:3500"
