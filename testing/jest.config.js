@@ -1,6 +1,11 @@
 /** @type {import('@ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testTimeout: 30000
+    "projects": [
+        "./src/system/backend",
+        "./src/fi/hg/core",
+        "./src/fi/hg/dashboard",
+        "./src/fi/hg/backend",
+        "./src/fi/hg/matrix",
+        "./src/fi/hg/frontend"
+    ]
 };

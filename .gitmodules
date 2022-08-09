@@ -38,3 +38,10 @@
 	path = backend/src/fi/hg/backend
 	url = git@github.com:heusalagroup/fi.hg.backend.git
 	branch = main
+[submodule "testing/src/fi/hg/backend"]
+	path = testing/src/fi/hg/backend
+	url = git@github.com:heusalagroup/fi.hg.backend.git
+	branch = main
+[submodule "testing/src/fi/hg/matrix"]
+	path = testing/src/fi/hg/matrix
+	url = git@github.com:heusalagroup/fi.hg.matrix.git

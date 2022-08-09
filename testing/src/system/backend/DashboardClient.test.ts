@@ -14,14 +14,15 @@ import { ProfileDTO } from "../../fi/hg/dashboard/types/dto/ProfileDTO";
 import { createUser, isUser, User } from "../../fi/hg/dashboard/types/User";
 import { NewWorkspaceDTO } from "../../fi/hg/dashboard/types/dto/NewWorkspaceDTO";
 import { DashboardClient } from "../../fi/hg/dashboard/services/DashboardClient";
+import {
+    BACKEND_URL,
+    MAILHOG_URL,
+    TEST_EMAIL_ADDRESS,
+    TEST_EMAIL_LOCAL_PART,
+    WORKSPACE_NAME
+} from "../../constants/system";
 
 DashboardClient.setLogLevel(LogLevel.NONE);
-
-const BACKEND_URL = 'http://localhost:3500';
-const MAILHOG_URL = 'http://localhost:8025';
-const TEST_EMAIL_ADDRESS = 'foo@example.fi';
-const TEST_EMAIL_LOCAL_PART = 'foo';
-const WORKSPACE_NAME = "Example Inc";
 
 describe('system', () => {
 
@@ -360,14 +361,14 @@ describe('system', () => {
                 });
 
                 it('can list users when there is only initial user', async () => {
-                    const list = await service.getMyUserList(workspaceId);
+                    const list = await service.getWorkspaceUserList(workspaceId);
                     expect( isArrayOf(list, isUser) ).toBe(true);
                     expect( list?.length ).toBe(1);
                 });
 
                 it('can create and list users', async () => {
 
-                    const item : User = await service.createUser(
+                    const item : User = await service.createWorkspaceUser(
                         createUser(
                             workspaceId,
                             'new',
@@ -383,7 +384,7 @@ describe('system', () => {
                     expect( item?.name ).toBe('Foo');
                     expect( item?.email ).toBe('foo@bar.fi');
 
-                    const list : readonly User[] = await service.getMyUserList(workspaceId);
+                    const list : readonly User[] = await service.getWorkspaceUserList(workspaceId);
                     expect( isArrayOf(list, isUser) ).toBe(true);
                     expect( list?.length ).toBe(2);
 
@@ -397,7 +398,7 @@ describe('system', () => {
 
                 it('can create and fetch users', async () => {
 
-                    const item : User = await service.createUser(
+                    const item : User = await service.createWorkspaceUser(
                         createUser(
                             workspaceId,
                             'new',
@@ -413,7 +414,7 @@ describe('system', () => {
                     expect( item?.name ).toBe('Foo');
                     expect( item?.email ).toBe('foo@bar.fi');
 
-                    const fetchedItem = await service.getMyUser(workspaceId, userId);
+                    const fetchedItem = await service.getWorkspaceUser(workspaceId, userId);
                     expect( fetchedItem?.id ).toBe(userId);
                     expect( fetchedItem?.name ).toBe('Foo');
                     expect( fetchedItem?.email ).toBe('foo@bar.fi');
@@ -427,7 +428,7 @@ describe('system', () => {
 
                     beforeEach( async () => {
 
-                        item = await service.createUser(
+                        item = await service.createWorkspaceUser(
                             createUser(
                                 workspaceId,
                                 'new',
@@ -447,7 +448,7 @@ describe('system', () => {
                         expect( userId ).not.toBe('');
                         expect( item?.name ).toBe('Foo');
 
-                        const updatedItem = await service.updateMyUser(
+                        const updatedItem = await service.updateWorkspaceUser(
                             workspaceId,
                             userId,
                             {
@@ -457,7 +458,7 @@ describe('system', () => {
                         expect( updatedItem?.id ).toBe(userId);
                         expect( updatedItem?.name ).toBe('New Name');
 
-                        const fetchedItem = await service.getMyUser(workspaceId, userId);
+                        const fetchedItem = await service.getWorkspaceUser(workspaceId, userId);
                         expect( fetchedItem?.id ).toBe(userId);
                         expect( fetchedItem?.name ).toBe('New Name');
 
