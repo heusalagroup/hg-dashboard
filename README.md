@@ -118,6 +118,24 @@ Once you run `npm start` inside the frontend directory, the app will be availabl
 * http://localhost:3000     -- The dashboard frontend in development mode
 * http://localhost:3000/api -- The dashboard backend redirected to local port 3500
 
+### Logging in to the system
+
+By default, only users using email addresses from accepted domains can log in and 
+create initial workspaces.
+
+You don't need to have access to the email address to use the development system.
+Any email message the local system sends can be read from the MailHog interface 
+at [localhost:8025](http://localhost:8025). The verification code is also printed 
+on the server's debug log.
+
+You can change this domain by changing `VALID_ADMIN_DOMAINS` array at 
+`backend/src//fi/hg/dashboard/constants/dashboard-api.ts`. It defaults to the 
+domain `example.fi` and `example.com`. You need to build the system again to make
+the change work.
+
+Once a user with another email address is added to a workspace they can log in 
+to the system -- even if not using example domains.
+
 ### Update all submodules
 
 We have a script to update all changes from upstream git repositories.
