@@ -1,7 +1,6 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { USER_FORM_CLASS_NAME } from "../../../constants/appClassName";
-import { TFunction } from "i18next";
 import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
@@ -9,25 +8,29 @@ import { ButtonType } from "../../../fi/hg/frontend/components/button/types/Butt
 import { T_USER_FORM_EMAIL_PLACEHOLDER, T_USER_FORM_NAME_PLACEHOLDER, T_NEW_USER_MODAL_SUBMIT_TEXT } from "../../../constants/translation";
 import { useWorkspaceUserForm } from "../../../hooks/user/useWorkspaceUserForm";
 import { EmailField } from "../../../fi/hg/frontend/components/fields/email/EmailField";
-import "./UserForm.scss";
 import { User } from "../../../fi/hg/dashboard/types/User";
+import { TranslationFunction } from "../../../fi/hg/core/types/TranslationFunction";
+import "./UserForm.scss";
 
 export interface UserFormProps {
-    readonly t          : TFunction;
-    readonly className ?: string;
-    readonly user      ?: Partial<User>;
+    readonly t            : TranslationFunction;
+    readonly className   ?: string;
+    readonly workspaceId ?: string;
+    readonly user        ?: Partial<User>;
 }
 
 export function UserForm (props: UserFormProps) {
 
     const t = props?.t;
     const className = props?.className;
+    const workspaceId = props?.workspaceId;
+    const initialUser = props?.user;
 
     const {
         user,
         setUser,
         submitCallback
-    } = useWorkspaceUserForm(props?.user);
+    } = useWorkspaceUserForm(workspaceId, initialUser);
 
     return (
         <Form

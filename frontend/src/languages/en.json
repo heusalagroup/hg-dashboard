@@ -31,10 +31,6 @@
   "loginForm.error.content"                : "Yritä hetken kuluttua uudelleen.",
   "loginForm.emailVerification.content"    : "Syötä sähköpostiisi lähetetty koodi vahvistukseksi",
 
-  "newTicketModal.title" : "New ticket",
-  "newTicketModal.errorTitle" : "Error",
-  "newTicketModal.errorContent": "Yritä hetken kuluttua uudelleen",
-
   "profileMenu.nav.logIn" : "Log in",
   "profileMenu.nav.logOut" : "Log out",
   "profileMenu.nav.sales" : "Sales",

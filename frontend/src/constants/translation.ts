@@ -1,9 +1,7 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 // HEADER NAV
-export const T_APP_HEADER_NAV_TICKETS = "appHeader.nav.tickets";
 export const T_APP_HEADER_NAV_USERS = "appHeader.nav.users";
-export const T_APP_HEADER_NAV_SUPPLIERS = "appHeader.nav.suppliers";
 
 // common
 

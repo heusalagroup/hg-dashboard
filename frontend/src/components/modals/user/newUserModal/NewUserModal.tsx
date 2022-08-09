@@ -1,19 +1,19 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { NEW_USER_MODAL_CLASS_NAME } from "../../../../constants/appClassName";
-import { TFunction } from "i18next";
 import { CloseAppModalButton } from "../../../common/modal/closeAppModalButton/CloseAppModalButton";
 import { T_NEW_USER_MODAL_TITLE } from "../../../../constants/translation";
 import { UserForm } from "../../../forms/userForm/UserForm";
 import { useEventUserAdded } from "../../../../hooks/user/useEventUserAdded";
 import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
 import { LogService } from "../../../../fi/hg/core/LogService";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./NewUserModal.scss";
 
 const LOG = LogService.createLogger('NewUserModal');
 
 export interface NewUserFormProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 

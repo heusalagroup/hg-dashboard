@@ -2,7 +2,7 @@
 
 import { NavLink, useLocation } from "react-router-dom";
 import {
-    INDEX_ROUTE, TICKETS_INDEX_ROUTE
+    INDEX_ROUTE
 } from "../../../../constants/route";
 import { TFunction } from "i18next";
 import {
@@ -10,10 +10,8 @@ import {
 } from "../../../../constants/translation";
 import { APP_HEADER_CLASS_NAME } from "../../../../constants/appClassName";
 import { useDropdownToggleWithoutWindowSizeAndScroll } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
-import { TicketListControls } from "../../ticket/ticketListControls/TicketListControls";
 import { AppMenuDropdown } from "../appMenu/AppMenuDropdown";
 import { ProfileMenuDropdown } from "../profileMenu/ProfileMenuDropdown";
-import { startsWith } from "../../../../fi/hg/core/modules/lodash";
 import { useCurrentWorkspaceName } from "../../../../hooks/workspace/useCurrentWorkspaceName";
 import "./AppHeader.scss";
 
@@ -49,15 +47,6 @@ export function AppHeader (props: AppHeaderProps) {
                         />
                     ) : null}
                 </div>
-
-                {pathname === TICKETS_INDEX_ROUTE || startsWith(pathname, `${TICKETS_INDEX_ROUTE}/`) ? (
-                    <TicketListControls
-                        className={`${APP_HEADER_CLASS_NAME}-ticket-controls`}
-                        t={t}
-                        isDropdownOpen={isListMenuClose}
-                        setDropdownOpen={setListMenuClose}
-                    />
-                ) : null}
 
                 <div className={`${APP_HEADER_CLASS_NAME}-profile-menu`}>
                     <ProfileMenuDropdown t={t} className={`${APP_HEADER_CLASS_NAME}-profile-menu-dropdown`} />

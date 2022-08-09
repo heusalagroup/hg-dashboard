@@ -3,13 +3,10 @@
 import { APP_MENU_CLASS_NAME } from "../../../../constants/appClassName";
 import { NavLink } from "react-router-dom";
 import {
-    SUPPLIER_LIST_ROUTE,
-    TICKETS_INDEX_ROUTE, USER_LIST_ROUTE
+    USER_LIST_ROUTE
 } from "../../../../constants/route";
 import {
-    T_APP_HEADER_NAV_TICKETS,
-    T_APP_HEADER_NAV_USERS,
-    T_APP_HEADER_NAV_SUPPLIERS
+    T_APP_HEADER_NAV_USERS
 } from "../../../../constants/translation";
 import { useCallback, MouseEvent } from "react";
 import { TFunction } from "i18next";
@@ -69,18 +66,8 @@ export function AppMenu (props: MenuProps) {
 
                             <NavLink
                                 className={`${APP_MENU_CLASS_NAME}-content-nav-item`}
-                                to={TICKETS_INDEX_ROUTE}
-                            >{t(T_APP_HEADER_NAV_TICKETS)}</NavLink>
-
-                            <NavLink
-                                className={`${APP_MENU_CLASS_NAME}-content-nav-item`}
                                 to={USER_LIST_ROUTE}
                             >{t(T_APP_HEADER_NAV_USERS)}</NavLink>
-
-                            <NavLink
-                                className={`${APP_MENU_CLASS_NAME}-content-nav-item`}
-                                to={SUPPLIER_LIST_ROUTE}
-                            >{t(T_APP_HEADER_NAV_SUPPLIERS)}</NavLink>
 
                         </nav>
                     ) : null

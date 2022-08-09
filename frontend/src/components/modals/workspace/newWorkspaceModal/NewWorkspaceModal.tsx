@@ -1,19 +1,19 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { NEW_WORKSPACE_MODAL_CLASS_NAME } from "../../../../constants/appClassName";
-import { TFunction } from "i18next";
 import { CloseAppModalButton } from "../../../common/modal/closeAppModalButton/CloseAppModalButton";
 import { T_NEW_WORKSPACE_MODAL_TITLE } from "../../../../constants/translation";
 import { WorkspaceForm } from "../../../forms/workspaceForm/WorkspaceForm";
 import { useEventWorkspaceAdded } from "../../../../hooks/workspace/useEventWorkspaceAdded";
 import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
 import { LogService } from "../../../../fi/hg/core/LogService";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./NewWorkspaceModal.scss";
 
 const LOG = LogService.createLogger('NewWorkspaceModal');
 
 export interface NewWorkspaceFormProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 

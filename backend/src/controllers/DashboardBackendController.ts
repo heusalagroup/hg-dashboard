@@ -186,7 +186,7 @@ export class DashboardBackendController {
             }
 
             if ( !token ) {
-                LOG.warn(`Warning! No authentication token provided in updateMyTicketById`);
+                LOG.warn(`Warning! No authentication token provided in createWorkspace`);
                 return ResponseEntity.internalServerError<ErrorDTO>().body(
                     createErrorDTO('Access denied', 403)
                 );
@@ -332,7 +332,7 @@ export class DashboardBackendController {
             }
 
             if ( !this._emailTokenService.verifyToken(email, token, true) ) {
-                LOG.debug(`getMyTicketList: Access denied for email: `, email, token);
+                LOG.debug(`getMyWorkspaceList: Access denied for email: `, email, token);
                 return ResponseEntity.internalServerError<ErrorDTO>().body(
                     createErrorDTO('Access denied', 403)
                 );
@@ -350,7 +350,7 @@ export class DashboardBackendController {
             );
 
         } catch (err) {
-            LOG.error(`getMyTicketList: ERROR: `, err);
+            LOG.error(`getMyWorkspaceList: ERROR: `, err);
             return ResponseEntity.internalServerError<ErrorDTO>().body(
                 createErrorDTO('Internal Server Error', 500)
             );

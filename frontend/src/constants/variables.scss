@@ -266,13 +266,6 @@ $z-index-profile-menu-dropdown-items : 9999;
 $main-layout-text-color : $ux-dark-black;
 $main-layout-background-color : $ux-light-grey;
 
-
-$ticket-list-width-item      : 25%;
-$ticket-list-width-requester : 10%;
-$ticket-list-width-cost      : 10%;
-$ticket-list-width-status    : 25%;
-$ticket-list-width-actions   : 30%;
-
 @font-face {
   font-family: 'Work Sans';
   src: local('Work Sans'), url(../assets/fonts/worksans/static/WorkSans-Regular.ttf) format('truetype');

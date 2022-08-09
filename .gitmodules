@@ -37,3 +37,4 @@
 [submodule "backend/src/fi/hg/backend"]
 	path = backend/src/fi/hg/backend
 	url = git@github.com:heusalagroup/fi.hg.backend.git
+	branch = main

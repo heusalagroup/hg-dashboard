@@ -1,7 +1,6 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { EDIT_USER_MODAL_CLASS_NAME } from "../../../../constants/appClassName";
-import { TFunction } from "i18next";
 import { CloseAppModalButton } from "../../../common/modal/closeAppModalButton/CloseAppModalButton";
 import { T_EDIT_USER_MODAL_TITLE } from "../../../../constants/translation";
 import { UserForm } from "../../../forms/userForm/UserForm";
@@ -10,13 +9,15 @@ import { LogService } from "../../../../fi/hg/core/LogService";
 import { useEventUserUpdated } from "../../../../hooks/user/useEventUserUpdated";
 import { useWorkspaceUser } from "../../../../hooks/user/useWorkspaceUser";
 import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
-import { AppModalService } from "../../../../services/AppModalService";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
+import { useCurrentWorkspaceId } from "../../../../hooks/workspace/useCurrentWorkspaceId";
+import { useAppModalCurrentId } from "../../../../hooks/modal/useAppModalCurrentId";
 import "./EditUserModal.scss";
 
 const LOG = LogService.createLogger('EditUserModal');
 
 export interface NewUserFormProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 
@@ -28,7 +29,9 @@ export function EditUserModal (props: NewUserFormProps) {
         LOG.debug(`Closing edit user modal`);
         closeModalCallback();
     });
-    const [user] = useWorkspaceUser(AppModalService.getCurrentId() );
+    const workspaceId = useCurrentWorkspaceId();
+    const appModalId = useAppModalCurrentId();
+    const [user] = useWorkspaceUser(workspaceId, appModalId );
     return (
         <div
             className={

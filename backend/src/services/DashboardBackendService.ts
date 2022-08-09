@@ -143,11 +143,11 @@ export class DashboardBackendService {
 
     public async updateUserForWorkspace (
         workspaceId: string,
-        ticketId: string,
+        userId: string,
         data: Partial<User>
     ) : Promise<User> {
 
-        const item : UserRepositoryItem | undefined = await this._userRepository.getUserById(ticketId);
+        const item : UserRepositoryItem | undefined = await this._userRepository.getUserById(userId);
         if (!item) throw new TypeError(`updateUserForWorkspace: User not found`);
         if (item.workspaceId !== workspaceId) throw new TypeError('updateUserForWorkspace: User not for this workspace')
 

@@ -92,8 +92,8 @@ export class UserService {
     }
 
     public static async getWorkspaceUser (
-        userId      : string,
-        workspaceId : string
+        workspaceId : string,
+        userId      : string
     ): Promise<User | undefined> {
 
         const token: EmailTokenDTO | undefined = EmailAuthSessionService.getEmailToken();

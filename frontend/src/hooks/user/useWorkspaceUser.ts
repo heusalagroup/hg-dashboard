@@ -9,26 +9,27 @@ import { User } from "../../fi/hg/dashboard/types/User";
 const LOG = LogService.createLogger('useWorkspaceUser');
 
 export function useWorkspaceUser (
-    workspaceId : string,
-    userId      : string
+    workspaceId ?: string,
+    userId      ?: string
 ) : [User|undefined, VoidCallback] {
 
     const [ item, setItem ] = useState<User|undefined>(undefined);
 
     const reloadCallback = useCallback(
         () => {
-            if (userId) {
+            if (workspaceId && userId) {
                 UserService.getWorkspaceUser(workspaceId, userId).then((result) => {
                     setItem(result);
                 }).catch((err) => {
                     LOG.error(`useUser: Failed to load user "${userId}" for workspace "${workspaceId}": `, err);
                 });
             } else {
-                LOG.debug(`useUser: Did not have userId`);
+                LOG.debug(`useWorkspaceUser: Did not have workspaceId and/or userId`);
             }
         },
         [
             setItem,
+            workspaceId,
             userId,
             workspaceId
         ]

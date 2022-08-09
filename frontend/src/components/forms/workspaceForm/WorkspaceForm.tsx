@@ -1,7 +1,6 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { WORKSPACE_FORM_CLASS_NAME } from "../../../constants/appClassName";
-import { TFunction } from "i18next";
 import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
@@ -12,10 +11,11 @@ import {
 } from "../../../constants/translation";
 import { useWorkspaceForm } from "../../../hooks/workspace/useWorkspaceForm";
 import { Workspace } from "../../../fi/hg/dashboard/types/Workspace";
+import { TranslationFunction } from "../../../fi/hg/core/types/TranslationFunction";
 import "./WorkspaceForm.scss";
 
 export interface WorkspaceFormProps {
-    readonly t          : TFunction;
+    readonly t          : TranslationFunction;
     readonly className ?: string;
     readonly workspace ?: Partial<Workspace>;
 }

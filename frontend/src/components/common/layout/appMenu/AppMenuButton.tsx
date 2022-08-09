@@ -4,15 +4,12 @@ import { useCallback } from "react";
 import { TFunction } from "i18next";
 import { APP_MENU_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import {
-    T_APP_HEADER_NAV_SUPPLIERS,
-    T_APP_HEADER_NAV_TICKETS,
     T_APP_HEADER_NAV_USERS
 } from "../../../../constants/translation";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
 import { useLocation } from "react-router-dom";
 import {
-    SUPPLIER_LIST_ROUTE,
     USER_LIST_ROUTE
 } from "../../../../constants/route";
 import { startsWith } from "../../../../fi/hg/core/modules/lodash";
@@ -56,14 +53,6 @@ export function AppMenuButton (props: AppMenuButtonProps) {
                     }
                     onClick={toggleMenuCallback}
                 >
-
-                    {pathname === USER_LIST_ROUTE || startsWith(pathname, `${USER_LIST_ROUTE}/`) ? (
-                        t(T_APP_HEADER_NAV_USERS)
-                    ) : (
-                        (pathname === SUPPLIER_LIST_ROUTE || startsWith(pathname, `${SUPPLIER_LIST_ROUTE}/`))
-                            ? t(T_APP_HEADER_NAV_SUPPLIERS)
-                            : t(T_APP_HEADER_NAV_TICKETS)
-                    )}
 
                     {isMenuOpen ? (
                         <span className={"caret caret-up"}>&nbsp;&#9650;</span>
