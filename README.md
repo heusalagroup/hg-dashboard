@@ -104,6 +104,8 @@ docker-compose -f ./docker-compose.dendrite.yml up
 
 ### Using the development environment
 
+#### Available Docker services
+
 Once services are running, following services are available:
 
 * http://localhost:8080     -- The dashboard app in production mode (e.g. through Nginx HTTP server)
@@ -113,12 +115,14 @@ Once services are running, following services are available:
 * http://localhost:8008     -- Matrix.org IO Server (Synapse or Dendrite)
 * `smtp://localhost:1025`   -- SMTP server (MailHog)
 
+#### Development frontend
+
 Once you run `npm start` inside the frontend directory, the app will be available at:
 
 * http://localhost:3000     -- The dashboard frontend in development mode
 * http://localhost:3000/api -- The dashboard backend redirected to local port 3500
 
-### Logging in to the system
+#### Logging in to the dashboard
 
 By default, only users using email addresses from accepted domains can log in and 
 create initial workspaces.
@@ -136,7 +140,7 @@ the change work.
 Once a user with another email address is added to a workspace they can log in 
 to the system -- even if not using example domains.
 
-### Update all submodules
+### Update all git submodules
 
 We have a script to update all changes from upstream git repositories.
 
@@ -147,7 +151,7 @@ We have a script to update all changes from upstream git repositories.
 It will read `.gitmodules` and use it to fetch all submodules using `git pull` 
 inside submodule folders. It will pull also the main git repository.
 
-## Working on the Github
+## Working on the GitHub
 
 Advices about working on GitHub environment.
 
