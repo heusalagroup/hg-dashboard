@@ -1,6 +1,7 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { AVATAR_CLASS_NAME } from "../../../../constants/appClassName";
+import { UserUtils } from "../../../../fi/hg/dashboard/utils/UserUtils";
 import "./Avatar.scss";
 
 export interface AvatarProps {

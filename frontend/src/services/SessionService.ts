@@ -1,14 +1,12 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import {
-    GET_PROFILE_URL
-} from "../constants/backend";
 import { HttpService } from "../fi/hg/core/HttpService";
 import { Observer, ObserverCallback, ObserverDestructor } from "../fi/hg/core/Observer";
 import { EmailTokenDTO } from "../fi/hg/core/auth/email/types/EmailTokenDTO";
 import { LogService } from "../fi/hg/core/LogService";
 import { EmailAuthSessionService } from "../fi/hg/frontend/services/EmailAuthSessionService";
 import { isProfile, Profile } from "../fi/hg/dashboard/types/Profile";
+import { DASHBOARD_API_GET_MY_PROFILE_PATH } from "../fi/hg/dashboard/constants/dashboard-api";
 
 export enum SessionServiceEvent {
     PROFILE_UPDATED = "SessionService:profileUpdated"
@@ -77,7 +75,7 @@ export class SessionService {
             headers['X-Authorization'] = token.token;
         }
 
-        const item = await HttpService.getJson(GET_PROFILE_URL, headers);
+        const item = await HttpService.getJson(DASHBOARD_API_GET_MY_PROFILE_PATH, headers);
 
         if (!isProfile(item)) {
             LOG.debug(`Response: `, item);

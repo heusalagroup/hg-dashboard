@@ -6,84 +6,103 @@ HG's Dashboard Project to bootstrap full stack TypeScript projects.
 
 ### Fetching source code
 
-```bash
+```shell
 git clone git@github.com:hangovergames/hg-dashboard.git hg-dashboard
 cd hg-dashboard
 git submodule update --init --recursive
 ```
 
-### Building full local environment for testing
+### Building local environment
 
-This environment uses Synapse Matrix Server to save persistent data to PostgreSQL 
-database.
-
-```bash
+```shell
 docker-compose build
 ```
 
-### Starting local development environment
+### Local environment using non-persistent memory repository 
 
-This is the easiest way to run the full environment.
+The memory based repository saves everything to non-persistent local memory. 
 
-```bash
-docker-compose up
-```
+It's faster, but doesn't persist any state between runs. It also doesn't need 
+any initialization tasks.
 
-### Starting local development environment using memory based repository 
-
-The memory based repository saves everything on local memory. It's faster, but doesn't
-persist any state between runs. Usable just for development.
-
-```bash
+```shell
 docker-compose -f ./docker-compose.memory.yml build
 docker-compose -f ./docker-compose.memory.yml up
 ```
 
-### Starting production environment
+However, it's useful only for development.
 
-This is the easiest way to run the full environment.
+### Local environment with Synapse server
 
-```bash
-DOCKER_HOST_IP=172.16.50.54 \
-BACKEND_JWT_SECRET='secret-code' \
-BACKEND_IO_SERVER='https://user:secret@io.hg.fi' \
-BACKEND_EMAIL_CONFIG='smtp://host.docker.internal:25'
-docker-compose -f docker-compose.prod.yml up -d
+Our default environment uses Synapse Matrix server to store persistent data to
+PostgreSQL database.
+
+Synapse is the official Matrix server. It's written using Python programming language.
+
+#### Initializing Synapse server
+
+You'll need to create an account for the application on the Synapse server before 
+starting up everything.
+
+First start up only your Matrix server:
+
+```shell
+docker-compose up -d hg-dashboard-io
 ```
 
-### Initializing environment
+This needs to be run only once -- and if you clean up your `./io/data/homeserver.db`:
 
-You'll need to create an account for the application on the IO server.
-
-This needs to be run only once -- until you clean up your `./io/data/homeserver.db`:
-
-```bash
+```shell
 docker exec -it hg-dashboard-io register_new_matrix_user http://localhost:8008 -c /data/homeserver.yaml --no-admin -u app -p p4sSw0rd123
 ```
 
-Once added, you'll need to start the backend again:
+Once added, you can stop the Matrix server:
 
-```bash
-docker restart hg-dashboard-backend
-docker restart hg-dashboard-nginx
+```shell
+docker-compose down -d hg-dashboard-io
 ```
 
-### Initializing environment with Dendrite Matrix Server
+#### Starting environment (with Synapse Matrix server)
 
-If you're using `docker-compose.dendrite.yml`, use ([read more](https://github.com/matrix-org/dendrite/blob/main/docs/administration/1_createusers.md)):
+```shell
+docker-compose up
+```
 
-```bash
+### Local environment with Dendrite Matrix server
+
+Dendrite is another implementation for Matrix. It's written using Go programming
+language.
+
+#### Initializing Dendrite Matrix server
+
+You'll need to create an account for the application on the Dendrite server before
+starting up everything.
+
+First start up only your Matrix server:
+
+```shell
+docker-compose -f ./docker-compose.dendrite.yml up -d hg-dashboard-io-dendrite
+```
+
+Then create the account for the app:
+
+```shell
 docker exec -it hg-dashboard-io-dendrite /usr/bin/create-account -config /etc/dendrite/dendrite.yaml -username app -password p4sSw0rd123
 ```
 
-Once added, you'll need to start the backend again:
+Once added, you can stop the Matrix server:
 
-```bash
-docker restart hg-dashboard-backend
-docker restart hg-dashboard-nginx
+```shell
+docker-compose -f ./docker-compose.dendrite.yml down -d hg-dashboard-io-dendrite
 ```
 
-### Using the environment
+#### Starting environment (with Dendrite Matrix server)
+
+```shell
+docker-compose -f ./docker-compose.dendrite.yml up
+```
+
+### Using the development environment
 
 Once services are running, following services are available:
 
@@ -132,3 +151,15 @@ Sometimes some issues are created without any labels.
 1. Go to [the Issues page](https://github.com/heusalagroup/hg-dashboard/issues?q=is%3Aissue+is%3Aopen+no%3Alabel) (e.g. with `no:label`, any issue without label)
 2. Select issues of specific type (e.g. `[Task]` in the title means tasks)
 3. Set label to those types (e.g. `task` for tasks)
+
+### Starting production environment
+
+This is the easiest way to run the full environment.
+
+```shell
+DOCKER_HOST_IP=172.16.50.54 \
+BACKEND_JWT_SECRET='secret-code' \
+BACKEND_IO_SERVER='https://user:secret@io.hg.fi' \
+BACKEND_EMAIL_CONFIG='smtp://host.docker.internal:25'
+docker-compose -f docker-compose.prod.yml up -d
+```
