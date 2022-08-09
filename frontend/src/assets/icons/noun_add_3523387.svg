@@ -1,0 +1,10 @@
+<svg height='100px' width='100px'
+     xmlns="http://www.w3.org/2000/svg"
+     version="1.1" x="0px" y="0px"
+     viewBox="0 0 100 100"
+     enable-background="new 0 0 100 100"
+     xml:space="preserve">
+  <g>
+    <path d="M50,86c19.851,0,36-16.149,36-36S69.851,14,50,14S14,30.149,14,50S30.149,86,50,86z M34,45.939h11.939V34h8.122v11.939H66   v8.122H54.061V66h-8.122V54.061H34V45.939z"/>
+  </g>
+</svg>

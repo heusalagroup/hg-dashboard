@@ -1,0 +1,287 @@
+
+$ux-primary-button-alternative: #f5f5f5;
+$ux-primary-button: #55a8f6;
+$ux-secondary-button: #00AEBD;
+$ux-button-border-radius: 5px;
+$ux-green-button: green;
+$ux-border-radius: 5px;
+
+$login-button-border: rgba(255, 255, 255, .8);
+
+$ux-input-border: rgba(255, 255, 255, .8);
+
+$ux-white: #fff;
+$ux-dark-black: #141414;
+$ux-light-grey: #f2f2f2;
+$ux-black: #333333;
+
+$ux-error-red: red;
+$ux-icon-color: #333333;
+
+$ux-font-family         : 'Work Sans', sans-serif;
+$ux-font-weight-regular : 400;
+$ux-font-weight-bold    : 700;
+
+$ux-color-white         : #fff;
+$ux-color-turquoise     : #00AEBD;
+$ux-color-dark-blue     : #001F47;
+$ux-color-light-blue    : #E0F7F9;
+
+$page-content-max-width : 800px;
+
+$page-margin            : 1.5rem;
+$page-margin-left       : $page-margin;
+$page-margin-right      : $page-margin;
+$page-margin-bottom     : $page-margin;
+
+$main-font-size: 20px;
+$main-font-family: $ux-font-family;
+$main-font-weight: $ux-font-weight-regular;
+
+$main-link-color            : $ux-color-turquoise;
+$main-link-font-size        : 1rem;
+$main-link-font-family      : $ux-font-family;
+$main-link-font-weight      : $ux-font-weight-bold;
+$main-link-text-decoration  : none;
+$main-link-text-transform   : uppercase;
+
+$app-header-margin: 1.8rem $page-margin-right 0 $page-margin-left;
+$app-header-text-color: $ux-color-turquoise;
+$app-header-text-transform: uppercase;
+$app-header-font-size: 1rem;
+$app-header-font-family: $ux-font-family;
+$app-header-font-weight: $ux-font-weight-bold;
+
+$h2-padding: 5.45rem 0 3.85rem 0;
+$h2-margin: 0 $page-margin-right 0 $page-margin-left;
+$h2-text-color: $ux-color-turquoise;
+$h2-text-transform: uppercase;
+$h2-font-size: 2.5rem;
+$h2-font-family: $ux-font-family;
+$h2-font-weight: $ux-font-weight-bold;
+
+$h3-margin: 2em 0;
+$h3-text-color: $ux-color-turquoise;
+$h3-text-transform: uppercase;
+$h3-font-size: 1.5rem;
+$h3-font-family: $ux-font-family;
+$h3-font-weight: $ux-font-weight-bold;
+
+$h4-margin: 1em 0;
+$h4-text-color: $ux-color-dark-blue;
+$h4-text-transform: none;
+$h4-font-size: 1.5rem;
+$h4-font-family: $ux-font-family;
+$h4-font-weight: $ux-font-weight-regular;
+
+$dashboard-item-margin  : 5px 5px 5px 5px;
+
+$content-nav-item-padding : 0.9rem 0.9rem 0.9rem 0.9rem;
+$content-nav-item-margin  : 0 1.05rem 1.05rem 0;
+$content-nav-item-color        : $ux-color-turquoise;
+$content-nav-item-color-active : $ux-color-dark-blue;
+$content-nav-item-color-hover  : $ux-color-dark-blue;
+$content-nav-item-border  : 2px solid $ux-color-turquoise;
+$content-nav-item-border-active  : 2px solid $ux-color-dark-blue;
+$content-nav-item-border-hover  : 2px solid $ux-color-dark-blue;
+
+$submit-button-margin           : 1.7rem 0 0 0;
+
+$button-margin           : 0 0 0 0;
+$button-padding          : 0.5em 1em;
+$button-text-color       : $ux-color-white;
+$button-background-color : $ux-color-dark-blue;
+$button-font-size        : 1rem;
+$button-line-height      : 1.3rem;
+$button-font-family      : $ux-font-family;
+$button-font-weight      : $ux-font-weight-bold;
+
+$form-max-width        : $page-content-max-width;
+$form-margin           : 1em auto;
+$form-padding          : 0.5em 1em;
+$form-text-color       : $ux-color-dark-blue;
+$form-background-color : $ux-color-light-blue;
+$form-font-size        : 1rem;
+$form-font-family      : $ux-font-family;
+$form-font-weight      : $ux-font-weight-regular;
+
+$field-margin           : 0 0 0.45rem 0;
+$field-padding          : 0;
+
+$field-border-size-invalid  : 1px;
+$field-border-style-invalid : solid;
+$field-border-color-invalid : rgba(255, 0, 0, 0.50);
+$field-border-invalid   : $field-border-size-invalid $field-border-style-invalid $field-border-color-invalid;
+
+
+
+$field-label-width            : 9.9rem;
+$field-label-min-width        : 5em;
+$field-label-margin           : 0 1.55rem 0 0;
+$field-label-padding          : 0.5em 0;
+$field-label-text-color       : $ux-color-dark-blue;
+$field-label-background-color : transparent;
+$field-label-font-size        : 1rem;
+$field-label-font-family      : $ux-font-family;
+$field-label-font-weight      : $ux-font-weight-bold;
+$field-label-text-transform   : uppercase;
+
+$field-suffix-width            : 9.9rem;
+$field-suffix-margin           : 0 0 0 0.5rem;
+$field-suffix-padding          : 0.5em 0;
+$field-suffix-text-color       : $ux-color-dark-blue;
+$field-suffix-background-color : transparent;
+$field-suffix-font-size        : 1rem;
+$field-suffix-font-family      : $ux-font-family;
+$field-suffix-font-weight      : $ux-font-weight-bold;
+$field-suffix-text-transform   : uppercase;
+
+$field-input-margin           : 0 0 0 0;
+$field-input-padding          : 0.75em 1em;
+$field-input-text-color       : $ux-color-dark-blue;
+$field-input-background-color : $ux-color-white;
+$field-input-font-size        : 0.9rem;
+$field-input-font-family      : $ux-font-family;
+$field-input-font-weight      : $ux-font-weight-regular;
+
+$footer-alternative-content-text-color       : $ux-color-white;
+$footer-alternative-content-background-color : $ux-color-dark-blue;
+$footer-alternative-content-font-size        : 1rem;
+$footer-alternative-content-font-family      : $ux-font-family;
+$footer-alternative-content-font-weight      : $ux-font-weight-regular;
+
+$footer-alternative-content-h2-text-color       : $ux-color-white;
+$footer-alternative-content-h2-background-color : $ux-color-dark-blue;
+$footer-alternative-content-h2-font-size        : 1.5rem;
+$footer-alternative-content-h2-font-family      : $ux-font-family;
+$footer-alternative-content-h2-font-weight      : $ux-font-weight-bold;
+
+$footer-alternative-content-h3-text-color       : $ux-color-white;
+$footer-alternative-content-h3-background-color : $ux-color-dark-blue;
+$footer-alternative-content-h3-font-size        : 1.5rem;
+$footer-alternative-content-h3-font-family      : $ux-font-family;
+$footer-alternative-content-h3-font-weight      : $ux-font-weight-bold;
+
+$footer-alternative-content-link-text-color       : $ux-color-white;
+$footer-alternative-content-link-background-color : $ux-color-dark-blue;
+$footer-alternative-content-link-font-size        : 1rem;
+$footer-alternative-content-link-font-family      : $ux-font-family;
+$footer-alternative-content-link-font-weight      : $ux-font-weight-bold;
+$footer-alternative-content-link-text-decoration  : none;
+$footer-alternative-content-link-text-transform   : none;
+
+
+$main-layout-alternative-section-color            : $ux-color-white;
+$main-layout-alternative-section-background-color : $ux-color-turquoise;
+
+$main-layout-alternative-section-link-color            : $ux-color-white;
+$main-layout-alternative-section-link-font-size        : 1rem;
+$main-layout-alternative-section-link-font-family      : $ux-font-family;
+$main-layout-alternative-section-link-font-weight      : $ux-font-weight-bold;
+$main-layout-alternative-section-link-text-decoration  : none;
+$main-layout-alternative-section-link-text-transform   : uppercase;
+
+$main-layout-alternative-section-h3-margin: 2em;
+$main-layout-alternative-section-h3-text-color: $ux-color-white;
+$main-layout-alternative-section-h3-text-transform: uppercase;
+$main-layout-alternative-section-h3-font-size: 1.5rem;
+$main-layout-alternative-section-h3-font-family: $ux-font-family;
+$main-layout-alternative-section-h3-font-weight: $ux-font-weight-bold;
+
+$main-layout-alternative-section-field-label-text-color : $ux-color-white;
+$main-layout-alternative-section-field-suffix-text-color : $ux-color-white;
+
+$main-layout-lighter-alternative-section-color            : $ux-color-dark-blue;
+$main-layout-lighter-alternative-section-background-color : $ux-color-light-blue;
+
+$main-layout-lighter-alternative-section-link-color            : $ux-color-turquoise;
+$main-layout-lighter-alternative-section-link-font-size        : 1rem;
+$main-layout-lighter-alternative-section-link-font-family      : $ux-font-family;
+$main-layout-lighter-alternative-section-link-font-weight      : $ux-font-weight-bold;
+$main-layout-lighter-alternative-section-link-text-decoration  : none;
+$main-layout-lighter-alternative-section-link-text-transform   : uppercase;
+
+$main-layout-lighter-alternative-section-h2-margin: 2em;
+$main-layout-lighter-alternative-section-h2-text-color: $ux-color-dark-blue;
+$main-layout-lighter-alternative-section-h2-text-transform: uppercase;
+$main-layout-lighter-alternative-section-h2-font-size: 1.5rem;
+$main-layout-lighter-alternative-section-h2-font-family: $ux-font-family;
+$main-layout-lighter-alternative-section-h2-font-weight: $ux-font-weight-bold;
+
+$main-layout-lighter-alternative-section-h3-margin: 2em;
+$main-layout-lighter-alternative-section-h3-text-color: $ux-color-dark-blue;
+$main-layout-lighter-alternative-section-h3-text-transform: uppercase;
+$main-layout-lighter-alternative-section-h3-font-size: 1.5rem;
+$main-layout-lighter-alternative-section-h3-font-family: $ux-font-family;
+$main-layout-lighter-alternative-section-h3-font-weight: $ux-font-weight-bold;
+
+
+$main-layout-bordered-alternative-section-border : 2px solid $ux-color-turquoise;
+
+
+$auction-item-color            : $ux-color-white;
+$auction-item-background-color : $ux-color-turquoise;
+
+$auction-item-category-font-size        : 1rem;
+$auction-item-category-font-family      : $ux-font-family;
+$auction-item-category-font-weight      : $ux-font-weight-regular;
+$auction-item-category-text-decoration  : none;
+$auction-item-category-text-transform   : none;
+
+$auction-item-name-font-size        : 1.2rem;
+$auction-item-name-font-family      : $ux-font-family;
+$auction-item-name-font-weight      : $ux-font-weight-regular;
+$auction-item-name-text-decoration  : none;
+$auction-item-name-text-transform   : uppercase;
+
+$auction-item-sub-title-font-size        : 1rem;
+$auction-item-sub-title-font-family      : $ux-font-family;
+$auction-item-sub-title-font-weight      : $ux-font-weight-regular;
+$auction-item-sub-title-text-decoration  : none;
+$auction-item-sub-title-text-transform   : uppercase;
+
+$auction-item-seller-description        : 0.8rem;
+
+$auction-item-summary-font-size        : 1rem;
+$auction-item-summary-font-family      : $ux-font-family;
+$auction-item-summary-font-weight      : $ux-font-weight-regular;
+$auction-item-summary-text-decoration  : none;
+$auction-item-summary-text-transform   : uppercase;
+
+$auction-item-price-font-size        : 1rem;
+$auction-item-price-font-family      : $ux-font-family;
+$auction-item-price-font-weight      : $ux-font-weight-regular;
+$auction-item-price-text-decoration  : none;
+$auction-item-price-text-transform   : uppercase;
+
+$auction-item-price-current-font-size        : 1.2rem;
+$auction-item-price-current-font-family      : $ux-font-family;
+$auction-item-price-current-font-weight      : $ux-font-weight-bold;
+$auction-item-price-current-text-decoration  : none;
+$auction-item-price-current-text-transform   : uppercase;
+
+$z-index-app-menu-dropdown-items : 9999;
+$z-index-profile-menu-dropdown-items : 9999;
+
+$main-layout-text-color : $ux-dark-black;
+$main-layout-background-color : $ux-light-grey;
+
+
+$ticket-list-width-item      : 25%;
+$ticket-list-width-requester : 10%;
+$ticket-list-width-cost      : 10%;
+$ticket-list-width-status    : 25%;
+$ticket-list-width-actions   : 30%;
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../assets/fonts/worksans/static/WorkSans-Regular.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../assets/fonts/worksans/static/WorkSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+}
+

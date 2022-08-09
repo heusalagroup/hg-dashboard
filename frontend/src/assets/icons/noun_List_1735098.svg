@@ -1,0 +1,14 @@
+<svg height='100px'
+     width='100px'
+     xmlns="http://www.w3.org/2000/svg"
+     xml:space="preserve"
+     version="1.1"
+     style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;"
+     viewBox="0 0 847 847"
+     x="0px"
+     y="0px"
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+>
+    <path d="M423 21c223,0 403,180 403,402 0,223 -180,403 -403,403 -222,0 -402,-180 -402,-403 0,-222 180,-402 402,-402zm-239 524l479 0c13,0 25,12 25,25l0 0c0,14 -12,25 -25,25l-479 0c-14,0 -25,-11 -25,-25l0 0c0,-13 11,-25 25,-25zm0 -146l479 0c13,0 25,11 25,24l0 0c0,14 -12,25 -25,25l-479 0c-14,0 -25,-11 -25,-25l0 0c0,-13 11,-24 25,-24zm0 -147l479 0c13,0 25,11 25,24l0 0c0,14 -12,25 -25,25l-479 0c-14,0 -25,-11 -25,-25l0 0c0,-13 11,-24 25,-24z" />
+</svg>

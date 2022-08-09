@@ -1,0 +1,47 @@
+
+.edit-user-modal {
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  & > .edit-user-modal-header {
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 1em 1em 1em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & > .edit-user-modal-header-title {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    & > .edit-user-modal-header-close-button {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+  }
+
+  & > .edit-user-modal-content {
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 1em;
+
+  }
+
+}

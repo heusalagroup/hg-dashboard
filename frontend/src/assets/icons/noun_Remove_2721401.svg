@@ -1,0 +1,14 @@
+<svg height='100px' width='100px'
+     xmlns="http://www.w3.org/2000/svg"
+     xml:space="preserve"
+     version="1.1"
+     style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;"
+     viewBox="0 0 80 80"
+     x="0px"
+     y="0px"
+     fill-rule="evenodd"
+     clip-rule="evenodd">
+  <g>
+    <path d="M7 40c0,-18.226 14.775,-33 33,-33 18.226,0 33,14.774 33,33 0,18.225 -14.774,33 -33,33 -18.225,0 -33,-14.775 -33,-33zm13.331 0.001l0 -0.001c0,-2.55 2.086,-4.635 4.636,-4.635l30.068 0c2.55,0 4.635,2.085 4.635,4.635l0 0.001c0,2.55 -2.085,4.636 -4.635,4.636l-30.068 0c-2.55,0 -4.636,-2.086 -4.636,-4.636z" />
+  </g>
+</svg>

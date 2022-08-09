@@ -1,0 +1,20 @@
+@import "src/constants/variables";
+
+.profile-menu-dropdown {
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  & > .profile-menu-dropdown-button {
+
+  }
+
+  & > .profile-menu-dropdown-items {
+    margin-top: 0.5em;
+    width: auto;
+    position: absolute;
+    z-index: $z-index-profile-menu-dropdown-items;
+  }
+
+}

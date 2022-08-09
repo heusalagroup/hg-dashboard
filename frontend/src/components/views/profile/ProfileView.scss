@@ -1,0 +1,39 @@
+
+.profile-view {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  article {
+
+    max-width: 1150px;
+    padding: 0.5em 1em;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 12px;
+
+    h1 {
+      margin: 1em 12px;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    h2 {
+      margin: 1em 12px;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    p {
+      margin: 1em 12px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+  }
+
+}

@@ -1,0 +1,78 @@
+@import "src/constants/variables";
+
+.profile-menu {
+
+  cursor: pointer;
+
+  & > .profile-menu-content {
+
+    border-radius: $ux-border-radius;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $ux-color-white;
+
+    & > .profile-menu-content-nav {
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      color: $ux-black;
+
+      & > .profile-menu-content-nav-item {
+
+        font-family: $ux-font-family;
+        font-size: $main-link-font-size;
+        color: $ux-black;
+        width: auto;
+        text-decoration: none;
+        margin: 0.25em 0 0.25em 0;
+        padding: 0.5em 0;
+        text-align: center;
+        background: $ux-light-grey;
+
+        &.profile-menu-content-nav-button {
+          cursor: pointer;
+          border: none;
+          color: $ux-black;
+          width: 100%;
+        }
+
+        &:hover {
+          color: $ux-color-dark-blue;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .profile-menu {
+
+    & > .profile-menu-content {
+
+      padding: 0;
+      margin: 0 0 0 0;
+      box-sizing: border-box;
+      max-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: $ux-color-white;
+
+    }
+
+  }
+
+}
+

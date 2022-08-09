@@ -1,0 +1,148 @@
+@import "src/constants/variables";
+
+.app-header {
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 12px;
+  background-position: bottom center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+
+  & > .app-header-nav {
+
+    margin: 0;
+    padding: 0 $page-margin-right 0 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    & > .app-header-menu {
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding-left: 2em;
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      justify-content: center;
+
+      & > .app-header-logo-container {
+
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0 1em 0 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        & > .app-header-logo-link {
+
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          line-height: 0;
+          text-decoration: none;
+          color: #000;
+          display: block;
+          font-weight: normal;
+
+          & > .App-logo,
+          & > svg {
+            width: auto;
+            height: 3.5rem;
+            margin-right: 12px;
+          }
+
+        }
+      }
+
+      & > button {
+        height: 40px;
+        font-weight: $ux-font-weight-bold;
+
+      }
+
+      & > .app-header-menu-dropdown {
+        flex-grow: 1;
+      }
+
+    }
+
+    & > .app-header-ticket-controls {
+
+    }
+
+    & > .app-header-profile-menu {
+
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+
+      & > .dropdown {
+
+        & > .dropdown-items {
+          margin-top: 0.5em;
+        }
+      }
+    }
+
+    & > .app-header-nav-item {
+      padding-left: 2em;
+      margin: 0;
+
+    }
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .app-header {
+    padding: 0 0 2.5rem 0;
+
+    & > .app-header-logo-container {
+      padding: 0;
+
+      & > .app-header-logo-link {
+        & > .App-logo,
+        & > svg {
+          width: auto;
+          height: 3.5rem;
+          margin-left: 12px;
+        }
+      }
+    }
+
+    & > .app-header-nav {
+      padding: 0 0 0 0; //0 2 0 0
+      align-items: center;
+      justify-items: center;
+      align-content: flex-start;
+      justify-content: flex-end;
+
+      & > .app-header-nav-item {
+        padding: 0 0 0.5em 0.5em;
+      }
+    }
+
+  }
+}

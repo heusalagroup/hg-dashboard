@@ -1,0 +1,46 @@
+@import "src/constants/variables";
+
+.list-button {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-height: 40px;
+  min-width:100px;
+  justify-content: space-between;
+  text-align: center;
+
+  & > button.list-toggle, button.board-toggle {
+    padding: 0.5em;
+    margin: 0;
+    width: 40px;
+    background: $ux-primary-button;
+    color: $ux-white;
+    border-radius: $ux-button-border-radius;
+    border: 1px solid $ux-input-border;
+
+  }
+
+  button.active-list {
+    text-decoration: none;
+  }
+
+  button.active-board {
+    text-decoration: none;
+  }
+
+  button.list {
+    background-color: $ux-light-grey;
+    color: $ux-black;
+    border: none;
+    font-weight: $ux-font-weight-bold;
+    font-size: $main-font-size;
+  }
+
+  button.board {
+    background-color: $ux-light-grey;
+    color: $ux-black;
+    border: none;
+  }
+
+}

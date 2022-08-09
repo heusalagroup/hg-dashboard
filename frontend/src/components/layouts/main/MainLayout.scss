@@ -1,0 +1,620 @@
+@import "src/constants/variables";
+
+.main-layout {
+
+  width            : 100%;
+  max-width        : 100vw;
+  height           : 100vh;
+  padding          : 0;
+  margin           : 0;
+  box-sizing       : border-box;
+  color            : $main-layout-text-color;
+  background-color : $main-layout-background-color;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-items: center;
+  align-content: center;
+  justify-content: stretch;
+  flex-wrap: nowrap;
+
+  & > .main-layout-header {
+    flex-shrink: 1;
+  }
+
+  & > .main-layout-content {
+
+    flex-grow: 1;
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    nav {
+
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: row;
+
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      & > a {
+
+        width: 12.8rem;
+        height: 3.2rem;
+        box-sizing: border-box;
+        padding: $content-nav-item-padding;
+        margin: $content-nav-item-margin;
+        text-align: center;
+
+        &.active {
+
+        }
+
+      }
+
+    }
+
+    .alternative-section {
+
+      box-sizing: border-box;
+      padding: 0 0 0.95rem 0;
+      margin: 0;
+
+      & > .article-row {
+
+        & > article {
+          padding: 6.15rem 0 0 0;
+        }
+
+      }
+
+    }
+
+    .lighter-alternative-section {
+
+      box-sizing: border-box;
+      padding: 2.75rem 0 2.7rem 3.85rem;
+      margin: 0;
+
+    }
+
+    .bordered-alternative-section {
+
+    }
+
+    & > .main-layout-content-modals {
+      background-color: #e8e8e8;
+      border-left: 1px solid #d1d1d1;
+    }
+
+  }
+
+  h2 {
+    padding: $h2-padding;
+    margin: $h2-margin;
+    text-align: center;
+
+    & > svg {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0 0.5em 0 0;
+      height: 1.5em;
+      vertical-align: middle;
+    }
+
+  }
+
+  h3 {
+    box-sizing: border-box;
+    margin: $h3-margin;
+    text-align: center;
+
+    & > svg {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0 0.5em 0 0;
+      width: auto;
+      height: 2.52rem;
+      vertical-align: middle;
+    }
+
+  }
+
+  h4 {
+    box-sizing: border-box;
+    margin: $h4-margin;
+    text-align: left;
+  }
+
+  p {
+    box-sizing: border-box;
+    margin : 0 $page-margin-right 5.45rem $page-margin-left;
+    padding: 0 0 0 0;
+  }
+
+  ul {
+    box-sizing: border-box;
+    margin : 0 $page-margin-right 5.45rem $page-margin-left;
+    padding: 0 0 0 1.5rem;
+  }
+
+  ol {
+    box-sizing: border-box;
+    margin : 0 $page-margin-right 5.45rem $page-margin-left;
+    padding: 0 0 0 1.5rem;
+  }
+
+  article {
+
+    margin : 0 0 $page-margin-bottom 0;
+    padding: 0 0 0 0;
+
+    & > p {
+      box-sizing: border-box;
+      margin : 0 $page-margin-right 1em $page-margin-left;
+      padding: 0 0 0 0;
+    }
+
+    & > ul {
+      box-sizing: border-box;
+      margin : 0 $page-margin-right 1em $page-margin-left;
+      padding: 0 0 0 1.5rem;
+    }
+
+    & > ol {
+      box-sizing: border-box;
+      margin : 0 $page-margin-right 1em $page-margin-left;
+      padding: 0 0 0 1.5rem;
+    }
+
+  }
+
+  .article-row {
+
+    $article-margin-left: $page-margin-left;
+    $article-margin-right: $page-margin-right - 6.9rem;
+
+    box-sizing: border-box;
+    padding: 0;
+    margin : 0 $article-margin-right 5.85rem $article-margin-left;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & > article {
+
+      flex: 1 0 45%;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+
+      & > h3 {
+        text-align: left;
+      }
+
+      & > h4 {
+        text-align: left;
+      }
+
+      & > p {
+        box-sizing: border-box;
+        margin : 0 6.9rem 1em 0;
+        padding: 0 0 0 0;
+      }
+
+      & > ul {
+        box-sizing: border-box;
+        margin : 0 6.9rem 1em 0;
+        padding: 0 0 0 1.5rem;
+      }
+
+      & > ol {
+        box-sizing: border-box;
+        margin : 0 6.9rem 1em 0;
+        padding: 0 0 0 1.5rem;
+      }
+
+    }
+
+  }
+
+  .hg-button {
+    border: $login-button-border;
+    background: $ux-primary-button;
+    color: $ux-white;
+    border-radius: $ux-button-border-radius;
+    border: 1px solid $ux-input-border;
+  }
+
+}
+
+.theme-2022 {
+
+  font-size   : $main-font-size;
+  font-family : $main-font-family;
+  font-weight : $main-font-weight;
+
+  .main-layout {
+
+    h2 {
+      color: $h2-text-color;
+      font-size: $h2-font-size;
+      font-family: $h2-font-family;
+      font-weight: $h2-font-weight;
+
+      svg {
+        fill: $h2-text-color;
+      }
+
+    }
+
+    h3 {
+      color: $h3-text-color;
+      font-size: $h3-font-size;
+      font-family: $h3-font-family;
+      font-weight: $h3-font-weight;
+
+      svg {
+        fill: $h3-text-color;
+      }
+
+    }
+
+    h4 {
+      color: $h4-text-color;
+      font-size: $h4-font-size;
+      font-family: $h4-font-family;
+      font-weight: $h4-font-weight;
+
+      svg {
+        fill: $h4-text-color;
+      }
+
+    }
+
+    .hg-button {
+      color: $button-text-color;
+      background-color: $button-background-color;
+      font-size: $button-font-size;
+      font-family: $button-font-family;
+      font-weight: $button-font-weight;
+      line-height: $button-line-height;
+    }
+
+    .hg-field-label {
+      color: $field-label-text-color;
+      background-color: $field-label-background-color;
+      font-size: $field-label-font-size;
+      font-family: $field-label-font-family;
+      font-weight: $field-label-font-weight;
+      text-transform: $field-label-text-transform;
+    }
+
+    .hg-field-text {
+      color: $field-input-text-color;
+      background-color: $field-input-background-color;
+      font-size: $field-input-font-size;
+      font-family: $field-input-font-family;
+      font-weight: $field-input-font-weight;
+    }
+
+    .hg-field-suffix {
+      color: $field-suffix-text-color;
+      background-color: $field-suffix-background-color;
+      font-size: $field-suffix-font-size;
+      font-family: $field-suffix-font-family;
+      font-weight: $field-suffix-font-weight;
+      text-transform: $field-suffix-text-transform;
+    }
+
+    .hg-form-container {
+
+      color: $form-text-color;
+      background-color: $form-background-color;
+
+      & > .hg-form {
+        font-size: $form-font-size;
+        font-family: $form-font-family;
+        font-weight: $form-font-weight;
+      }
+
+    }
+
+    .hg-field {
+
+      & > .hg-field-label {
+        color: $field-label-text-color;
+        background-color: $field-label-background-color;
+        font-size: $field-label-font-size;
+        font-family: $field-label-font-family;
+        font-weight: $field-label-font-weight;
+        text-transform: $field-label-text-transform;
+      }
+
+      & > .hg-field-text {
+        color: $field-input-text-color;
+        background-color: $field-input-background-color;
+        font-size: $field-input-font-size;
+        font-family: $field-input-font-family;
+        font-weight: $field-input-font-weight;
+      }
+
+      & > .hg-field-suffix {
+        color: $field-suffix-text-color;
+        background-color: $field-suffix-background-color;
+        font-size: $field-suffix-font-size;
+        font-family: $field-suffix-font-family;
+        font-weight: $field-suffix-font-weight;
+        text-transform: $field-suffix-text-transform;
+      }
+
+    }
+
+    a, a:visited, a:hover, a:active {
+      color: $main-link-color;
+      font-size: $main-link-font-size;
+      font-family: $main-link-font-family;
+      font-weight: $main-link-font-weight;
+      text-decoration: $main-link-text-decoration;
+      text-transform: $main-link-text-transform;
+    }
+
+    & > .main-layout-header {
+
+      color: $app-header-text-color;
+      font-size: $app-header-font-size;
+      font-family: $app-header-font-family;
+      font-weight: $app-header-font-weight;
+
+      svg {
+        fill: $app-header-text-color;
+      }
+
+      a, a:visited, a:hover, a:active {
+        color: $app-header-text-color;
+        text-decoration: none;
+        text-transform: $app-header-text-transform;
+      }
+
+      a:hover {
+      }
+
+    }
+
+    & > .main-layout-content {
+
+      nav {
+
+        & > a {
+          border: $content-nav-item-border;
+          color: $content-nav-item-color;
+
+          &.active {
+            color: $content-nav-item-color-active;
+            border: $content-nav-item-border-active;
+          }
+
+          &:hover {
+            color: $content-nav-item-color-hover;
+            border: $content-nav-item-border-hover;
+          }
+
+        }
+
+      }
+
+      .alternative-section {
+
+        color            : $main-layout-alternative-section-color;
+        background-color : $main-layout-alternative-section-background-color;
+
+        a, a:visited, a:hover, a:active {
+          color: $main-layout-alternative-section-link-color;
+          font-size: $main-layout-alternative-section-link-font-size;
+          font-family: $main-layout-alternative-section-link-font-family;
+          font-weight: $main-layout-alternative-section-link-font-weight;
+          text-decoration: $main-layout-alternative-section-link-text-decoration;
+          text-transform: $main-layout-alternative-section-link-text-transform;
+        }
+
+        h3 {
+          color: $main-layout-alternative-section-h3-text-color;
+          font-size: $main-layout-alternative-section-h3-font-size;
+          font-family: $main-layout-alternative-section-h3-font-family;
+          font-weight: $main-layout-alternative-section-h3-font-weight;
+
+          svg {
+            fill: $main-layout-alternative-section-h3-text-color;
+          }
+
+        }
+
+        .hg-field-label {
+          color: $main-layout-alternative-section-field-label-text-color;
+        }
+
+        .hg-field-suffix {
+          color: $main-layout-alternative-section-field-suffix-text-color;
+        }
+
+      }
+
+      .lighter-alternative-section {
+
+        color            : $main-layout-lighter-alternative-section-color;
+        background-color : $main-layout-lighter-alternative-section-background-color;
+
+        a, a:visited, a:hover, a:active {
+          color: $main-layout-lighter-alternative-section-link-color;
+          font-size: $main-layout-lighter-alternative-section-link-font-size;
+          font-family: $main-layout-lighter-alternative-section-link-font-family;
+          font-weight: $main-layout-lighter-alternative-section-link-font-weight;
+          text-decoration: $main-layout-lighter-alternative-section-link-text-decoration;
+          text-transform: $main-layout-lighter-alternative-section-link-text-transform;
+        }
+
+        h2 {
+          color: $main-layout-lighter-alternative-section-h2-text-color;
+          font-size: $main-layout-lighter-alternative-section-h2-font-size;
+          font-family: $main-layout-lighter-alternative-section-h2-font-family;
+          font-weight: $main-layout-lighter-alternative-section-h2-font-weight;
+
+          svg {
+            fill: $main-layout-lighter-alternative-section-h2-text-color;
+          }
+        }
+
+        h3 {
+          color: $main-layout-lighter-alternative-section-h3-text-color;
+          font-size: $main-layout-lighter-alternative-section-h3-font-size;
+          font-family: $main-layout-lighter-alternative-section-h3-font-family;
+          font-weight: $main-layout-lighter-alternative-section-h3-font-weight;
+
+          svg {
+            fill: $main-layout-lighter-alternative-section-h3-text-color;
+          }
+        }
+
+      }
+
+      .bordered-alternative-section {
+
+        border            : $main-layout-bordered-alternative-section-border;
+
+      }
+
+    }
+
+    & > .main-layout-footer {
+
+      & > .alternative-content-container {
+
+        color: $footer-alternative-content-text-color;
+        background-color: $footer-alternative-content-background-color;
+        font-size: $footer-alternative-content-font-size;
+        font-family: $footer-alternative-content-font-family;
+        font-weight: $footer-alternative-content-font-weight;
+
+        svg {
+          fill: $footer-alternative-content-text-color;
+        }
+
+        h2 {
+          color: $footer-alternative-content-h2-text-color;
+          font-size: $footer-alternative-content-h2-font-size;
+          font-family: $footer-alternative-content-h2-font-family;
+          font-weight: $footer-alternative-content-h2-font-weight;
+
+          svg {
+            fill: $footer-alternative-content-h2-text-color;
+          }
+
+        }
+
+        h3 {
+          color: $footer-alternative-content-h3-text-color;
+          font-size: $footer-alternative-content-h3-font-size;
+          font-family: $footer-alternative-content-h3-font-family;
+          font-weight: $footer-alternative-content-h3-font-weight;
+
+          svg {
+            fill: $footer-alternative-content-h3-text-color;
+          }
+        }
+
+        a, a:visited, a:hover, a:active {
+          color: $footer-alternative-content-link-text-color;
+          font-size: $footer-alternative-content-link-font-size;
+          font-family: $footer-alternative-content-link-font-family;
+          font-weight: $footer-alternative-content-link-font-weight;
+          text-decoration: $footer-alternative-content-link-text-decoration;
+          text-transform: $footer-alternative-content-link-text-transform;
+        }
+
+        article {
+
+        }
+
+      }
+
+    }
+
+    .auction-list {
+
+      .auction-item {
+
+        color            : $auction-item-color;
+        background-color : $auction-item-background-color;
+
+      }
+
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .theme-2022{
+  .main-layout {
+
+
+    h2 {
+      font-size: 1.5rem;
+      padding: 3.45rem 1rem 2rem 1rem;
+      margin: 0;
+      text-align: left;
+
+    }
+    p {
+      text-align: left;
+      margin: 0;
+      //margin: 1rem 1.45rem 1rem 1.45rem;
+      padding: 1rem 1rem 2rem 1rem;
+    }
+
+    .alternative-section {
+
+      box-sizing: border-box;
+      padding: 0 0 0 0;
+      margin: 0;
+
+      & > .article-row {
+        padding: 0;
+        margin: 1em;
+
+        & > article {
+          padding: 0 0 0 0;
+          margin: 0;
+          & > p {
+            padding: 1em 2em 2em 1em;
+            margin: 0;
+          }
+
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+}
+

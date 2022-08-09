@@ -1,0 +1,88 @@
+@import "src/constants/variables";
+
+.login {
+  background-color: $ux-light-grey;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  & > .form-container {
+
+    background-color: $ux-light-grey;
+    padding: 2rem 2rem 2rem 2rem;
+
+    & > .login-title {
+      text-transform: uppercase;
+      font-size: 25px;
+      margin-bottom: 2em;
+    }
+
+    & > .form-horizontal {
+
+      & > .hg-field {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        width: 100%;
+        background-color: #fff;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border-radius: 5px;
+        border: 1px solid $ux-input-border;
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+        & > .hg-field-label {
+          width: 100%;
+          gap: 8px;
+          margin: 10px;
+        }
+
+        & > .hg-field-text {
+          display: flex;
+          gap: 8px;
+          margin: 10px;
+          width: 100%;
+
+        }
+      }
+
+      .submit-button {
+        border: $login-button-border;
+        background: $ux-primary-button;
+        color: $ux-white;
+        width: 100%;
+        padding: 5px 15px 5px 15px;
+        border-radius: $ux-button-border-radius;
+        border: 1px solid $ux-input-border;
+      }
+
+    }
+  }
+
+  .text-centered {
+    padding-left: 1em;
+    padding-right: 1em;
+    color: $ux-error-red;
+  }
+
+}
+
+
+input[type="email"],
+input[type="text"] {
+  height: 25px;
+  border: 1px solid $ux-black; //rgba(0, 0, 0, 0.2);
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+
+

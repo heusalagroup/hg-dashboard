@@ -1,0 +1,89 @@
+@import "src/constants/variables";
+
+.app-menu {
+
+  & > .app-menu-content {
+
+    border-radius: $ux-border-radius;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $ux-color-white;
+
+    & > nav {
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      color: $ux-black;
+
+      & > a {
+        font-family: $ux-font-family;
+        font-size: $main-link-font-size;
+        color: $ux-black;
+        width: auto;
+        padding: 10px;
+        text-align: left;
+        text-decoration: none;
+      }
+
+      & > button.app-menu-content-nav-link {
+        cursor: pointer;
+        background: $ux-color-dark-blue;
+        border: none;
+        color: $ux-color-white;
+      }
+
+      & > .app-menu-content-nav-link {
+        padding: 0.5em 0;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .app-menu {
+
+    & > .app-menu-content {
+
+      padding: 0;
+      margin: 0 0 0 0;
+      box-sizing: border-box;
+      max-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: $ux-color-white;
+
+      & > .app-menu-content-nav {
+
+        hr {
+          display: none;
+        }
+
+        .app-menu-content-nav-link {
+          padding: 0.5em 0;
+          text-align: center;
+        }
+
+        button.app-menu-content-nav-link {
+          width: 100%;
+          margin: 0.5em 0 0 0;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+

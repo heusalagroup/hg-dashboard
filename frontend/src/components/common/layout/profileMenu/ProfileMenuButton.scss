@@ -1,0 +1,19 @@
+@import "src/constants/variables";
+
+.profile-menu-button {
+
+  box-sizing: border-box;
+
+  & > .login-link {
+    & > svg {
+      height: 2.225rem; // Original 45.5px
+      padding: 0;
+    }
+  }
+
+  & > button.profile-menu-toggle {
+    max-width: 350px;
+    min-width: 80px;
+  }
+
+}

@@ -1,0 +1,22 @@
+
+.app-modal-container {
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 35%;
+  overflow-y: auto;
+
+  &.app-modal-container-hidden {
+    display: none;
+  }
+
+  & > .app-modal-container-modal {
+
+  }
+
+}

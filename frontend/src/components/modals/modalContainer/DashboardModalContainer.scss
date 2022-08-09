@@ -1,0 +1,103 @@
+
+.dashboard-modal-container {
+
+  box-sizing       : border-box;
+  background-color : #0000001f;
+  position         : fixed;
+  top              : 0;
+  bottom           : 0;
+  left             : 0;
+  right            : 0;
+  display          : flex;
+  padding          : 0;
+  margin           : 0;
+  align-items      : center;
+  justify-items    : center;
+  align-content    : center;
+  justify-content  : center;
+  overflow         : hidden;
+
+
+  transition: width 3s ease-in-out;
+
+
+  & > .close-button {
+    background-color: #fff;
+    border: 0;
+    border-radius : 0 0 0 12px;
+    position: fixed;
+    z-index: 19999;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 1em 1.5em;
+    overflow: hidden;
+  }
+
+  & > .modal {
+
+    box-sizing     : border-box;
+    position       : relative;
+    min-height     : 200px;
+    max-height     : 90vh;
+    max-width      : 500px;
+    padding        : 1.4em 1em;
+    margin         : 1.4em 1em;
+    z-index        : 9999;
+    overflow-x     : hidden;
+    overflow-y     : auto;
+    color          : #000A2D;
+    background     : #f9f9ff;
+    border-radius  : 12px;
+    box-shadow     : 20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff;
+
+
+    &.wide-modal {
+
+      max-width : 96vw;
+      overflow: auto;
+
+    }
+
+    @media only screen and (min-width: 1150px) {
+      &.wide-modal {
+        max-width: 1150px;
+      }
+    }
+
+    @media only screen and (max-width: 1024px) {
+
+      padding        : 4px;
+      margin         : 0;
+      max-height     : 100vh !important;
+      max-width      : 100vw !important;
+      width          : 100%;
+      height         : 100%;
+      border-radius  : 0;
+      position         : absolute;
+      top              : 0;
+      bottom           : 0;
+      left             : 0;
+      right            : 0;
+
+    }
+
+    @media only screen and (max-height: 800px) {
+      padding        : 4px;
+      margin         : 0;
+      max-height     : 100vh !important;
+      max-width      : 100vw !important;
+      width          : 100%;
+      height         : 100%;
+      border-radius  : 0;
+      position         : absolute;
+      top              : 0;
+      bottom           : 0;
+      left             : 0;
+      right            : 0;
+    }
+
+  }
+
+
+}

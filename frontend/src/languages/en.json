@@ -1,0 +1,70 @@
+{
+  "page.title": "Hello world",
+
+  "appFooter.copyrightText"       : "© 2022 $t(common.companyName)",
+
+  "appHeader.nav.users": "Users",
+
+  "login.title": "Login",
+  "login.submit": "Login",
+  "login.username": "Username",
+  "login.password": "Password",
+
+  "common.emailPlaceholder": "osoite@example.com",
+  "common.siteName"            : "example.com",
+  "common.companyName"         : "Dashboard",
+  "common.companyEmailAddress" : "info@example.com",
+  "common.companyAddressLine1"      : "-",
+  "common.companyAddressLine2"      : "-",
+  "common.companyCode"         : "-",
+  "common.siteTitle": "$t(common.companyName)",
+
+  "loginForm.title"                        : "Kirjautuminen",
+  "loginForm.emailField.label"             : "Sähköposti",
+  "loginForm.emailField.placeholder"       : "$t(common.emailPlaceholder)",
+  "loginForm.verificationCode.label"       : "Vahvistus",
+  "loginForm.verificationCode.placeholder" : "1234",
+  "loginForm.submitButton.label"           : "Kirjaudu",
+  "loginForm.thankYou.title"               : "Kiitos!",
+  "loginForm.thankYou.content"             : "Olet kirjautunut sisälle onnistuneesti.",
+  "loginForm.error.title"                  : "Tapahtui virhe!",
+  "loginForm.error.content"                : "Yritä hetken kuluttua uudelleen.",
+  "loginForm.emailVerification.content"    : "Syötä sähköpostiisi lähetetty koodi vahvistukseksi",
+
+  "newTicketModal.title" : "New ticket",
+  "newTicketModal.errorTitle" : "Error",
+  "newTicketModal.errorContent": "Yritä hetken kuluttua uudelleen",
+
+  "profileMenu.nav.logIn" : "Log in",
+  "profileMenu.nav.logOut" : "Log out",
+  "profileMenu.nav.sales" : "Sales",
+  "profileMenu.nav.orders" : "Orders",
+  "profileMenu.nav.profile" : "Settings",
+  "profileMenu.nav.workspaces" : "Workspaces",
+
+  "profileView.title": "Settings",
+  "profileView.content": "You are logged in as {{EMAIL}}.",
+
+  "userList.title": "Users",
+  "userList.table.title.email": "Email",
+  "userList.table.title.name": "Name",
+  "userList.table.noResults": "No users found",
+
+  "workspaceListView.title": "Select workspace",
+  "workspaceListView.table.title.name": "Name",
+  "workspaceListView.table.noResults": "No workspaces found. Contact admin for a demo access.",
+
+  "newWorkspaceModal.title": "Add new workspace",
+  "newWorkspaceModal.submitText": "Add",
+  "workspaceForm.name.placeholder":  "Name",
+
+  "newUserModal.title": "Add new user",
+  "newUserModal.submitText": "Add",
+
+  "userForm.name.placeholder":  "Name",
+  "userForm.email.placeholder":  "Email",
+
+  "editUserModal.title": "Edit user",
+  "editUserModal.submitText":  "Save"
+
+}

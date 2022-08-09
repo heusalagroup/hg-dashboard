@@ -1,0 +1,38 @@
+// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+
+import { Icon } from "../../../../fi/hg/frontend/components/icon/Icon";
+import { SignInIcon } from "../../../../assets/icons";
+import { Button } from "../../../../fi/hg/frontend/components/button/Button";
+import { ReactNode, useCallback } from "react";
+import { WorkspaceService } from "../../../../services/WorkspaceService";
+import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { Workspace } from "../../../../fi/hg/dashboard/types/Workspace";
+
+export interface SelectWorkspaceButtonProps {
+    readonly className?: string;
+    readonly workspace: Workspace;
+    readonly children ?: ReactNode;
+}
+
+export function SelectWorkspaceButton (props: SelectWorkspaceButtonProps) {
+    const className = props?.className;
+    const workspace = props?.workspace;
+    const children = props?.children;
+    const onClick = useCallback(
+        () => {
+            WorkspaceService.setCurrentWorkspace(workspace);
+        },
+        [
+            workspace
+        ]
+    );
+    return (
+        <Button
+            style={ButtonStyle.INFO}
+            className={
+                className ? className : ''
+            }
+            click={onClick}
+        ><Icon><SignInIcon /></Icon> {children}</Button>
+    );
+}

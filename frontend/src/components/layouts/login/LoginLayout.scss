@@ -1,0 +1,15 @@
+@import "src/constants/variables";
+
+.login-layout {
+
+  padding        : 0;
+  margin         : 0;
+  box-sizing     : border-box;
+  background-color: $ux-light-grey;
+
+  h2 {
+    text-align: center;
+  }
+
+}
+
