@@ -151,6 +151,28 @@ We have a script to update all changes from upstream git repositories.
 It will read `.gitmodules` and use it to fetch all submodules using `git pull` 
 inside submodule folders. It will pull also the main git repository.
 
+### Running tests
+
+For testing, you need to have full docker environment running. 
+
+Then open another terminal and go to the testing folder:
+
+```shell
+cd testing
+```
+
+#### Install testing environment
+
+```shell
+npm install
+```
+
+#### Running tests
+
+```shell
+npm test
+```
+
 ## Working on the GitHub
 
 Advices about working on GitHub environment.
