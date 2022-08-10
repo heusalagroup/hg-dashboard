@@ -1,66 +1,51 @@
 {
   "page.title": "Hello world",
-
-  "appFooter.copyrightText"       : "© 2022 $t(common.companyName)",
-
+  "appFooter.copyrightText": "© 2022 $t(common.companyName)",
   "appHeader.nav.users": "Users",
-
-  "login.title": "Login",
-  "login.submit": "Login",
+  "login.title": "Sign in",
+  "login.submit": "Sign in",
   "login.username": "Username",
   "login.password": "Password",
-
-  "common.emailPlaceholder": "osoite@example.com",
-  "common.siteName"            : "example.com",
-  "common.companyName"         : "Dashboard",
-  "common.companyEmailAddress" : "info@example.com",
-  "common.companyAddressLine1"      : "-",
-  "common.companyAddressLine2"      : "-",
-  "common.companyCode"         : "-",
+  "common.emailPlaceholder": "name@example.com",
+  "common.siteName": "example.com",
+  "common.companyName": "Heusala Group Ltd",
+  "common.companyEmailAddress": "info@example.com",
+  "common.companyAddressLine1": "-",
+  "common.companyAddressLine2": "-",
+  "common.companyCode": "-",
   "common.siteTitle": "$t(common.companyName)",
-
-  "loginForm.title"                        : "Kirjautuminen",
-  "loginForm.emailField.label"             : "Sähköposti",
-  "loginForm.emailField.placeholder"       : "$t(common.emailPlaceholder)",
-  "loginForm.verificationCode.label"       : "Vahvistus",
-  "loginForm.verificationCode.placeholder" : "1234",
-  "loginForm.submitButton.label"           : "Kirjaudu",
-  "loginForm.thankYou.title"               : "Kiitos!",
-  "loginForm.thankYou.content"             : "Olet kirjautunut sisälle onnistuneesti.",
-  "loginForm.error.title"                  : "Tapahtui virhe!",
-  "loginForm.error.content"                : "Yritä hetken kuluttua uudelleen.",
-  "loginForm.emailVerification.content"    : "Syötä sähköpostiisi lähetetty koodi vahvistukseksi",
-
-  "profileMenu.nav.logIn" : "Log in",
-  "profileMenu.nav.logOut" : "Log out",
-  "profileMenu.nav.sales" : "Sales",
-  "profileMenu.nav.orders" : "Orders",
-  "profileMenu.nav.profile" : "Settings",
-  "profileMenu.nav.workspaces" : "Workspaces",
-
+  "loginForm.title": "Sign in",
+  "loginForm.emailField.label": "Email",
+  "loginForm.emailField.placeholder": "$t(common.emailPlaceholder)",
+  "loginForm.verificationCode.label": "Submit code sent to your email",
+  "loginForm.verificationCode.placeholder": "1234",
+  "loginForm.submitButton.label": "Sign in",
+  "loginForm.thankYou.title": "Thank you!",
+  "loginForm.thankYou.content": "You have logged in successfully.",
+  "loginForm.error.title": "Error happened",
+  "loginForm.error.content": "We might have temporary problems. Try again in a moment.",
+  "loginForm.emailVerification.content": "To authenticate, submit code sent to your email address",
+  "profileMenu.nav.logIn": "Sign in",
+  "profileMenu.nav.logOut": "Log out",
+  "profileMenu.nav.orders": "Orders",
+  "profileMenu.nav.profile": "Settings",
+  "profileMenu.nav.workspaces": "Workspaces",
   "profileView.title": "Settings",
   "profileView.content": "You are logged in as {{EMAIL}}.",
-
   "userList.title": "Users",
   "userList.table.title.email": "Email",
   "userList.table.title.name": "Name",
   "userList.table.noResults": "No users found",
-
   "workspaceListView.title": "Select workspace",
   "workspaceListView.table.title.name": "Name",
   "workspaceListView.table.noResults": "No workspaces found. Contact admin for a demo access.",
-
   "newWorkspaceModal.title": "Add new workspace",
   "newWorkspaceModal.submitText": "Add",
-  "workspaceForm.name.placeholder":  "Name",
-
+  "workspaceForm.name.placeholder": "Name",
   "newUserModal.title": "Add new user",
   "newUserModal.submitText": "Add",
-
-  "userForm.name.placeholder":  "Name",
-  "userForm.email.placeholder":  "Email",
-
+  "userForm.name.placeholder": "Name",
+  "userForm.email.placeholder": "Email",
   "editUserModal.title": "Edit user",
-  "editUserModal.submitText":  "Save"
-
+  "editUserModal.submitText": "Save"
 }
