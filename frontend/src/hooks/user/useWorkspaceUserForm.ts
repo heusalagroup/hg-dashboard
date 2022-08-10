@@ -80,7 +80,8 @@ export function useWorkspaceUserForm (
     useEffect(
         onChangedEvent,
         [
-            workspaceId
+            workspaceId,
+            onChangedEvent
         ]
     );
 

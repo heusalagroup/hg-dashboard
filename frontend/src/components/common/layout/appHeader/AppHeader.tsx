@@ -1,6 +1,6 @@
 // Copyright (c) 2021. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
     INDEX_ROUTE
 } from "../../../../constants/route";
@@ -9,7 +9,6 @@ import {
     T_COMMON_COMPANY_NAME
 } from "../../../../constants/translation";
 import { APP_HEADER_CLASS_NAME } from "../../../../constants/appClassName";
-import { useDropdownToggleWithoutWindowSizeAndScroll } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
 import { AppMenuDropdown } from "../appMenu/AppMenuDropdown";
 import { ProfileMenuDropdown } from "../profileMenu/ProfileMenuDropdown";
 import { useCurrentWorkspaceName } from "../../../../hooks/workspace/useCurrentWorkspaceName";
@@ -21,11 +20,8 @@ export interface AppHeaderProps {
 }
 
 export function AppHeader (props: AppHeaderProps) {
-
     const t = props?.t;
     const className = props?.className;
-    const {pathname} = useLocation();
-    const [isListMenuClose, setListMenuClose] = useDropdownToggleWithoutWindowSizeAndScroll(true);
     const workspaceName = useCurrentWorkspaceName();
     return (
         <header

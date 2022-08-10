@@ -29,7 +29,6 @@ export function useWorkspaceUser (
         },
         [
             setItem,
-            workspaceId,
             userId,
             workspaceId
         ]
