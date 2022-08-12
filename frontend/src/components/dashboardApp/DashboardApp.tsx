@@ -17,9 +17,6 @@ import {
 } from "../../constants/route";
 import { LogService } from "../../fi/hg/core/LogService";
 import { useEmailAuthSession } from "../../fi/hg/frontend/hooks/useEmailAuthSession";
-import { MainLayout } from "../layouts/main/MainLayout";
-import { LoginLayout } from "../layouts/login/LoginLayout";
-import { ProfileLayout } from "../layouts/profile/ProfileLayout";
 import { ProfileView } from "../views/profile/ProfileView";
 import { LoginView } from "../views/login/LoginView";
 import { AboutView } from "../views/about/AboutView";
@@ -29,11 +26,24 @@ import { UserView } from "../views/user/item/UserView";
 import { UserListView } from "../views/user/list/UserListView";
 import { WorkspaceListView } from "../views/workspace/list/WorkspaceListView";
 import { useRouteServiceWithNavigate } from "../../fi/hg/frontend/hooks/useRouteServiceWithNavigate";
+import { LayoutComponent } from "../../types/DashboardLayout";
 import "./DashboardApp.scss";
 
 const LOG = LogService.createLogger('DashboardApp');
 
-export function DashboardApp () {
+export interface DashboardAppProps {
+    readonly mainLayout : LayoutComponent;
+    readonly loginLayout : LayoutComponent;
+    readonly profileLayout : LayoutComponent;
+}
+
+export function DashboardApp (
+    props: DashboardAppProps
+) {
+
+    const MainLayout = props.mainLayout;
+    const LoginLayout = props.loginLayout;
+    const ProfileLayout = props.profileLayout;
 
     const {isLoggedIn} = useEmailAuthSession();
     LOG.debug("isLoggedIn: ", isLoggedIn);

@@ -1,6 +1,6 @@
 @import "src/constants/variables";
 
-.main-layout {
+.none-main-layout {
 
   width            : 100%;
   max-width        : 100vw;
@@ -8,8 +8,6 @@
   padding          : 0;
   margin           : 0;
   box-sizing       : border-box;
-  color            : $main-layout-text-color;
-  background-color : $main-layout-background-color;
 
   display: flex;
   flex-direction: column;

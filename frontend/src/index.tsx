@@ -5,16 +5,21 @@ import { render } from 'react-dom';
 import { DashboardApp } from './components/dashboardApp/DashboardApp';
 import { reportWebVitals } from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { AppInitService } from "./services/AppInitService";
+import { dashboardLayout } from "./components/layouts/default";
 import "./i18n";
 import './index.scss';
-import { AppInitService } from "./services/AppInitService";
 
 AppInitService.initialize();
 
 render(
   <StrictMode>
     <BrowserRouter>
-      <DashboardApp />
+      <DashboardApp
+        mainLayout={dashboardLayout.main}
+        profileLayout={dashboardLayout.profile}
+        loginLayout={dashboardLayout.login}
+      />
     </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')

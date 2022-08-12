@@ -1,14 +1,14 @@
 // Copyright (c) 2021. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { useCallback } from "react";
-import { TFunction } from "i18next";
 import { APP_MENU_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./AppMenuButton.scss";
 
 export interface AppMenuButtonProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
     readonly isOpen: boolean;
     readonly changeMenuState: SetProfileMenuOpenCallback;

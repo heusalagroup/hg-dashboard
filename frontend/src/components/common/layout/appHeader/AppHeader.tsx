@@ -1,10 +1,9 @@
-// Copyright (c) 2021. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { NavLink } from "react-router-dom";
 import {
     INDEX_ROUTE
 } from "../../../../constants/route";
-import { TFunction } from "i18next";
 import {
     T_COMMON_COMPANY_NAME
 } from "../../../../constants/translation";
@@ -12,10 +11,11 @@ import { APP_HEADER_CLASS_NAME } from "../../../../constants/appClassName";
 import { AppMenuDropdown } from "../appMenu/AppMenuDropdown";
 import { ProfileMenuDropdown } from "../profileMenu/ProfileMenuDropdown";
 import { useCurrentWorkspaceName } from "../../../../hooks/workspace/useCurrentWorkspaceName";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./AppHeader.scss";
 
 export interface AppHeaderProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 

@@ -12,13 +12,14 @@ import {
 } from "../../../../constants/translation";
 import { SessionService } from "../../../../services/SessionService";
 import { useCallback, MouseEvent } from "react";
-import { TFunction } from "i18next";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { VoidCallback } from "../../../../fi/hg/core/interfaces/callbacks";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./ProfileMenu.scss";
 
 export interface ProfileMenuProps {
-    readonly t: TFunction;
+
+    readonly t: TranslationFunction;
     readonly className?: string;
     readonly closeMenu: VoidCallback;
 

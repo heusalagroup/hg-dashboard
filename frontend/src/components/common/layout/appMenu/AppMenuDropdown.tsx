@@ -4,11 +4,11 @@ import { APP_MENU_DROPDOWN_CLASS_NAME } from "../../../../constants/appClassName
 import { AppMenuButton } from "./AppMenuButton";
 import { AppMenu } from "./AppMenu";
 import { useDropdownToggleWithoutWindowSizeAndScroll } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
-import { TFunction } from "i18next";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./AppMenuDropdown.scss";
 
 export interface AppMenuDropdownProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className ?: string;
 }
 

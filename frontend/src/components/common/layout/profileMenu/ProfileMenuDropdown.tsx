@@ -3,15 +3,15 @@
 import { PROFILE_MENU_DROPDOWN_CLASS_NAME } from "../../../../constants/appClassName";
 import { ProfileMenuButton } from "./ProfileMenuButton";
 import { ProfileMenu } from "./ProfileMenu";
-import { TFunction } from "i18next";
 import { useCallback, useState } from "react";
 import { useDropdownToggleWithoutWindowSizeAndScroll } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./ProfileMenuDropdown.scss";
 
 const INITIAL_PROFILE_MENU_WIDTH = 80;
 
 export interface ProfileMenuDropdownProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 

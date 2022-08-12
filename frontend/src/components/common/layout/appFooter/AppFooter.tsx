@@ -3,12 +3,12 @@
 import {
     T_FOOTER_COPYRIGHT_TEXT,
 } from "../../../../constants/translation";
-import { TFunction } from "i18next";
 import { APP_FOOTER_CLASS_NAME } from "../../../../constants/appClassName";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./AppFooter.scss";
 
 export interface AppFooterProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
 }
 

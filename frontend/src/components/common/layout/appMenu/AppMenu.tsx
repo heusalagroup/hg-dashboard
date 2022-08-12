@@ -9,22 +9,22 @@ import {
     T_APP_HEADER_NAV_USERS
 } from "../../../../constants/translation";
 import { useCallback, MouseEvent } from "react";
-import { TFunction } from "i18next";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./AppMenu.scss";
 
 export interface MenuProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
     readonly changeMenuState: SetProfileMenuOpenCallback;
 }
 
 export function AppMenu (props: MenuProps) {
+
     const t = props?.t;
     const className = props?.className;
     const setMenuOpen = props.changeMenuState;
-
     const session = useEmailAuthSession();
 
     const closeMenuCallback = useCallback(

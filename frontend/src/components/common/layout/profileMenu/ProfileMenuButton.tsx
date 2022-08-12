@@ -1,7 +1,6 @@
 // Copyright (c) 2021. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { useCallback, useRef } from "react";
-import { TFunction } from "i18next";
 import { NavLink } from "react-router-dom";
 import { PROFILE_MENU_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import { LOGIN_INDEX_ROUTE } from "../../../../constants/route";
@@ -9,20 +8,18 @@ import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAu
 import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
 import { SignInIcon } from "../../../../assets/icons";
 import { Avatar } from "../../user/avatar/Avatar";
+import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import "./ProfileMenuButton.scss";
 
 export type ChangeMenuDropdownStateCallback = (value: number) => void;
 
 export interface ProfileMenuButtonProps {
-    readonly t: TFunction;
+    readonly t: TranslationFunction;
     readonly className?: string;
     readonly isOpen: boolean;
-
     readonly changeProfileMenuState: SetProfileMenuOpenCallback;
-
     readonly profileMenuWidth: number | undefined;
     readonly setProfileMenuWidth: ChangeMenuDropdownStateCallback;
-
 }
 
 export function ProfileMenuButton (props: ProfileMenuButtonProps) {
