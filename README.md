@@ -207,3 +207,14 @@ BACKEND_IO_SERVER='https://user:secret@io.hg.fi' \
 BACKEND_EMAIL_CONFIG='smtp://host.docker.internal:25'
 docker-compose -f docker-compose.prod.yml up -d
 ```
+
+### Troubleshooting
+
+#### Connection aborted / Failed to execute script docker-compose
+
+```
+docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+[8089] Failed to execute script docker-compose
+```
+
+You'll need to start up Docker Engine first :)
