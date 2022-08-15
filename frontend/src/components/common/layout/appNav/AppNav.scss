@@ -1,0 +1,34 @@
+
+.app-nav {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  & > .app-nav-section {
+
+    box-sizing: border-box;
+    padding: 0.5em 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-items: center;
+    //align-content: center;
+    //justify-content: center;
+    flex-wrap: wrap;
+
+    & > .app-nav-section-header {
+
+    }
+
+    & > .app-nav-section-item {
+      box-sizing: border-box;
+      padding: 0.5em 1em;
+      margin: 0;
+      text-decoration: none;
+    }
+
+  }
+
+}

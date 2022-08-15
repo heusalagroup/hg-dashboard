@@ -36,12 +36,6 @@ export function AppHeader (props: AppHeaderProps) {
                             to={INDEX_ROUTE}
                         >{(workspaceName ? workspaceName : undefined) ?? t(T_COMMON_COMPANY_NAME)}</NavLink>
                     </h1>
-                    {workspaceName !== undefined ? (
-                        <AppMenuDropdown
-                            t={t}
-                            className={`${APP_HEADER_CLASS_NAME}-menu-dropdown`}
-                        />
-                    ) : null}
                 </div>
 
                 <div className={`${APP_HEADER_CLASS_NAME}-profile-menu`}>

@@ -13,7 +13,6 @@ import {
     TEXT_CENTERED_CLASS_NAME
 } from "../../../constants/appClassName";
 import {
-    T_LOGIN_FORM_EMAIL_FIELD_LABEL,
     T_LOGIN_FORM_EMAIL_FIELD_PLACEHOLDER,
     T_LOGIN_FORM_ERROR_CONTENT,
     T_LOGIN_FORM_ERROR_TITLE,
@@ -21,23 +20,15 @@ import {
     T_LOGIN_FORM_THANK_YOU_CONTENT,
     T_LOGIN_FORM_THANK_YOU_TITLE,
     T_LOGIN_FORM_VERIFICATION_CODE_FIELD_LABEL,
-    T_LOGIN_FORM_VERIFICATION_CODE_FIELD_PLACEHOLDER
 } from "../../../constants/translation";
-import {
-    BUTTON_CLASS_NAME,
-    DISABLED_BUTTON_CLASS_NAME,
-    FIELD_CLASS_NAME,
-    SUBMIT_BUTTON_CLASS_NAME
-} from "../../../fi/hg/frontend/constants/hgClassName";
 import { TFunction } from "i18next";
 import { useEventSessionTokenUpdated } from "../../../hooks/session/useEventSessionTokenUpdated";
-import { SubmitButton } from "../../../fi/hg/frontend/components/submitButton/SubmitButton";
 import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { EmailField } from "../../../fi/hg/frontend/components/fields/email/EmailField";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
-import './LoginForm.scss';
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
 import { ButtonType } from "../../../fi/hg/frontend/components/button/types/ButtonType";
+import './LoginForm.scss';
 
 const LOG = LogService.createLogger("LoginForm");
 

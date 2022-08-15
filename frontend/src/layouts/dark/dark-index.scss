@@ -50,6 +50,16 @@
     padding: 0 0 0 0;
   }
 
+  .hg-icon {
+    & > svg {
+      fill: $dark-main-layout-text-color;
+    }
+  }
+
+  .app-nav-section {
+    border-bottom: 1px solid $app-nav-section-border-color;
+  }
+
   ul {
     box-sizing: border-box;
     margin : 0 $dark-page-margin-right 5.45rem $dark-page-margin-left;

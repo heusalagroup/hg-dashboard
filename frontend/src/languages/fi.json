@@ -1,6 +1,7 @@
 {
   "page.title": "fi-Hello world",
   "appFooter.copyrightText": "fi-© 2022 $t(common.companyName)",
+  "appHeader.nav.home": "fi-Home",
   "appHeader.nav.users": "fi-Users",
   "login.title": "fi-Sign in",
   "login.submit": "fi-Sign in",

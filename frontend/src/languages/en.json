@@ -1,6 +1,7 @@
 {
   "page.title": "Hello world",
   "appFooter.copyrightText": "© 2022 $t(common.companyName)",
+  "appHeader.nav.home": "Home",
   "appHeader.nav.users": "Users",
   "login.title": "Sign in",
   "login.submit": "Sign in",

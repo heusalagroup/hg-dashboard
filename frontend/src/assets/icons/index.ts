@@ -9,8 +9,12 @@ import { ReactComponent as EditIcon } from "./noun_edit_1072351.svg";
 import { ReactComponent as RemoveIcon } from "./noun_Remove_2721401.svg";
 import { ReactComponent as FailedIcon } from "./noun_failed_3977955.svg";
 import { ReactComponent as CloseIcon } from "./noun_failed_3977955.svg";
+import { ReactComponent as HomeIcon } from "./noun_Home_3523584.svg";
+import { ReactComponent as UserListIcon } from "./noun_members_3265974.svg";
 
 export {
+    UserListIcon,
+    HomeIcon,
     SignInIcon,
     SignOutIcon,
     MenuIcon,
