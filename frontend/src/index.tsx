@@ -6,7 +6,7 @@ import { DashboardApp } from './components/dashboardApp/DashboardApp';
 import { reportWebVitals } from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { AppInitService } from "./services/AppInitService";
-import { dashboardLayout } from "./components/layouts/default";
+import { dashboardLayout } from "./layouts/dark";
 import "./i18n";
 import './index.scss';
 

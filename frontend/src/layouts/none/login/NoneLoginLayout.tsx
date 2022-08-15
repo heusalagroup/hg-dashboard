@@ -1,8 +1,8 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { NONE_LOGIN_LAYOUT_CLASS_NAME } from "../../../../constants/appClassName";
-import { AppFooter } from "../../../common/layout/appFooter/AppFooter";
-import { LayoutProps } from "../../../../types/DashboardLayout";
+import { NONE_LOGIN_LAYOUT_CLASS_NAME } from "../../../constants/appClassName";
+import { AppFooter } from "../../../components/common/layout/appFooter/AppFooter";
+import { LayoutProps } from "../../../types/DashboardLayout";
 import "./NoneLoginLayout.scss";
 
 export function NoneLoginLayout (props: LayoutProps) {

@@ -1,15 +1,15 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { NONE_PROFILE_LAYOUT_CLASS_NAME } from "../../../../constants/appClassName";
-import { LayoutProps } from "../../../../types/DashboardLayout";
-import "./NoneProfileLayout.scss";
+import { DARK_PROFILE_LAYOUT_CLASS_NAME } from "../../../constants/appClassName";
+import { LayoutProps } from "../../../types/DashboardLayout";
+import "./DarkProfileLayout.scss";
 
-export function NoneProfileLayout (props: LayoutProps) {
+export function DarkProfileLayout (props: LayoutProps) {
     const className = props?.className;
     return (
         <div
             className={
-                NONE_PROFILE_LAYOUT_CLASS_NAME
+                DARK_PROFILE_LAYOUT_CLASS_NAME
                 + (className ? ` ${className}` : '')
             }
         >{props.children}</div>

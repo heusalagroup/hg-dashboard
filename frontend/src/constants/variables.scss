@@ -266,15 +266,3 @@ $z-index-profile-menu-dropdown-items : 9999;
 $main-layout-text-color : $ux-dark-black;
 $main-layout-background-color : $ux-light-grey;
 
-@font-face {
-  font-family: 'Work Sans';
-  src: local('Work Sans'), url(../assets/fonts/worksans/static/WorkSans-Regular.ttf) format('truetype');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  src: local('Work Sans'), url(../assets/fonts/worksans/static/WorkSans-Bold.ttf) format('truetype');
-  font-weight: 700;
-}
-

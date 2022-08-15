@@ -3,7 +3,7 @@
 import { NoneMainLayout } from "./main/NoneMainLayout";
 import { NoneLoginLayout } from "./login/NoneLoginLayout";
 import { NoneProfileLayout } from "./profile/NoneProfileLayout";
-import { DashboardLayout } from "../../../types/DashboardLayout";
+import { DashboardLayout } from "../../types/DashboardLayout";
 
 export const dashboardLayout : DashboardLayout = {
     main: NoneMainLayout,

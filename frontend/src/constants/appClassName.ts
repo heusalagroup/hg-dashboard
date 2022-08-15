@@ -39,3 +39,6 @@ export const NONE_PROFILE_LAYOUT_CLASS_NAME = 'none-profile-layout';
 export const DEFAULT_MAIN_LAYOUT_CLASS_NAME = 'default-main-layout';
 export const DEFAULT_LOGIN_LAYOUT_CLASS_NAME = 'default-login-layout';
 export const DEFAULT_PROFILE_LAYOUT_CLASS_NAME = 'default-profile-layout';
+export const DARK_MAIN_LAYOUT_CLASS_NAME = 'dark-main-layout';
+export const DARK_LOGIN_LAYOUT_CLASS_NAME = 'dark-login-layout';
+export const DARK_PROFILE_LAYOUT_CLASS_NAME = 'dark-profile-layout';

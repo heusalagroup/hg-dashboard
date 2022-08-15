@@ -1,7 +1,7 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { DEFAULT_PROFILE_LAYOUT_CLASS_NAME } from "../../../../constants/appClassName";
-import { LayoutProps } from "../../../../types/DashboardLayout";
+import { DEFAULT_PROFILE_LAYOUT_CLASS_NAME } from "../../../constants/appClassName";
+import { LayoutProps } from "../../../types/DashboardLayout";
 import "./DefaultProfileLayout.scss";
 
 export function DefaultProfileLayout (props: LayoutProps) {

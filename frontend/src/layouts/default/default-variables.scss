@@ -1,0 +1,41 @@
+
+$ux-dark-black: #141414;
+$ux-light-grey: #f2f2f2;
+$ux-primary-button: #55a8f6;
+$ux-input-border: rgba(255, 255, 255, .8);
+$ux-button-border-radius: 5px;
+$ux-white: #fff;
+
+$default-page-margin: 1.5rem;
+$default-page-margin-left: $default-page-margin;
+$default-page-margin-right: $default-page-margin;
+$default-page-margin-bottom: $default-page-margin;
+
+$default-h2-padding: 5.45rem 0 3.85rem 0;
+$default-h2-margin: 0 $default-page-margin-right 0 $default-page-margin-left;
+
+$default-h3-margin: 2em 0;
+$default-h4-margin: 1em 0;
+
+$default-button-background: $ux-primary-button;
+$default-button-color: $ux-white;
+$default-button-border-radius: $ux-button-border-radius;
+$default-button-border: 1px solid $ux-input-border;
+
+$default-content-nav-item-padding: 0.9rem 0.9rem 0.9rem 0.9rem;
+$default-content-nav-item-margin: 0 1.05rem 1.05rem 0;
+
+$default-main-layout-text-color: $ux-dark-black;
+$default-main-layout-background-color: $ux-light-grey;
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../../assets/fonts/worksans/static/WorkSans-Regular.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../../assets/fonts/worksans/static/WorkSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+}

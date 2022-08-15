@@ -1,10 +1,10 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { NONE_MAIN_LAYOUT_CLASS_NAME } from "../../../../constants/appClassName";
-import { AppHeader } from "../../../common/layout/appHeader/AppHeader";
-import { AppModalContainer } from "../../../common/layout/appModalContainer/AppModalContainer";
-import { useAppModal } from "../../../../hooks/modal/useAppModal";
-import { LayoutProps } from "../../../../types/DashboardLayout";
+import { NONE_MAIN_LAYOUT_CLASS_NAME } from "../../../constants/appClassName";
+import { AppHeader } from "../../../components/common/layout/appHeader/AppHeader";
+import { AppModalContainer } from "../../../components/common/layout/appModalContainer/AppModalContainer";
+import { useAppModal } from "../../../hooks/modal/useAppModal";
+import { LayoutProps } from "../../../types/DashboardLayout";
 import "./NoneMainLayout.scss";
 
 export function NoneMainLayout (props: LayoutProps) {

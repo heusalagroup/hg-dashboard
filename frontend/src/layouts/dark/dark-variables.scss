@@ -1,0 +1,43 @@
+
+$dark-ux-white: #FFFFFF;
+$dark-ux-black: #000C1A;
+$dark-ux-alternative-black: #181F31;
+$dark-ux-light-grey: #B0B8BE;
+$dark-ux-blue: #1689D0;
+
+$dark-ux-primary-button: $dark-ux-blue;
+$dark-ux-input-border: $dark-ux-white;
+$dark-ux-button-border-radius: 21px;
+
+$dark-main-layout-text-color: $dark-ux-white;
+$dark-main-layout-background-color: $dark-ux-black;
+
+$dark-main-layout-header-color: $dark-ux-white;
+$dark-main-layout-header-background-color: $dark-ux-alternative-black;
+$dark-main-layout-header-bottom-border: 0;
+
+$dark-main-content-modals-background: $dark-ux-alternative-black;
+$dark-main-content-modals-border-left: 2px solid $dark-ux-white;
+
+$dark-content-nav-item-padding : 0.9rem 0.9rem 0.9rem 0.9rem;
+$dark-content-nav-item-margin  : 0 1.05rem 1.05rem 0;
+
+$dark-page-margin            : 1.5rem;
+$dark-page-margin-left       : $dark-page-margin;
+$dark-page-margin-right      : $dark-page-margin;
+$dark-page-margin-bottom     : $dark-page-margin;
+
+$dark-h2-padding: 5.45rem 0 3.85rem 0;
+$dark-h2-margin: 0 $dark-page-margin-right 0 $dark-page-margin-left;
+$dark-h3-margin: 2em 0;
+$dark-h4-margin: 1em 0;
+
+$dark-link-color: $dark-ux-white;
+
+$dark-login-button-border: 0;
+$dark-login-button-background: $dark-ux-primary-button;
+$dark-login-button-color: $dark-ux-white;
+$dark-login-button-border-radius: $dark-ux-button-border-radius;
+
+$dark-table-tbody-td-border: 1px solid $dark-ux-light-grey;
+$dark-table-tbody-td-border-radius: 7px;
