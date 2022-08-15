@@ -1,19 +1,21 @@
-@import "src/layouts/default/default-variables";
+@import "src/layouts/dark/dark-variables";
 
-.default-profile-layout {
-
+.dark-workspace-layout {
   box-sizing: border-box;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  & > .default-main-layout-content-nav {
+  & > .dark-workspace-layout-content-nav {
     box-sizing: border-box;
     padding: 1em 2em;
     margin: 0;
     flex-shrink: 1;
   }
 
-  & > .default-main-layout-content-view {
+  & > .dark-workspace-layout-content-view {
 
     box-sizing: border-box;
     padding: 0;
@@ -41,8 +43,8 @@
         width: 12.8rem;
         height: 3.2rem;
         box-sizing: border-box;
-        padding: $default-content-nav-item-padding;
-        margin: $default-content-nav-item-margin;
+        padding: $dark-content-nav-item-padding;
+        margin: $dark-content-nav-item-margin;
         text-align: center;
 
         &.active {

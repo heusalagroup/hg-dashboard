@@ -19,6 +19,7 @@ render(
         mainLayout={dashboardLayout.main}
         profileLayout={dashboardLayout.profile}
         loginLayout={dashboardLayout.login}
+        workspaceLayout={dashboardLayout.workspace}
       />
     </BrowserRouter>
   </StrictMode>,

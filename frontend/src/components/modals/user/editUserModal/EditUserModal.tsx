@@ -25,13 +25,14 @@ export function EditUserModal (props: NewUserFormProps) {
     const t = props?.t;
     const className = props?.className;
     const closeModalCallback = useAppCallback();
+    const workspaceId = useCurrentWorkspaceId();
+    const appModalId = useAppModalCurrentId();
+    const [user] = useWorkspaceUser(workspaceId, appModalId );
+
     useEventUserUpdated(() => {
         LOG.debug(`Closing edit user modal`);
         closeModalCallback();
     });
-    const workspaceId = useCurrentWorkspaceId();
-    const appModalId = useAppModalCurrentId();
-    const [user] = useWorkspaceUser(workspaceId, appModalId );
 
     if (!workspaceId) {
         return <Loader />;
@@ -54,7 +55,7 @@ export function EditUserModal (props: NewUserFormProps) {
                 {user === undefined ? (
                     <Loader />
                 ): (
-                    <UserForm t={t} user={user} />
+                    <UserForm t={t} user={user} workspaceId={workspaceId} />
                 )}
             </article>
 

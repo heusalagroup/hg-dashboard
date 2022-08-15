@@ -3,8 +3,8 @@
 import { PROFILE_MENU_CLASS_NAME } from "../../../../constants/appClassName";
 import { NavLink } from "react-router-dom";
 import {
-    PROFILE_INDEX_ROUTE,
-    WORKSPACE_LIST_ROUTE
+    MY_PROFILE_INDEX_ROUTE,
+    MY_WORKSPACE_LIST_ROUTE
 } from "../../../../constants/route";
 import {
     T_PROFILE_MENU_NAV_LOG_OUT,
@@ -88,12 +88,12 @@ export function ProfileMenu (props: ProfileMenuProps) {
                     <nav className={`${PROFILE_MENU_CLASS_NAME}-content-nav`}>
 
                         <NavLink
-                            to={PROFILE_INDEX_ROUTE}
+                            to={MY_PROFILE_INDEX_ROUTE}
                             className={`${PROFILE_MENU_CLASS_NAME}-content-nav-item ${PROFILE_MENU_CLASS_NAME}-content-nav-link`}
                         >{t(T_PROFILE_MENU_NAV_PROFILE)}</NavLink>
 
                         <NavLink
-                            to={WORKSPACE_LIST_ROUTE}
+                            to={MY_WORKSPACE_LIST_ROUTE}
                             className={`${PROFILE_MENU_CLASS_NAME}-content-nav-item ${PROFILE_MENU_CLASS_NAME}-content-nav-link`}
                         >{t(T_PROFILE_MENU_NAV_WORKSPACES)}</NavLink>
 

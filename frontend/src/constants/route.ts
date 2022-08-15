@@ -6,9 +6,9 @@ export const LOGIN_INDEX_ROUTE = '/';
 
 export const ABOUT_ROUTE = '/about';
 
-export const PROFILE_INDEX_ROUTE = '/my/profile';
-
-export const WORKSPACE_LIST_ROUTE = '/workspaces';
+export const MY_INDEX_ROUTE = '/my';
+export const MY_PROFILE_INDEX_ROUTE = '/my/profile';
+export const MY_WORKSPACE_LIST_ROUTE = '/my/workspaces';
 
 export const USER_LIST_ROUTE = '/users';
 export const USER_ROUTE = '/users/:id';

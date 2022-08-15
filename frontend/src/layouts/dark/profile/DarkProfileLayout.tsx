@@ -6,12 +6,13 @@ import "./DarkProfileLayout.scss";
 
 export function DarkProfileLayout (props: LayoutProps) {
     const className = props?.className;
+    const children = props?.children;
     return (
         <div
             className={
                 DARK_PROFILE_LAYOUT_CLASS_NAME
                 + (className ? ` ${className}` : '')
             }
-        >{props.children}</div>
+        >{children}</div>
     );
 }

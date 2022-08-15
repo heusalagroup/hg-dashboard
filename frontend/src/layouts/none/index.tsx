@@ -4,9 +4,11 @@ import { NoneMainLayout } from "./main/NoneMainLayout";
 import { NoneLoginLayout } from "./login/NoneLoginLayout";
 import { NoneProfileLayout } from "./profile/NoneProfileLayout";
 import { DashboardLayout } from "../../types/DashboardLayout";
+import { NoneWorkspaceLayout } from "./workspace/NoneWorkspaceLayout";
 
 export const dashboardLayout : DashboardLayout = {
     main: NoneMainLayout,
     login: NoneLoginLayout,
-    profile: NoneProfileLayout
+    profile: NoneProfileLayout,
+    workspace: NoneWorkspaceLayout
 };

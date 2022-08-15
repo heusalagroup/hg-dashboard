@@ -7,7 +7,7 @@ import { DashboardClient } from "../fi/hg/dashboard/services/DashboardClient";
 import { Workspace } from "../fi/hg/dashboard/types/Workspace";
 import { LogService } from "../fi/hg/core/LogService";
 import { RouteService } from "../fi/hg/frontend/services/RouteService";
-import { WORKSPACE_LIST_ROUTE } from "../constants/route";
+import { MY_WORKSPACE_LIST_ROUTE } from "../constants/route";
 
 export enum WorkspaceServiceEvent {
 
@@ -127,7 +127,7 @@ export class WorkspaceService {
         const list : readonly Workspace[] = await WorkspaceService.getMyWorkspaceList();
         if ((list?.length ?? 0) !== 1) {
             LOG.info(`No workspaces; Moving to workspace view`);
-            RouteService.setRoute(WORKSPACE_LIST_ROUTE);
+            RouteService.setRoute(MY_WORKSPACE_LIST_ROUTE);
         } else {
             LOG.info(`Selecting workspace: `, list[0]);
             WorkspaceService.setCurrentWorkspace(list[0]);

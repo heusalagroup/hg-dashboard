@@ -12,7 +12,8 @@ export interface LayoutProps {
 export type LayoutComponent = (props: LayoutProps) => JSX.Element;
 
 export interface DashboardLayout {
-    readonly main     : LayoutComponent,
-    readonly login    : LayoutComponent,
-    readonly profile  : LayoutComponent
+    readonly main      : LayoutComponent,
+    readonly login     : LayoutComponent,
+    readonly profile   : LayoutComponent,
+    readonly workspace : LayoutComponent
 }
