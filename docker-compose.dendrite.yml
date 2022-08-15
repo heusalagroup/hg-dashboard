@@ -6,7 +6,7 @@ services:
     container_name: hg-dashboard-dendrite-postgres
     hostname: hg-dashboard-dendrite-postgres
     image: postgres:14
-    restart: always
+    restart: unless-stopped
     volumes:
     - ./io/dendrite/create_db.sh:/docker-entrypoint-initdb.d/20-create_db.sh
     - ./io/dendrite/postgresql:/var/lib/postgresql/data
@@ -41,7 +41,7 @@ services:
   hg-dashboard-smtp:
     container_name: hg-dashboard-smtp
     image: mailhog/mailhog
-    restart: always
+    restart: unless-stopped
     logging:
       driver: "none"  # disable saving logs
     ports:
@@ -51,7 +51,7 @@ services:
   # See also ./backend/README.md
   hg-dashboard-backend:
     container_name: hg-dashboard-backend
-    restart: always
+    restart: unless-stopped
     build: ./backend
     environment:
       PORT: "3500"
@@ -81,7 +81,7 @@ services:
   # See also https://hub.docker.com/_/nginx
   hg-dashboard-nginx:
     container_name: hg-dashboard-nginx
-    restart: always
+    restart: unless-stopped
     image: "hg-dashboard-nginx:latest"
     build:
       context: ./nginx

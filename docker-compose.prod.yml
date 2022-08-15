@@ -5,7 +5,7 @@ services:
   # See also ./backend/README.md
   hg-dashboard-backend:
     container_name: hg-dashboard-backend
-    restart: always
+    restart: unless-stopped
     build: ./backend
     environment:
       PORT: "3500"
@@ -34,7 +34,7 @@ services:
   # See also https://hub.docker.com/_/nginx
   hg-dashboard-nginx:
     container_name: hg-dashboard-nginx
-    restart: always
+    restart: unless-stopped
     image: "hg-dashboard-nginx:latest"
     build:
       context: ./nginx
