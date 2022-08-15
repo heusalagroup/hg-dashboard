@@ -4,6 +4,9 @@
 .dark-main-layout,
 .dark-profile-layout {
 
+  color            : $dark-main-layout-text-color;
+  background-color : $dark-main-layout-background-color;
+
   h2 {
     padding: $dark-h2-padding;
     margin: $dark-h2-margin;
@@ -67,6 +70,20 @@
 
     margin : 0 0 $dark-page-margin-bottom 0;
     padding: 0 0 0 0;
+
+    & > h2 {
+
+      margin : $dark-page-margin-top $dark-page-margin-right 1em $dark-page-margin-left;
+      padding: 0 0 0 0;
+
+      & > svg {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0 0.5em 0 0;
+        height: 1.5em;
+      }
+
+    }
 
     & > p {
       box-sizing: border-box;
@@ -148,7 +165,7 @@
     color: $dark-login-button-color;
     border-radius: $dark-login-button-border-radius;
     border: $dark-login-button-border;
-    padding: 5px;
+    padding: 0.5em 2em;
 
     & > svg {
       fill: $dark-login-button-color;
@@ -183,6 +200,48 @@
           border-radius: $dark-table-tbody-td-border-radius;
         }
       }
+    }
+  }
+
+  .profile-menu {
+
+    & > .profile-menu-content {
+      border-radius: $profile-menu-content-border-radius;
+      color: $profile-menu-content-color;
+      background-color: $profile-menu-content-background-color;
+
+      & > .profile-menu-content-nav {
+
+        box-shadow: $dark-profile-menu-content-nav-shadow;
+        color: $dark-profile-menu-content-nav-color;
+
+        & > .profile-menu-content-nav-item {
+
+          color: $dark-profile-menu-content-nav-item-color;
+
+          &.profile-menu-content-nav-button {
+            color: $dark-profile-menu-content-nav-item-color;
+            background-color: transparent;
+          }
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .hg-field {
+    & > .hg-field-input,
+    & > .hg-field-input:focus {
+      border: $dark-field-border;
+      color: $dark-field-color;
+      background-color: $dark-field-background-color;
     }
   }
 

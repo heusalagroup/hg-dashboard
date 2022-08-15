@@ -10,4 +10,9 @@
     text-align: center;
   }
 
+  & > .dark-login-layout-footer {
+    background-color: $dark-footer-background-color;
+
+  }
+
 }

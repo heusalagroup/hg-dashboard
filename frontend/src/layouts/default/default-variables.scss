@@ -5,10 +5,15 @@ $ux-primary-button: #55a8f6;
 $ux-input-border: rgba(255, 255, 255, .8);
 $ux-button-border-radius: 5px;
 $ux-white: #fff;
+$ux-border-radius: 5px;
+
+$profile-menu-content-border-radius: $ux-border-radius;
+$profile-menu-content-background-color: $ux-white;
 
 $default-page-margin: 1.5rem;
 $default-page-margin-left: $default-page-margin;
 $default-page-margin-right: $default-page-margin;
+$default-page-margin-top: $default-page-margin;
 $default-page-margin-bottom: $default-page-margin;
 
 $default-h2-padding: 5.45rem 0 3.85rem 0;
@@ -27,6 +32,12 @@ $default-content-nav-item-margin: 0 1.05rem 1.05rem 0;
 
 $default-main-layout-text-color: $ux-dark-black;
 $default-main-layout-background-color: $ux-light-grey;
+
+$dark-profile-menu-content-nav-color: #181F31;
+$dark-profile-menu-content-nav-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+$dark-profile-menu-content-nav-item-color: $dark-ux-black;
+$dark-profile-menu-content-nav-item-background : $dark-ux-light-grey;
+$dark-profile-menu-content-nav-selected-item-color: $dark-ux-blue;
 
 @font-face {
   font-family: 'Work Sans';

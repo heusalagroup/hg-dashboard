@@ -4,10 +4,20 @@ $dark-ux-black: #000C1A;
 $dark-ux-alternative-black: #181F31;
 $dark-ux-light-grey: #B0B8BE;
 $dark-ux-blue: #1689D0;
+$dark-ux-alternative-blue: #1789D0;
 
 $dark-ux-primary-button: $dark-ux-blue;
 $dark-ux-input-border: $dark-ux-white;
 $dark-ux-button-border-radius: 21px;
+
+$profile-menu-content-border-radius: 7px;
+$profile-menu-content-color: $dark-ux-white;
+$profile-menu-content-background-color: $dark-ux-alternative-blue;
+$dark-profile-menu-content-nav-color: $dark-ux-blue;
+$dark-profile-menu-content-nav-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+$dark-profile-menu-content-nav-item-color: $profile-menu-content-color;
+$dark-profile-menu-content-nav-item-background : $dark-ux-light-grey;
+$dark-profile-menu-content-nav-selected-item-color: $profile-menu-content-color;
 
 $dark-main-layout-text-color: $dark-ux-white;
 $dark-main-layout-background-color: $dark-ux-black;
@@ -25,6 +35,7 @@ $dark-content-nav-item-margin  : 0 1.05rem 1.05rem 0;
 $dark-page-margin            : 1.5rem;
 $dark-page-margin-left       : $dark-page-margin;
 $dark-page-margin-right      : $dark-page-margin;
+$dark-page-margin-top        : $dark-page-margin;
 $dark-page-margin-bottom     : $dark-page-margin;
 
 $dark-h2-padding: 5.45rem 0 3.85rem 0;
@@ -41,3 +52,21 @@ $dark-login-button-border-radius: $dark-ux-button-border-radius;
 
 $dark-table-tbody-td-border: 1px solid $dark-ux-light-grey;
 $dark-table-tbody-td-border-radius: 7px;
+
+$dark-field-border: 1px solid $dark-ux-white;
+$dark-field-color: $dark-ux-white;
+$dark-field-background-color: transparent;
+
+$dark-footer-background-color: $dark-ux-alternative-black;
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../../assets/fonts/worksans/static/WorkSans-Regular.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: local('Work Sans'), url(../../assets/fonts/worksans/static/WorkSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+}

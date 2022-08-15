@@ -4,12 +4,10 @@ import { ModalState } from "../../views/types/ModelState";
 import { EmailTokenDTO } from "../../../fi/hg/core/auth/email/types/EmailTokenDTO";
 import { EmailUtils } from "../../../fi/hg/core/utils/EmailUtils";
 import { EmailAuthSessionService } from "../../../fi/hg/frontend/services/EmailAuthSessionService";
-import { useState, useEffect, MouseEvent, FormEvent, ChangeEvent, useCallback } from "react";
+import { useState, useEffect, MouseEvent, useCallback } from "react";
 import { Loader } from "../../../fi/hg/frontend/components/loader/Loader";
 import { LogService } from "../../../fi/hg/core/LogService";
 import {
-    FIELD_TEXT_INPUT_CLASS_NAME,
-    FIELD_TEXT_LABEL_CLASS_NAME,
     FORM_CLASS_NAME,
     LOGIN_FORM_CLASS_NAME,
     TEXT_CENTERED_CLASS_NAME
@@ -31,10 +29,15 @@ import {
     FIELD_CLASS_NAME,
     SUBMIT_BUTTON_CLASS_NAME
 } from "../../../fi/hg/frontend/constants/hgClassName";
-
 import { TFunction } from "i18next";
 import { useEventSessionTokenUpdated } from "../../../hooks/session/useEventSessionTokenUpdated";
+import { SubmitButton } from "../../../fi/hg/frontend/components/submitButton/SubmitButton";
+import { Form } from "../../../fi/hg/frontend/components/form/Form";
+import { EmailField } from "../../../fi/hg/frontend/components/fields/email/EmailField";
+import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import './LoginForm.scss';
+import { Button } from "../../../fi/hg/frontend/components/button/Button";
+import { ButtonType } from "../../../fi/hg/frontend/components/button/types/ButtonType";
 
 const LOG = LogService.createLogger("LoginForm");
 
@@ -87,16 +90,9 @@ export function LoginForm (props: LoginFormProps) {
 
     const onCodeFieldChangeCallback = useCallback(
         (
-            event: ChangeEvent<HTMLInputElement>
+            value: string | undefined
         ) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
-            const value = `${event.target.value}`
-            .replace(/[^0-9]+/g, "")
-            .substring(0, 4);
-            setCode(value);
+            setCode(value ?? '');
         },
         [
             setCode
@@ -105,15 +101,10 @@ export function LoginForm (props: LoginFormProps) {
 
     const onEmailFieldChangeCallback = useCallback(
         (
-            event: ChangeEvent<HTMLInputElement>
+            value: string | undefined
         ) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
-            const value = `${event.target.value}`.replace(/\s+/, "");
-            setEmail(value);
-            setButtonEnabled(EmailUtils.isEmailValid(value));
+            setEmail(value ?? '');
+            setButtonEnabled(EmailUtils.isEmailValid(value ?? ''));
         },
         [
             setEmail,
@@ -158,11 +149,7 @@ export function LoginForm (props: LoginFormProps) {
     );
 
     const submitCodeForm = useCallback(
-        (event: FormEvent<HTMLFormElement>) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
+        () => {
             submitCode(code);
         },
         [
@@ -172,11 +159,7 @@ export function LoginForm (props: LoginFormProps) {
     );
 
     const submitCodeButtonClick = useCallback(
-        (event: MouseEvent<HTMLButtonElement>) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
+        () => {
             submitCode(code);
         },
         [
@@ -208,13 +191,7 @@ export function LoginForm (props: LoginFormProps) {
     );
 
     const submitEmailButtonClick = useCallback(
-        (
-            event: MouseEvent<HTMLButtonElement>
-        ) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
+        () => {
             submitEmail(email);
         },
         [
@@ -224,11 +201,7 @@ export function LoginForm (props: LoginFormProps) {
     );
 
     const submitEmailForm = useCallback(
-        (event: FormEvent<HTMLFormElement>) => {
-            if ( event ) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
+        () => {
             submitEmail(email);
         },
         [
@@ -274,77 +247,40 @@ export function LoginForm (props: LoginFormProps) {
                         LOGIN_FORM_CLASS_NAME + "-container hg-form-container"
                     }
                 >
-                    <form
-                        className="hg-form-horizontal hg-form"
-                        onSubmit={
+                    <Form
+                        submit={
                             modalState === ModalState.AUTHENTICATING
                                 ? submitCodeForm
                                 : submitEmailForm
                         }
                     >
                         {modalState === ModalState.UNAUTHENTICATED ? (
-                            <label className={FIELD_CLASS_NAME}>
-                                <strong className={FIELD_TEXT_LABEL_CLASS_NAME}>
-                                    {t(T_LOGIN_FORM_EMAIL_FIELD_LABEL)}
-                                </strong>
-                                <input
-                                    className={FIELD_TEXT_INPUT_CLASS_NAME}
-                                    type="email"
-                                    value={
-                                        modalState !==
-                                        ModalState.UNAUTHENTICATED
-                                            ? authenticatedEmailAddress
-                                            : email
-                                    }
-                                    readOnly={
-                                        modalState !==
-                                        ModalState.UNAUTHENTICATED
-                                    }
-                                    onChange={onEmailFieldChangeCallback}
-                                    placeholder={t(
-                                        T_LOGIN_FORM_EMAIL_FIELD_PLACEHOLDER
-                                    )}
-                                />
-                            </label>
+                            <EmailField
+                                value={email}
+                                change={onEmailFieldChangeCallback}
+                                placeholder={t(T_LOGIN_FORM_EMAIL_FIELD_PLACEHOLDER)}
+                            />
                         ) : null}
 
                         {modalState === ModalState.AUTHENTICATING ? (
-                            <label className={FIELD_CLASS_NAME}>
-                                <strong className={FIELD_TEXT_LABEL_CLASS_NAME}>
-                                    {t(
-                                        T_LOGIN_FORM_VERIFICATION_CODE_FIELD_LABEL
-                                    )}
-                                </strong>
-                                <input
-                                    className={FIELD_TEXT_INPUT_CLASS_NAME}
-                                    type="text"
-                                    value={code}
-                                    onChange={onCodeFieldChangeCallback}
-                                    placeholder={t(
-                                        T_LOGIN_FORM_VERIFICATION_CODE_FIELD_PLACEHOLDER
-                                    )}
-                                />
-                            </label>
+                            <TextField
+                                value={code}
+                                change={onCodeFieldChangeCallback}
+                                placeholder={t(T_LOGIN_FORM_VERIFICATION_CODE_FIELD_LABEL)}
+                            />
                         ) : null}
 
-                        <button
-                            disabled={ !isButtonEnabled}
-                            onClick={
+                        <Button
+                            type={ButtonType.SUBMIT}
+                            enabled={ isButtonEnabled }
+                            click={
                                 modalState === ModalState.AUTHENTICATING
-                                    ? submitCodeButtonClick
-                                    : submitEmailButtonClick
+                                ? submitCodeButtonClick
+                                : submitEmailButtonClick
                             }
-                            type={"submit"}
-                            className={
-                                `${BUTTON_CLASS_NAME} ${SUBMIT_BUTTON_CLASS_NAME}` +
-                                (isButtonEnabled
-                                    ? ""
-                                    : " " + DISABLED_BUTTON_CLASS_NAME)
-                            }
-                        >
-                            {t(T_LOGIN_FORM_SUBMIT_BUTTON_LABEL)}
-                        </button>
-                    </form>
+                        >{t(T_LOGIN_FORM_SUBMIT_BUTTON_LABEL)}</Button>
+
+                    </Form>
                 </div>
             ) : null}
 

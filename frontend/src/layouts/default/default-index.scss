@@ -1,0 +1,236 @@
+@import "src/layouts/default/default-variables";
+
+.default-login-layout,
+.default-main-layout,
+.default-profile-layout {
+
+  h2 {
+    padding: $default-h2-padding;
+    margin: $default-h2-margin;
+    text-align: center;
+
+    & > svg {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0 0.5em 0 0;
+      height: 1.5em;
+      vertical-align: middle;
+    }
+
+  }
+
+  h3 {
+    box-sizing: border-box;
+    margin: $default-h3-margin;
+    text-align: center;
+
+    & > svg {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0 0.5em 0 0;
+      width: auto;
+      height: 2.52rem;
+      vertical-align: middle;
+    }
+
+  }
+
+  h4 {
+    box-sizing: border-box;
+    margin: $default-h4-margin;
+    text-align: left;
+  }
+
+  p {
+    box-sizing: border-box;
+    margin: 0 $default-page-margin-right 5.45rem $default-page-margin-left;
+    padding: 0 0 0 0;
+  }
+
+  ul {
+    box-sizing: border-box;
+    margin: 0 $default-page-margin-right 5.45rem $default-page-margin-left;
+    padding: 0 0 0 1.5rem;
+  }
+
+  ol {
+    box-sizing: border-box;
+    margin: 0 $default-page-margin-right 5.45rem $default-page-margin-left;
+    padding: 0 0 0 1.5rem;
+  }
+
+  a {
+    //color: $default-link-color;
+  }
+
+  article {
+
+    margin: 0 0 $default-page-margin-bottom 0;
+    padding: 0 0 0 0;
+
+    & > h2 {
+
+      margin: $default-page-margin-top $default-page-margin-right 1em $default-page-margin-left;
+      padding: 0 0 0 0;
+
+      & > svg {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0 0.5em 0 0;
+        height: 1.5em;
+      }
+
+    }
+
+    & > p {
+      box-sizing: border-box;
+      margin: 0 $default-page-margin-right 1em $default-page-margin-left;
+      padding: 0 0 0 0;
+    }
+
+    & > ul {
+      box-sizing: border-box;
+      margin: 0 $default-page-margin-right 1em $default-page-margin-left;
+      padding: 0 0 0 1.5rem;
+    }
+
+    & > ol {
+      box-sizing: border-box;
+      margin: 0 $default-page-margin-right 1em $default-page-margin-left;
+      padding: 0 0 0 1.5rem;
+    }
+
+  }
+
+  .article-row {
+
+    $default-article-margin-left: $default-page-margin-left;
+    $default-article-margin-right: $default-page-margin-right - 6.9rem;
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 $default-article-margin-right 5.85rem $default-article-margin-left;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & > article {
+
+      flex: 1 0 45%;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+
+      & > h3 {
+        text-align: left;
+      }
+
+      & > h4 {
+        text-align: left;
+      }
+
+      & > p {
+        box-sizing: border-box;
+        margin: 0 6.9rem 1em 0;
+        padding: 0 0 0 0;
+      }
+
+      & > ul {
+        box-sizing: border-box;
+        margin: 0 6.9rem 1em 0;
+        padding: 0 0 0 1.5rem;
+      }
+
+      & > ol {
+        box-sizing: border-box;
+        margin: 0 6.9rem 1em 0;
+        padding: 0 0 0 1.5rem;
+      }
+
+    }
+
+  }
+
+  .hg-button {
+
+    background: $default-button-background;
+    color: $default-button-color;
+    border-radius: $default-button-border-radius;
+    border: $default-button-border;
+    padding: 5px;
+
+    & > svg {
+      fill: $default-button-color;
+    }
+
+    & > .hg-icon {
+      & > svg {
+        fill: $default-button-color;
+      }
+    }
+
+  }
+
+  table {
+    & > thead {
+      & > tr {
+        & > td {
+
+        }
+
+        & > th {
+
+        }
+      }
+    }
+
+    & > tbody {
+      & > tr {
+        & > th {
+
+        }
+
+        & > td {
+          //border: $default-table-tbody-td-border;
+          //border-radius: $default-table-tbody-td-border-radius;
+        }
+      }
+    }
+  }
+
+  .profile-menu {
+
+    & > .profile-menu-content {
+      border-radius: $profile-menu-content-border-radius;
+      background-color: $profile-menu-content-background-color;
+
+      & > .profile-menu-content-nav {
+
+        box-shadow: $default-profile-menu-content-nav-shadow;
+        color: $default-profile-menu-content-nav-color;
+
+        & > .profile-menu-content-nav-item {
+
+          color: $default-profile-menu-content-nav-item-color;
+
+          &.profile-menu-content-nav-button {
+            color: $default-profile-menu-content-nav-item-color;
+          }
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+        }
+
+      }
+
+    }
+  }
+
+}
