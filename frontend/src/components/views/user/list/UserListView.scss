@@ -49,11 +49,11 @@
   & > .user-list-view-table {
 
     flex-grow: 1;
-
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     width: 100%;
+    border-spacing: 0;
 
     & > thead {
 
@@ -69,7 +69,7 @@
 
         & > th {
           box-sizing: border-box;
-          padding: 0 0 0.5em 0;
+          padding: 0 0 0.50em 0;
           margin: 0;
         }
 
@@ -87,14 +87,33 @@
         padding: 0;
         margin: 0;
 
-        & > td {
+        & > .user-list-view-column {
+
           box-sizing: border-box;
-          padding: 2px;
           margin: 0;
+          padding: 0;
+
+          & > .user-list-view-column-content {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0.25em 0.75em;
+          }
 
           &.user-list-view-no-results {
             padding: 2em;
             text-align: center;
+          }
+
+          &.user-list-view-column-controls {
+
+            width: 10%;
+
+            & > .user-list-view-column-content {
+              & > .hg-button {
+                margin: 0.25em 0.75em;
+              }
+            }
+
           }
 
         }

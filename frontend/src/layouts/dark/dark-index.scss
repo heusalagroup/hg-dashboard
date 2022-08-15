@@ -171,25 +171,33 @@
 
   .hg-button {
 
-    background: $dark-login-button-background;
-    color: $dark-login-button-color;
-    border-radius: $dark-login-button-border-radius;
-    border: $dark-login-button-border;
+    background: $dark-primary-button-background;
+    color: $dark-primary-button-color;
+    border-radius: $dark-primary-button-border-radius;
+    border: $dark-primary-button-border;
     padding: 0.5em 2em;
 
     & > svg {
-      fill: $dark-login-button-color;
+      fill: $dark-primary-button-color;
     }
 
     & > .hg-icon {
       & > svg {
-        fill: $dark-login-button-color;
+        fill: $dark-primary-button-color;
       }
+    }
+
+    &.hg-button-secondary {
+      background: $dark-secondary-button-background;
+      color: $dark-secondary-button-color;
+      border-radius: $dark-secondary-button-border-radius;
+      border: $dark-secondary-button-border;
     }
 
   }
 
   table {
+
     & > thead {
       & > tr {
         & > td {
@@ -202,13 +210,34 @@
     }
     & > tbody {
       & > tr {
-        & > th {
 
-        }
+        box-sizing: border-box;
+        margin : 0;
+        padding: 0;
+
         & > td {
-          border: $dark-table-tbody-td-border;
-          border-radius: $dark-table-tbody-td-border-radius;
+          box-sizing: border-box;
+          margin : 0;
+          padding: 0;
+          border-top: $dark-table-tbody-td-border;
+          border-bottom: $dark-table-tbody-td-border;
+          border-radius: 0;
         }
+
+        & > td.first-column {
+          border-left: $dark-table-tbody-td-border;
+          border-top: $dark-table-tbody-td-border;
+          border-bottom: $dark-table-tbody-td-border;
+          border-radius: $dark-table-tbody-td-border-radius 0 0 $dark-table-tbody-td-border-radius;
+        }
+
+        & > td.last-column {
+          border-top: $dark-table-tbody-td-border;
+          border-right: $dark-table-tbody-td-border;
+          border-bottom: $dark-table-tbody-td-border;
+          border-radius: 0 $dark-table-tbody-td-border-radius $dark-table-tbody-td-border-radius 0;
+        }
+
       }
     }
   }

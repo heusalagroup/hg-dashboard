@@ -18,6 +18,7 @@ import { useCurrentWorkspaceId } from "../../../../hooks/workspace/useCurrentWor
 import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
 import "./UserListView.scss";
 import { User } from "../../../../fi/hg/dashboard/types/User";
+import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
 
 const LOG = LogService.createLogger('UserListView');
 
@@ -92,13 +93,28 @@ export function UserListView (props: UserListViewProps) {
                         <tr>
                             <td className={USER_LIST_VIEW_CLASS_NAME+'-no-results'} colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</td>
                         </tr>
-                    ) : map(userList, (item : User) => {
+                    ) : map(userList, (item : User, index:number, arr) => {
                         return (
-                            <tr key={`user-list-item-${item?.id}`}>
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column-name'}>{item.name}</td>
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column-email'}>{item.email}</td>
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column-controls'}>
-                                    <OpenEditUserModalButton id={item.id} />
+                            <tr
+                                key={`user-list-item-${item?.id}`}
+                                className={
+                                    `${ 
+                                        index === 0 ? 'first-row' : ''
+                                    }${ 
+                                        index + 1 === arr.length ? ' last-row' : ''
+                                    }`
+                                }
+                            >
+                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name first-column'}>
+                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>{item.name}</div>
+                                </td>
+                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}>
+                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>{item.email}</div>
+                                </td>
+                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls last-column'}>
+                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>
+                                        <OpenEditUserModalButton id={item.id} style={ButtonStyle.SECONDARY} />
+                                    </div>
                                 </td>
                             </tr>
                         );

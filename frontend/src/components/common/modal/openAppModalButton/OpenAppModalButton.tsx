@@ -13,12 +13,14 @@ export interface OpenAppModalButtonProps {
     readonly modal ?: AppModalType | undefined;
     readonly id ?: string | undefined;
     readonly children ?: ReactNode;
+    readonly style ?: ButtonStyle;
 }
 
 export function OpenAppModalButton (props: OpenAppModalButtonProps) {
     const className = props?.className;
     const modal = props?.modal;
     const id = props?.id;
+    const style = props?.style ?? ButtonStyle.LINK;
     const openAddUserModalCallback = useAppCallback(modal, id);
     return (
         <Button
@@ -27,6 +29,6 @@ export function OpenAppModalButton (props: OpenAppModalButtonProps) {
                 + (className? ` ${className}` : '')
             }
             click={openAddUserModalCallback}
-            style={ButtonStyle.LINK}>{props?.children}</Button>
+            style={style}>{props?.children}</Button>
     );
 }

@@ -48,10 +48,15 @@ $dark-h4-margin: 1em 0;
 
 $dark-link-color: $dark-ux-white;
 
-$dark-login-button-border: 0;
-$dark-login-button-background: $dark-ux-primary-button;
-$dark-login-button-color: $dark-ux-white;
-$dark-login-button-border-radius: $dark-ux-button-border-radius;
+$dark-primary-button-border: 0;
+$dark-primary-button-background: $dark-ux-primary-button;
+$dark-primary-button-color: $dark-ux-white;
+$dark-primary-button-border-radius: $dark-ux-button-border-radius;
+
+$dark-secondary-button-border: 1px solid $dark-ux-white;
+$dark-secondary-button-background: transparent;
+$dark-secondary-button-color: $dark-ux-white;
+$dark-secondary-button-border-radius: $dark-ux-button-border-radius;
 
 $dark-table-tbody-td-border: 1px solid $dark-ux-light-grey;
 $dark-table-tbody-td-border-radius: 7px;
