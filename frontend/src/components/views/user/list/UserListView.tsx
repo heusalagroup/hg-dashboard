@@ -89,33 +89,44 @@ export function UserListView (props: UserListViewProps) {
             <Table className={USER_LIST_VIEW_CLASS_NAME+'-table'}>
 
                 <TableHeader>
-                    <TableHeaderColumn>{t(T_USER_TABLE_NAME_TITLE)}</TableHeaderColumn>
+                    <TableHeaderColumn first={true}>{t(T_USER_TABLE_NAME_TITLE)}</TableHeaderColumn>
                     <TableHeaderColumn>{t(T_USER_TABLE_EMAIL_TITLE)}</TableHeaderColumn>
-                    <TableHeaderColumn />
+                    <TableHeaderColumn last={true} />
                 </TableHeader>
 
                 <TableBody>{
                     (userList?.length ?? 0) === 0 ? (
                         <TableRow>
-                            <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-no-results'} colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</TableColumn>
+                            <TableColumn
+                                first={true}
+                                last={true}
+                                className={USER_LIST_VIEW_CLASS_NAME+'-no-results'}
+                                colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</TableColumn>
                         </TableRow>
                     ) : map(userList, (item : User, index:number, arr) => {
                         return (
                             <TableRow
                                 key={`user-list-item-${item?.id}`}
-                                className={
-                                    `${ 
-                                        index === 0 ? 'first-row' : ''
-                                    }${ 
-                                        index + 1 === arr.length ? ' last-row' : ''
-                                    }`
-                                }
+                                first={index === 0}
+                                last={index +1 === arr.length}
                             >
-                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name first-column'}>{item.name}</TableColumn>
-                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}>{item.email}</TableColumn>
-                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls last-column'}>
+
+                                <TableColumn
+                                    first={true}
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name'}
+                                >{item.name}</TableColumn>
+
+                                <TableColumn
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}
+                                >{item.email}</TableColumn>
+
+                                <TableColumn
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls'}
+                                    last={true}
+                                >
                                         <OpenEditUserModalButton id={item.id} style={ButtonStyle.SECONDARY} />
                                 </TableColumn>
+
                             </TableRow>
                         );
                     })

@@ -32,6 +32,11 @@ export function EditUserModal (props: NewUserFormProps) {
     const workspaceId = useCurrentWorkspaceId();
     const appModalId = useAppModalCurrentId();
     const [user] = useWorkspaceUser(workspaceId, appModalId );
+
+    if (!workspaceId) {
+        return <Loader />;
+    }
+
     return (
         <div
             className={

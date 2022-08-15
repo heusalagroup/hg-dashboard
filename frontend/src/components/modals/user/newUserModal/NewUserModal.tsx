@@ -8,7 +8,9 @@ import { useEventUserAdded } from "../../../../hooks/user/useEventUserAdded";
 import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
 import { LogService } from "../../../../fi/hg/core/LogService";
 import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
+import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
 import "./NewUserModal.scss";
+import { useCurrentWorkspaceId } from "../../../../hooks/workspace/useCurrentWorkspaceId";
 
 const LOG = LogService.createLogger('NewUserModal');
 
@@ -18,13 +20,21 @@ export interface NewUserFormProps {
 }
 
 export function NewUserModal (props: NewUserFormProps) {
+
     const t = props?.t;
     const className = props?.className;
     const closeModalCallback = useAppCallback();
+    const workspaceId = useCurrentWorkspaceId();
+
     useEventUserAdded(() => {
         LOG.debug(`Closing new user modal`);
         closeModalCallback();
     });
+
+    if (!workspaceId) {
+        return <Loader />;
+    }
+
     return (
         <div
             className={
@@ -38,8 +48,9 @@ export function NewUserModal (props: NewUserFormProps) {
             </header>
 
             <article className={NEW_USER_MODAL_CLASS_NAME + '-content'}>
-                <UserForm t={t} />
+                <UserForm t={t} workspaceId={workspaceId} />
             </article>
+
         </div>
     );
 }

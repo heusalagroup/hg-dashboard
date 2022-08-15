@@ -11,6 +11,7 @@ import { EmailField } from "../../../fi/hg/frontend/components/fields/email/Emai
 import { User } from "../../../fi/hg/dashboard/types/User";
 import { TranslationFunction } from "../../../fi/hg/core/types/TranslationFunction";
 import "./UserForm.scss";
+import { Loader } from "../../../fi/hg/frontend/components/loader/Loader";
 
 export interface UserFormProps {
     readonly t            : TranslationFunction;
@@ -31,6 +32,10 @@ export function UserForm (props: UserFormProps) {
         setUser,
         submitCallback
     } = useWorkspaceUserForm(workspaceId, initialUser);
+
+    if (!workspaceId) {
+        return <Loader />;
+    }
 
     return (
         <Form
