@@ -41,7 +41,6 @@ export function LoginForm (props: LoginFormProps) {
 
     const t = props?.t;
     const className = props?.className;
-    const [ authenticatedEmailAddress, setAuthenticatedEmailAddress ] = useState<string | undefined>(EmailAuthSessionService.getEmailAddress());
     const [ authenticatedEmailToken, setAuthenticatedEmailToken ] = useState<EmailTokenDTO | undefined>(EmailAuthSessionService.getEmailToken());
     const [ modalState, setModalState ] = useState<ModalState>(authenticatedEmailToken ? ModalState.AUTHENTICATED : ModalState.UNAUTHENTICATED);
     const [ isError, setError ] = useState<boolean>(false);
@@ -54,7 +53,6 @@ export function LoginForm (props: LoginFormProps) {
         () => {
             const token = EmailAuthSessionService.getEmailToken();
             setAuthenticatedEmailToken(token);
-            setAuthenticatedEmailAddress(EmailAuthSessionService.getEmailAddress());
             if ( token && modalState !== ModalState.AUTHENTICATED ) {
                 setModalState(ModalState.AUTHENTICATED);
             } else if ( modalState !== ModalState.UNAUTHENTICATED ) {

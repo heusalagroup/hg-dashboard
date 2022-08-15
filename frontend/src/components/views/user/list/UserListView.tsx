@@ -19,6 +19,12 @@ import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
 import "./UserListView.scss";
 import { User } from "../../../../fi/hg/dashboard/types/User";
 import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { TableHeaderColumn } from "../../../../fi/hg/frontend/components/table/TableHeaderColumn";
+import { TableHeader } from "../../../../fi/hg/frontend/components/table/TableHeader";
+import { TableBody } from "../../../../fi/hg/frontend/components/table/TableBody";
+import { Table } from "../../../../fi/hg/frontend/components/table/Table";
+import { TableColumn } from "../../../../fi/hg/frontend/components/table/TableColumn";
+import { TableRow } from "../../../../fi/hg/frontend/components/table/TableRow";
 
 const LOG = LogService.createLogger('UserListView');
 
@@ -80,22 +86,22 @@ export function UserListView (props: UserListViewProps) {
                 </div>
             </header>
 
-            <table className={USER_LIST_VIEW_CLASS_NAME+'-table'}>
-                <thead>
-                <tr>
-                    <th>{t(T_USER_TABLE_NAME_TITLE)}</th>
-                    <th>{t(T_USER_TABLE_EMAIL_TITLE)}</th>
-                    <th />
-                </tr>
-                </thead>
-                <tbody>{
+            <Table className={USER_LIST_VIEW_CLASS_NAME+'-table'}>
+
+                <TableHeader>
+                    <TableHeaderColumn>{t(T_USER_TABLE_NAME_TITLE)}</TableHeaderColumn>
+                    <TableHeaderColumn>{t(T_USER_TABLE_EMAIL_TITLE)}</TableHeaderColumn>
+                    <TableHeaderColumn />
+                </TableHeader>
+
+                <TableBody>{
                     (userList?.length ?? 0) === 0 ? (
-                        <tr>
-                            <td className={USER_LIST_VIEW_CLASS_NAME+'-no-results'} colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</td>
-                        </tr>
+                        <TableRow>
+                            <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-no-results'} colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</TableColumn>
+                        </TableRow>
                     ) : map(userList, (item : User, index:number, arr) => {
                         return (
-                            <tr
+                            <TableRow
                                 key={`user-list-item-${item?.id}`}
                                 className={
                                     `${ 
@@ -105,22 +111,16 @@ export function UserListView (props: UserListViewProps) {
                                     }`
                                 }
                             >
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name first-column'}>
-                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>{item.name}</div>
-                                </td>
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}>
-                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>{item.email}</div>
-                                </td>
-                                <td className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls last-column'}>
-                                    <div className={USER_LIST_VIEW_CLASS_NAME+'-column-content'}>
+                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name first-column'}>{item.name}</TableColumn>
+                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}>{item.email}</TableColumn>
+                                <TableColumn className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls last-column'}>
                                         <OpenEditUserModalButton id={item.id} style={ButtonStyle.SECONDARY} />
-                                    </div>
-                                </td>
-                            </tr>
+                                </TableColumn>
+                            </TableRow>
                         );
                     })
-                }</tbody>
-            </table>
+                }</TableBody>
+            </Table>
 
         </div>
     );

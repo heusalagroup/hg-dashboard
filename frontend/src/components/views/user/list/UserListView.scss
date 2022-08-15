@@ -49,55 +49,28 @@
   & > .user-list-view-table {
 
     flex-grow: 1;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    border-spacing: 0;
 
-    & > thead {
+    & > .hg-table-header {
 
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
+      & > .hg-table-header-row {
 
-      & > tr {
+        & > .hg-table-header-column {
 
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
+          & > .hg-table-header-column-content {
+            padding: 0.5em 0.75em 0.5em 0.75em;
+          }
 
-        & > th {
-          box-sizing: border-box;
-          padding: 0 0 0.50em 0;
-          margin: 0;
         }
 
       }
 
     }
 
-    & > tbody {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
+    & > .hg-table-body {
 
-      & > tr {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
+      & > .hg-table-row {
 
-        & > .user-list-view-column {
-
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-
-          & > .user-list-view-column-content {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0.25em 0.75em;
-          }
+        & > .hg-table-column {
 
           &.user-list-view-no-results {
             padding: 2em;
@@ -108,7 +81,7 @@
 
             width: 10%;
 
-            & > .user-list-view-column-content {
+            & > .hg-table-column-content {
               & > .hg-button {
                 margin: 0.25em 0.75em;
               }

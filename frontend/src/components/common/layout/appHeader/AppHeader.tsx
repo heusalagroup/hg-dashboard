@@ -8,7 +8,6 @@ import {
     T_COMMON_COMPANY_NAME
 } from "../../../../constants/translation";
 import { APP_HEADER_CLASS_NAME } from "../../../../constants/appClassName";
-import { AppMenuDropdown } from "../appMenu/AppMenuDropdown";
 import { ProfileMenuDropdown } from "../profileMenu/ProfileMenuDropdown";
 import { useCurrentWorkspaceName } from "../../../../hooks/workspace/useCurrentWorkspaceName";
 import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
