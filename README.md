@@ -7,7 +7,7 @@ HG's Dashboard Project to bootstrap full stack TypeScript projects.
 ### Fetching source code
 
 ```shell
-git clone git@github.com:hangovergames/hg-dashboard.git hg-dashboard
+git clone git@github.com:heusalagroup/hg-dashboard.git hg-dashboard
 cd hg-dashboard
 git submodule update --init --recursive
 ```
