@@ -45,3 +45,5 @@
 [submodule "testing/src/fi/hg/matrix"]
 	path = testing/src/fi/hg/matrix
 	url = git@github.com:heusalagroup/fi.hg.matrix.git
+	branch = main
+
