@@ -16,15 +16,15 @@ import { useIntervalUpdate } from "../../../../fi/hg/frontend/hooks/useIntervalU
 import { USER_LIST_UPDATE_INTERVAL_IN_MS } from "../../../../constants/frontend";
 import { useCurrentWorkspaceId } from "../../../../hooks/workspace/useCurrentWorkspaceId";
 import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
-import "./UserListView.scss";
-import { User } from "../../../../fi/hg/dashboard/types/User";
-import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 import { TableHeaderColumn } from "../../../../fi/hg/frontend/components/table/TableHeaderColumn";
 import { TableHeader } from "../../../../fi/hg/frontend/components/table/TableHeader";
 import { TableBody } from "../../../../fi/hg/frontend/components/table/TableBody";
 import { Table } from "../../../../fi/hg/frontend/components/table/Table";
 import { TableColumn } from "../../../../fi/hg/frontend/components/table/TableColumn";
 import { TableRow } from "../../../../fi/hg/frontend/components/table/TableRow";
+import { User } from "../../../../fi/hg/dashboard/types/User";
+import "./UserListView.scss";
 
 const LOG = LogService.createLogger('UserListView');
 

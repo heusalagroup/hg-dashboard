@@ -19,9 +19,9 @@ import { CommandExitStatus } from "./fi/hg/core/cmd/types/CommandExitStatus";
 import { RequestClient } from "./fi/hg/core/RequestClient";
 import { CommandArgumentUtils } from "./fi/hg/core/cmd/utils/CommandArgumentUtils";
 import { ParsedCommandArgumentStatus } from "./fi/hg/core/cmd/types/ParsedCommandArgumentStatus";
-import { RequestServer } from "./fi/hg/core/RequestServer";
+import { RequestServer } from "./fi/hg/node/RequestServer";
 import { DashboardBackendController } from "./controllers/DashboardBackendController";
-import { RequestRouter } from "./fi/hg/core/requestServer/RequestRouter";
+import { RequestRouter } from "./fi/hg/node/requestServer/RequestRouter";
 import { Headers } from "./fi/hg/core/request/Headers";
 import { BUILD_USAGE_URL, BUILD_WITH_FULL_USAGE } from "./constants/build";
 import { EmailTokenService } from "./fi/hg/backend/EmailTokenService";
@@ -54,6 +54,7 @@ import { EmailAuthController } from "./fi/hg/backend/EmailAuthController";
 import { EmailVerificationService } from "./fi/hg/backend/EmailVerificationService";
 import { EmailAuthMessageService } from "./fi/hg/backend/EmailAuthMessageService";
 import { parseLanguage } from "./fi/hg/core/types/Language";
+import { HgNode } from "./fi/hg/node/HgNode";
 
 // Must be first import to define environment variables before anything else
 ProcessUtils.initEnvFromDefaultFiles();
@@ -68,6 +69,8 @@ export async function main (
 ) : Promise<CommandExitStatus> {
 
     try {
+
+        HgNode.initialize();
 
         Headers.setLogLevel(LogLevel.INFO);
         RequestRouter.setLogLevel(LogLevel.INFO);

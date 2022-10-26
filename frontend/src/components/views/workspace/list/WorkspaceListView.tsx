@@ -18,8 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { ABOUT_ROUTE } from "../../../../constants/route";
 import { useCallback } from "react";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
-import { EmailUtils } from "../../../../fi/hg/core/utils/EmailUtils";
-import "./WorkspaceListView.scss";
+import { EmailUtils } from "../../../../fi/hg/core/EmailUtils";
 import { useWorkspaceList } from "../../../../hooks/workspace/useWorkspaceList";
 import { VALID_ADMIN_DOMAINS } from "../../../../fi/hg/dashboard/constants/dashboard-api";
 import { useEventWorkspaceAdded } from "../../../../hooks/workspace/useEventWorkspaceAdded";
@@ -27,6 +26,7 @@ import { useEventWorkspaceUpdated } from "../../../../hooks/workspace/useEventWo
 import { useEventWorkspaceRemoved } from "../../../../hooks/workspace/useEventWorkspaceRemoved";
 import { useEventCurrentWorkspaceChanged } from "../../../../hooks/workspace/useEventCurrentWorkspaceChanged";
 import { Workspace } from "../../../../fi/hg/dashboard/types/Workspace";
+import "./WorkspaceListView.scss";
 
 const LOG = LogService.createLogger('WorkspaceListView');
 

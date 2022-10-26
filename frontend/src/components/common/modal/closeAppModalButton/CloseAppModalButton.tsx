@@ -2,7 +2,7 @@
 
 import { CLOSE_APP_MODAL_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import { Button } from "../../../../fi/hg/frontend/components/button/Button";
-import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
 import "./CloseAppModalButton.scss";
 

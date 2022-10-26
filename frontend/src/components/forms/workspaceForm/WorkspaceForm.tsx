@@ -4,7 +4,7 @@ import { WORKSPACE_FORM_CLASS_NAME } from "../../../constants/appClassName";
 import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
-import { ButtonType } from "../../../fi/hg/frontend/components/button/types/ButtonType";
+import { ButtonType } from "../../../fi/hg/core/frontend/button/ButtonType";
 import {
     T_WORKSPACE_FORM_NAME_PLACEHOLDER,
     T_NEW_WORKSPACE_MODAL_SUBMIT_TEXT

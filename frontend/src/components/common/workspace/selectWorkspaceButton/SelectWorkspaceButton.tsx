@@ -5,8 +5,8 @@ import { SignInIcon } from "../../../../assets/icons";
 import { Button } from "../../../../fi/hg/frontend/components/button/Button";
 import { ReactNode, useCallback } from "react";
 import { WorkspaceService } from "../../../../services/WorkspaceService";
-import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
 import { Workspace } from "../../../../fi/hg/dashboard/types/Workspace";
+import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 
 export interface SelectWorkspaceButtonProps {
     readonly className?: string;

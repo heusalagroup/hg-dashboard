@@ -51,7 +51,7 @@ import { LogLevel } from "../fi/hg/core/types/LogLevel";
 import { createUserListDTO, UserListDTO } from "../fi/hg/dashboard/types/dto/UserListDTO";
 import { createUser, isPartialUser, isUser, User } from "../fi/hg/dashboard/types/User";
 import { createNewWorkspaceDTO, NewWorkspaceDTO } from "../fi/hg/dashboard/types/dto/NewWorkspaceDTO";
-import { EmailUtils } from "../fi/hg/core/utils/EmailUtils";
+import { EmailUtils } from "../fi/hg/core/EmailUtils";
 import { isAuthenticateEmailDTO } from "../fi/hg/core/auth/email/types/AuthenticateEmailDTO";
 import { JwtService } from "../fi/hg/backend/JwtService";
 import { DASHBOARD_AUTHORIZATION_HEADER_NAME } from "../fi/hg/dashboard/constants/dashboard-headers";

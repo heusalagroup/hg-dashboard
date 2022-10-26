@@ -2,7 +2,7 @@
 
 import { ModalState } from "../views/types/ModelState";
 import { EmailTokenDTO } from "../../fi/hg/core/auth/email/types/EmailTokenDTO";
-import { EmailUtils } from "../../fi/hg/core/utils/EmailUtils";
+import { EmailUtils } from "../../fi/hg/core/EmailUtils";
 import { EmailAuthSessionService } from "../../fi/hg/frontend/services/EmailAuthSessionService";
 import { useState, useEffect, MouseEvent, FormEvent, ChangeEvent, useCallback } from "react";
 import { Loader } from "../../fi/hg/frontend/components/loader/Loader";

@@ -2,7 +2,7 @@
 
 import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
 import { AppModalType } from "../../../../types/AppModalType";
-import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 import { Button } from "../../../../fi/hg/frontend/components/button/Button";
 import { OPEN_APP_MODAL_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import { ReactNode } from "react";

@@ -2,7 +2,7 @@
 
 import { ModalState } from "../../views/types/ModelState";
 import { EmailTokenDTO } from "../../../fi/hg/core/auth/email/types/EmailTokenDTO";
-import { EmailUtils } from "../../../fi/hg/core/utils/EmailUtils";
+import { EmailUtils } from "../../../fi/hg/core/EmailUtils";
 import { EmailAuthSessionService } from "../../../fi/hg/frontend/services/EmailAuthSessionService";
 import { useState, useEffect, MouseEvent, useCallback } from "react";
 import { Loader } from "../../../fi/hg/frontend/components/loader/Loader";
@@ -27,7 +27,7 @@ import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { EmailField } from "../../../fi/hg/frontend/components/fields/email/EmailField";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
-import { ButtonType } from "../../../fi/hg/frontend/components/button/types/ButtonType";
+import { ButtonType } from "../../../fi/hg/core/frontend/button/ButtonType";
 import './LoginForm.scss';
 
 const LOG = LogService.createLogger("LoginForm");

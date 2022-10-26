@@ -4,7 +4,7 @@ import { OpenAppModalButton } from "../../modal/openAppModalButton/OpenAppModalB
 import { AppModalType } from "../../../../types/AppModalType";
 import { Icon } from "../../../../fi/hg/frontend/components/icon/Icon";
 import { EditIcon } from "../../../../assets/icons";
-import { ButtonStyle } from "../../../../fi/hg/frontend/components/button/types/ButtonStyle";
+import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 
 export interface OpenEditUserModalButtonProps {
     readonly id : string;

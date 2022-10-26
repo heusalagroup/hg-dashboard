@@ -4,14 +4,14 @@ import { USER_FORM_CLASS_NAME } from "../../../constants/appClassName";
 import { Form } from "../../../fi/hg/frontend/components/form/Form";
 import { TextField } from "../../../fi/hg/frontend/components/fields/text/TextField";
 import { Button } from "../../../fi/hg/frontend/components/button/Button";
-import { ButtonType } from "../../../fi/hg/frontend/components/button/types/ButtonType";
+import { ButtonType } from "../../../fi/hg/core/frontend/button/ButtonType";
 import { T_USER_FORM_EMAIL_PLACEHOLDER, T_USER_FORM_NAME_PLACEHOLDER, T_NEW_USER_MODAL_SUBMIT_TEXT } from "../../../constants/translation";
 import { useWorkspaceUserForm } from "../../../hooks/user/useWorkspaceUserForm";
 import { EmailField } from "../../../fi/hg/frontend/components/fields/email/EmailField";
 import { User } from "../../../fi/hg/dashboard/types/User";
 import { TranslationFunction } from "../../../fi/hg/core/types/TranslationFunction";
-import "./UserForm.scss";
 import { Loader } from "../../../fi/hg/frontend/components/loader/Loader";
+import "./UserForm.scss";
 
 export interface UserFormProps {
     readonly t            : TranslationFunction;
