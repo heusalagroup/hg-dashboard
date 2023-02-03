@@ -4,7 +4,7 @@ import { USER_LIST_VIEW_CLASS_NAME } from "../../../../constants/appClassName";
 import { TFunction } from "i18next";
 import { useWorkspaceUserList } from "../../../../hooks/user/useWorkspaceUserList";
 import { T_USER_LIST_TITLE, T_USER_TABLE_EMAIL_TITLE, T_USER_TABLE_NAME_TITLE, T_USER_TABLE_NO_RESULTS } from "../../../../constants/translation";
-import { map } from "../../../../fi/hg/core/modules/lodash";
+import { map } from "../../../../fi/hg/core/functions/map";
 import { OpenNewUserModalButton } from "../../../common/user/openNewUserModalButton/OpenNewUserModalButton";
 import { OpenEditUserModalButton } from "../../../common/user/openEditUserModalButton/OpenEditUserModalButton";
 import { useEventUserAdded } from "../../../../hooks/user/useEventUserAdded";

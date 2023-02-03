@@ -7,7 +7,7 @@ import {
     T_WORKSPACE_TABLE_NAME_TITLE,
     T_WORKSPACE_LIST_VIEW_NO_RESULTS
 } from "../../../../constants/translation";
-import { map } from "../../../../fi/hg/core/modules/lodash";
+import { map } from "../../../../fi/hg/core/functions/map";
 import { OpenNewWorkspaceModalButton } from "../../../common/workspace/openNewWorkspaceModalButton/OpenNewWorkspaceModalButton";
 import { SelectWorkspaceButton } from "../../../common/workspace/selectWorkspaceButton/SelectWorkspaceButton";
 import { LogService } from "../../../../fi/hg/core/LogService";

@@ -2,7 +2,7 @@
 
 import { SelectFieldItem } from "../../fi/hg/frontend/types/items/SelectFieldModel";
 import { useEffect, useState } from "react";
-import { map } from "../../fi/hg/core/modules/lodash";
+import { map } from "../../fi/hg/core/functions/map";
 import { User } from "../../fi/hg/dashboard/types/User";
 
 export function useUserSelectFieldItemList(

@@ -24,6 +24,7 @@
     "react-i18next": "^11.15.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
+    "moment-timezone": "^0.5.34",
     "typescript": "^4.5.2",
     "web-vitals": "^2.1.4"
   },
@@ -52,8 +53,6 @@
     ]
   },
   "dependencies": {
-    "@types/react-i18next": "^8.1.0",
-    "moment-timezone": "^0.5.34"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

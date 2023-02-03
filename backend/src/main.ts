@@ -46,7 +46,7 @@ import { isStoredWorkspaceRepositoryItem,
 import { isStoredUserRepositoryItem,
     StoredUserRepositoryItem } from "./fi/hg/dashboard/types/repository/user/StoredUserRepositoryItem";
 import { RepositoryType } from "./fi/hg/core/simpleRepository/types/RepositoryType";
-import { startsWith } from "./fi/hg/core/modules/lodash";
+import { startsWith } from "./fi/hg/core/functions/startsWith";
 import { StoredRepositoryItem, StoredRepositoryItemTestCallback } from "./fi/hg/core/simpleRepository/types/StoredRepositoryItem";
 import { MemoryRepositoryInitializer } from "./fi/hg/core/simpleRepository/MemoryRepositoryInitializer";
 import { MemorySharedClientService } from "./fi/hg/core/simpleRepository/MemorySharedClientService";

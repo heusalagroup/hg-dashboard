@@ -112,6 +112,7 @@ export function LoginForm (props: LoginFormProps) {
             setError(false);
             setModalState(ModalState.VERIFYING_CODE);
 
+            console.log('woot1');
             EmailAuthSessionService.verifyEmailCode(orderEmailToken, code)
                                    .then(async () => {
                                        const token = EmailAuthSessionService.getEmailToken();
@@ -162,6 +163,7 @@ export function LoginForm (props: LoginFormProps) {
             setModalState(ModalState.AUTHENTICATING);
             setOrderEmailToken(undefined);
             setError(false);
+            console.log('woot2');
             EmailAuthSessionService.authenticateEmailAddress(emailAddress)
                                    .then((token: EmailTokenDTO) => {
                                        setOrderEmailToken(token);

@@ -41,7 +41,10 @@ import { createProfileDTO, ProfileDTO } from "../fi/hg/dashboard/types/dto/Profi
 import { EmailTokenDTO } from "../fi/hg/core/auth/email/types/EmailTokenDTO";
 import { RequestParamValueType } from "../fi/hg/core/request/types/RequestParamValueType";
 import { DashboardQueryParam } from "../fi/hg/dashboard/types/DashboardQueryParam";
-import { filter, map, trim, uniq } from "../fi/hg/core/modules/lodash";
+import { filter } from "../fi/hg/core/functions/filter";
+import { map } from "../fi/hg/core/functions/map";
+import { trim } from "../fi/hg/core/functions/trim";
+import { uniq } from "../fi/hg/core/functions/uniq";
 import { EmailAuthController } from "../fi/hg/backend/EmailAuthController";
 import { DashboardBackendService } from "../services/DashboardBackendService";
 import { IndexDTO } from "../fi/hg/dashboard/types/dto/IndexDTO";
@@ -674,6 +677,7 @@ export class DashboardBackendController {
         @RequestBody
             body: ReadonlyJsonObject
     ): Promise<ResponseEntity<EmailTokenDTO | ErrorDTO>> {
+        LOG.debug('verifyEmailToken');
         return this._emailAuthController.verifyEmailToken(body);
     }
 
@@ -687,6 +691,7 @@ export class DashboardBackendController {
         @RequestBody
             body: ReadonlyJsonObject
     ): Promise<ResponseEntity<EmailTokenDTO | ErrorDTO>> {
+        LOG.debug('verifyEmailCode');
         return this._emailAuthController.verifyEmailCode(body);
     }
 

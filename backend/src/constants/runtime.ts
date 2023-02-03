@@ -1,6 +1,6 @@
 // Copyright (c) 2022. Heusala Group <info@heusalagroup.fi>. All rights reserved.
 
-import { parseNonEmptyString } from "../fi/hg/core/modules/lodash";
+import { parseNonEmptyString } from "../fi/hg/core/types/String";
 import { LogLevel, parseLogLevel } from "../fi/hg/core/types/LogLevel";
 import {
     BUILD_COMMAND_NAME,

@@ -1,6 +1,6 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { map } from "../fi/hg/core/modules/lodash";
+import { map } from "../fi/hg/core/functions/map";
 import { WorkspaceRepositoryService } from "../fi/hg/dashboard/services/WorkspaceRepositoryService";
 import { LogService } from "../fi/hg/core/LogService";
 import { UserRepositoryService } from "../fi/hg/dashboard/services/UserRepositoryService";

@@ -39,7 +39,7 @@
     "@types/jest": "^28.1.6",
     "@types/jws": "^3.2.4",
     "@types/lodash": "^4.14.182",
-    "@types/node": "^17.0.25",
+    "@types/node": "^17.0.45",
     "@types/nodemailer": "^6.4.4",
     "i18next": "^21.8.13",
     "jws": "^4.0.0",
