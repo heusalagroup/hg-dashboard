@@ -3,15 +3,14 @@
 import { APP_MENU_CLASS_NAME } from "../../../../constants/appClassName";
 import { NavLink } from "react-router-dom";
 import {
-    USER_LIST_ROUTE
-} from "../../../../constants/route";
-import {
     T_APP_HEADER_NAV_USERS
 } from "../../../../constants/translation";
 import { useCallback, MouseEvent } from "react";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/useDropdownToggleWithoutWindowSizeAndScroll";
 import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
+import {useCurrentWorkspaceId} from "../../../../hooks/workspace/useCurrentWorkspaceId";
+import {LogService} from "../../../../fi/hg/core/LogService";
 import "./AppMenu.scss";
 
 export interface MenuProps {
@@ -19,13 +18,15 @@ export interface MenuProps {
     readonly className?: string;
     readonly changeMenuState: SetProfileMenuOpenCallback;
 }
-
+const LOG = LogService.createLogger('AppMenu');
 export function AppMenu (props: MenuProps) {
 
     const t = props?.t;
     const className = props?.className;
     const setMenuOpen = props.changeMenuState;
     const session = useEmailAuthSession();
+
+    const workspace = useCurrentWorkspaceId();
 
     const closeMenuCallback = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
@@ -66,7 +67,8 @@ export function AppMenu (props: MenuProps) {
 
                             <NavLink
                                 className={`${APP_MENU_CLASS_NAME}-content-nav-item`}
-                                to={USER_LIST_ROUTE}
+                                // to={USER_LIST_ROUTE}
+                                to={"/"+ `${workspace}` + "/users"}
                             >{t(T_APP_HEADER_NAV_USERS)}</NavLink>
 
                         </nav>

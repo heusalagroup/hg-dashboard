@@ -24,7 +24,7 @@ export function useWorkspaceUser (
                     LOG.error(`useUser: Failed to load user "${userId}" for workspace "${workspaceId}": `, err);
                 });
             } else {
-                LOG.debug(`useWorkspaceUser: Did not have workspaceId and/or userId`);
+                LOG.debug(`useWorkspaceUser: Did not have workspaceId "${workspaceId}" and/or userId "${userId}"`);
             }
         },
         [

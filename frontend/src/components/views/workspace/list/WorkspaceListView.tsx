@@ -14,8 +14,6 @@ import { LogService } from "../../../../fi/hg/core/LogService";
 import { useIntervalUpdate } from "../../../../fi/hg/frontend/hooks/useIntervalUpdate";
 import { WORKSPACE_LIST_UPDATE_INTERVAL_IN_MS } from "../../../../constants/frontend";
 import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
-import { useNavigate } from "react-router-dom";
-import { ABOUT_ROUTE } from "../../../../constants/route";
 import { useCallback } from "react";
 import { useEmailAuthSession } from "../../../../fi/hg/frontend/hooks/useEmailAuthSession";
 import { EmailUtils } from "../../../../fi/hg/core/EmailUtils";
@@ -41,7 +39,7 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
     const className = props?.className;
     const [workspaceList, refreshCallback] = useWorkspaceList();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const session = useEmailAuthSession();
     const email = session?.email;
@@ -51,12 +49,12 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
 
     const workspaceAddedCallback = useCallback(
         () => {
-            LOG.debug(`Workspace changed, move to about view`);
+            LOG.info(`Workspace changed, move to about view`);
             refreshCallback();
-            navigate(ABOUT_ROUTE);
+            //navigate(USER_LIST_ROUTE);
         },
         [
-            navigate,
+            //navigate,
             refreshCallback
         ]
     );
@@ -77,48 +75,48 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
     }
 
     return (
+
         <div className={
             WORKSPACE_LIST_VIEW_CLASS_NAME
             + (className? ` ${className}` : '')
         }>
+            <header className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header'}>
+                        <h3 className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-title'}>{t(T_WORKSPACE_LIST_TITLE)}</h3>
+                        <div className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-controls'}>
+                            {canCreateWorkspace ? (
+                                <OpenNewWorkspaceModalButton/>
+                            ) : null}
+                        </div>
+                    </header>
 
-            <header className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-header'}>
-                <h3 className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-header-title'}>{t(T_WORKSPACE_LIST_TITLE)}</h3>
-                <div className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-header-controls'}>
-                    {canCreateWorkspace? (
-                        <OpenNewWorkspaceModalButton />
-                    ) : null}
+                    <table className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-table'}>
+                        <thead>
+                        <tr>
+                            <th>{t(T_WORKSPACE_TABLE_NAME_TITLE)}</th>
+                        </tr>
+                        </thead>
+                        <tbody>{
+                            (workspaceList?.length ?? 0) === 0 ? (
+                                <>
+                                    <tr>
+                                        <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-no-results'}>{t(T_WORKSPACE_LIST_VIEW_NO_RESULTS)}</td>
+                                    </tr>
+                                </>
+                            ) : map(workspaceList, (item: Workspace) => {
+                                return (
+                                    <tr key={`workspace-item-${item?.id}`}>
+                                        <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-column-name'}>
+                                            <SelectWorkspaceButton
+                                                className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-workspace-button'}
+                                                workspace={item}>{(item.name === '' ? undefined : item.name) ?? item.id}</SelectWorkspaceButton>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        }</tbody>
+                    </table>
+
                 </div>
-            </header>
-
-            <table className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-table'}>
-                <thead>
-                <tr>
-                    <th>{t(T_WORKSPACE_TABLE_NAME_TITLE)}</th>
-                </tr>
-                </thead>
-                <tbody>{
-                    (workspaceList?.length ?? 0) === 0 ? (
-                        <>
-                            <tr>
-                                <td className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-no-results'}>{t(T_WORKSPACE_LIST_VIEW_NO_RESULTS)}</td>
-                            </tr>
-                        </>
-                    ) : map(workspaceList, (item : Workspace) => {
-                        return (
-                            <tr key={`workspace-item-${item?.id}`}>
-                                <td className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-column-name'}>
-                                    <SelectWorkspaceButton
-                                        className={WORKSPACE_LIST_VIEW_CLASS_NAME+'-workspace-button'}
-                                        workspace={item}>{ (item.name === '' ? undefined : item.name) ?? item.id }</SelectWorkspaceButton>
-                                </td>
-                            </tr>
-                        );
-                    })
-                }</tbody>
-            </table>
-
-        </div>
     );
 
 }

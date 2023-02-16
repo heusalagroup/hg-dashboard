@@ -6,13 +6,21 @@ import { EmailAuthSessionService } from "../fi/hg/frontend/services/EmailAuthSes
 import { User } from "../fi/hg/dashboard/types/User";
 import { DashboardClient } from "../fi/hg/dashboard/services/DashboardClient";
 import { LogService } from "../fi/hg/core/LogService";
+import {WorkspaceService} from "./WorkspaceService";
 
 const LOG = LogService.createLogger('UserService');
 
 export enum UserServiceEvent {
     USER_ADDED = "UserService:itemAdded",
     USER_UPDATED = "UserService:itemUpdated",
-    USER_REMOVED = "UserService:itemRemoved"
+    USER_REMOVED = "UserService:itemRemoved",
+
+/**
+ * Triggered when current user is changed.
+ *
+ * Use `UserService.getWorkspaceId()` to fetch the new ID.
+ */
+     CURRENT_USER_CHANGED = "UserService:currentUserChanged"
 }
 
 export type UserServiceDestructor = ObserverDestructor;
@@ -22,6 +30,11 @@ export class UserService {
     private static _observer : Observer<UserServiceEvent> = new Observer<UserServiceEvent>("UserService");
 
     public static Event = UserServiceEvent;
+
+    private static _user: User | undefined;
+    public static getCurrentUser (): User | undefined {
+        return this._user;
+    }
 
     public static on(
         name: UserServiceEvent,
@@ -109,7 +122,69 @@ export class UserService {
 
     }
 
+    public static async setCurrentUser (user: User | undefined) {
+
+        if ( user !== this._user ) {
+            LOG.info("setCurrentUser;", user)
+            this._user = user;
+            if ( this._observer.hasCallbacks(UserServiceEvent.CURRENT_USER_CHANGED) ) {
+                if (user){
+                    const email: string | undefined = EmailAuthSessionService.getEmailAddress();
+                    LOG.debug("User email;", email)
+
+                    const workspace = WorkspaceService.getCurrentWorkspaceId()
+                    if (email && workspace){
+                        const userList = await UserService.getWorkspaceUserList(workspace)
+
+                        if (userList  ) {
+
+                            const result = userList.filter(user => user.email === email)
+
+                            if (result ){
+                                LOG.info("Set user: ", result[0])
+                                this._user = result[0];
+                            } else {
+                                LOG.debug(`useSelectWorkspaceUserCallback: Did not find user to this email `, email);
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                this._observer.triggerEvent(UserServiceEvent.CURRENT_USER_CHANGED);
+
+
+            }
+        }
+    }
+
     public static initialize () {
+        LOG.info(`Initializing user`);
+        this._initializeUser().catch((err) => {
+            LOG.error(`ERROR: Could not initialize user: `, err);
+        });
+    }
+
+    public static async _initializeUser () {
+        const email: string | undefined = EmailAuthSessionService.getEmailAddress();
+        LOG.debug("User email;", email)
+        const workspace = WorkspaceService.getCurrentWorkspaceId()
+        if (email && workspace) {
+            const userList = await UserService.getWorkspaceUserList(workspace)
+
+            if (userList) {
+                const result = userList.filter(user => user.email === email)
+
+                if (result) {
+                    LOG.info("Initialize user: ", result[0])
+                    await UserService.setCurrentUser(result[0]);
+                }
+            }
+        } else {
+            LOG.info("NOT yet User email: ", email, ' or workspace ', workspace)
+        }
     }
 
 }

@@ -3,7 +3,7 @@
 import { CLOSE_APP_MODAL_BUTTON_CLASS_NAME } from "../../../../constants/appClassName";
 import { Button } from "../../../../fi/hg/frontend/components/button/Button";
 import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
-import { useAppCallback } from "../../../../hooks/modal/useAppCallback";
+import {useAppNavigateCallback} from "../../../../hooks/modal/useAppNavigateCallback";
 import "./CloseAppModalButton.scss";
 
 export interface CloseAppModalButtonProps {
@@ -12,7 +12,7 @@ export interface CloseAppModalButtonProps {
 
 export function CloseAppModalButton (props: CloseAppModalButtonProps) {
     const className = props?.className;
-    const closeModalCallback = useAppCallback();
+    const closeModalCallback = useAppNavigateCallback();
     return (
         <Button
             className={

@@ -7,6 +7,7 @@ import { ReactNode, useCallback } from "react";
 import { WorkspaceService } from "../../../../services/WorkspaceService";
 import { Workspace } from "../../../../fi/hg/dashboard/types/Workspace";
 import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
+import {RouteService} from "../../../../fi/hg/frontend/services/RouteService";
 
 export interface SelectWorkspaceButtonProps {
     readonly className?: string;
@@ -20,7 +21,9 @@ export function SelectWorkspaceButton (props: SelectWorkspaceButtonProps) {
     const children = props?.children;
     const onClick = useCallback(
         () => {
-            WorkspaceService.setCurrentWorkspace(workspace);
+            WorkspaceService.setCurrentWorkspace(workspace).then(()=>{
+                RouteService.setRoute("/workspace/"+workspace?.id+"/about")
+            });
         },
         [
             workspace
@@ -33,6 +36,6 @@ export function SelectWorkspaceButton (props: SelectWorkspaceButtonProps) {
                 className ? className : ''
             }
             click={onClick}
-        ><Icon><SignInIcon /></Icon> {children}</Button>
+        ><Icon><SignInIcon /></Icon>{children}</Button>
     );
 }

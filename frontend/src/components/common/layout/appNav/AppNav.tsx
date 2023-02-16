@@ -3,11 +3,12 @@
 import { APP_NAV_CLASS_NAME } from "../../../../constants/appClassName";
 import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import { NavLink } from "react-router-dom";
-import { ABOUT_ROUTE, USER_LIST_ROUTE } from "../../../../constants/route";
+import { ABOUT_ROUTE } from "../../../../constants/route";
 import { T_APP_HEADER_NAV_HOME, T_APP_HEADER_NAV_USERS } from "../../../../constants/translation";
-import "./AppNav.scss";
 import { Icon } from "../../../../fi/hg/frontend/components/icon/Icon";
 import { HomeIcon, UserListIcon } from "../../../../assets/icons";
+import {useCurrentWorkspaceId} from "../../../../hooks/workspace/useCurrentWorkspaceId";
+import "./AppNav.scss";
 
 export interface AppNavProps {
     readonly t : TranslationFunction;
@@ -18,6 +19,8 @@ export function AppNav (props: AppNavProps) {
 
     const t = props?.t;
     const className = props?.className;
+
+    const workspace = useCurrentWorkspaceId();
 
     return (
         <nav className={
@@ -38,7 +41,8 @@ export function AppNav (props: AppNavProps) {
 
                 <NavLink
                     className={`${APP_NAV_CLASS_NAME}-section-item`}
-                    to={USER_LIST_ROUTE}
+                    //to={USER_LIST_ROUTE}
+                    to={"/workspace/"+ `${workspace}` + "/users"}
                 ><Icon><UserListIcon /></Icon> <span className={`${APP_NAV_CLASS_NAME}-section-item-text`}>{t(T_APP_HEADER_NAV_USERS)}</span></NavLink>
 
             </section>
