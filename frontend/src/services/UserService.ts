@@ -6,7 +6,6 @@ import { EmailAuthSessionService } from "../fi/hg/frontend/services/EmailAuthSes
 import { User } from "../fi/hg/dashboard/types/User";
 import { DashboardClient } from "../fi/hg/dashboard/services/DashboardClient";
 import { LogService } from "../fi/hg/core/LogService";
-import {WorkspaceService} from "./WorkspaceService";
 import {ProfileService} from "./ProfileService";
 
 const LOG = LogService.createLogger('UserService');

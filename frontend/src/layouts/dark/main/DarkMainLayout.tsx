@@ -7,6 +7,9 @@ import {LogService} from "../../../fi/hg/core/LogService";
 import {useParams} from "react-router-dom";
 import {useUrlWorkspaceName} from "../../../hooks/workspace/useUrlWorkspacename";
 import "./DarkMainLayout.scss";
+import {AppModalType} from "../../../types/AppModalType";
+import {AppModalService} from "../../../services/AppModalService";
+import {useCurrentWorkspaceName} from "../../../hooks/workspace/useCurrentWorkspaceName";
 
 const LOG = LogService.createLogger('DarkMainLayout');
 export function DarkMainLayout (props: LayoutProps) {
@@ -17,7 +20,13 @@ export function DarkMainLayout (props: LayoutProps) {
     const userId = opts?.id ?? undefined;
     const workspaceId = opts?.parentId ?? undefined;
 
-    useUrlWorkspaceName(workspaceId, userId);
+    const openModal = useUrlWorkspaceName(workspaceId, userId);
+
+    const workspaceName = useCurrentWorkspaceName();
+
+    if(!workspaceName){
+        openModal();
+    }
 
     return (
         <div className={DARK_MAIN_LAYOUT_CLASS_NAME}>

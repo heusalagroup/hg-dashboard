@@ -31,7 +31,7 @@ export function useAppNavigateCallback (
         },
         [
             modal,
-            id
+            id, navigate
         ]
     );
 }

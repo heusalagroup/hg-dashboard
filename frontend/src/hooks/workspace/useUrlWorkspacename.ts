@@ -6,7 +6,6 @@
  * set current workspace
  * set route
  * open modal
- * and return it
  * */
 import {useCallback, useEffect, useState} from "react";
 import {WorkspaceService} from "../../services/WorkspaceService";
@@ -22,11 +21,9 @@ const LOG = LogService.createLogger('useUrlWorkspaceName');
 export function useUrlWorkspaceName (
     workspaceByUrl ?: string,
     userByUrl ?: string
-):  [Workspace | undefined, VoidCallback ] {
+):VoidCallback {
 
-    const [ workspace, setWorkspace ] = useState<Workspace | undefined>();
-
-    const urlWorkspaceCallback = useCallback(
+return useCallback(
         async () => {
             try {
 
@@ -34,14 +31,21 @@ export function useUrlWorkspaceName (
                 const workspace = workspaceList?.find(listItem => listItem.id === workspaceByUrl)
 
                 LOG.info("Set current workspace: ", workspace )
-                setWorkspace(workspace)
 
-               await WorkspaceService.setCurrentWorkspace(workspace).then(()=> {
-                    LOG.info("Current workspace has set: ", workspace?.name )
-                    RouteService.setRoute('/workspace/'+ workspace?.id +'/users/'+ userByUrl);
-                    AppModalService.setCurrentModal(AppModalType.EDIT_USER_MODAL, userByUrl);
-                   return;
-                });
+                const modal = AppModalService.getCurrentModal();
+
+                if(modal !== AppModalType.EDIT_USER_MODAL) {
+
+                    await WorkspaceService.setCurrentWorkspace(workspace).then(() => {
+                        LOG.info("Current workspace has set: ", workspace?.name)
+                        RouteService.setRoute('/workspace/' + workspace?.id + '/users/' + userByUrl);
+
+                        LOG.info("Just opening new modal ... ")
+                        AppModalService.setCurrentModal(AppModalType.EDIT_USER_MODAL, userByUrl);
+
+                        return;
+                    });
+                }
 
 
             } catch (err) {
@@ -49,25 +53,8 @@ export function useUrlWorkspaceName (
             }
         },
         [
-            workspaceByUrl
+            workspaceByUrl, userByUrl
         ]
     );
 
-    //Update initially
-    useEffect(
-        () => {
-            if (workspaceByUrl !== undefined && workspace?.id === undefined && userByUrl !== undefined) {
-                urlWorkspaceCallback().then(
-                    () => {
-                        LOG.info("Workspace DONE")
-                        return;
-                    }
-                );
-            }
-        },
-        [
-            urlWorkspaceCallback, workspaceByUrl, workspace?.id
-        ]
-    );
-    return [ workspace, urlWorkspaceCallback ];
 }
