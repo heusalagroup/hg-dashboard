@@ -1,36 +1,44 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { USER_LIST_VIEW_CLASS_NAME } from "../../../../constants/appClassName";
-import { TFunction } from "i18next";
-import { useWorkspaceUserList } from "../../../../hooks/user/useWorkspaceUserList";
-import { T_USER_LIST_TITLE, T_USER_TABLE_EMAIL_TITLE, T_USER_TABLE_NAME_TITLE, T_USER_TABLE_NO_RESULTS } from "../../../../constants/translation";
-import { map } from "../../../../fi/hg/core/functions/map";
-import { OpenNewUserModalButton } from "../../../common/user/openNewUserModalButton/OpenNewUserModalButton";
-import { OpenEditUserModalButton } from "../../../common/user/openEditUserModalButton/OpenEditUserModalButton";
-import { useEventUserAdded } from "../../../../hooks/user/useEventUserAdded";
-import { LogService } from "../../../../fi/hg/core/LogService";
-import { useEventUserRemoved } from "../../../../hooks/user/useEventUserRemoved";
-import { useEventUserUpdated } from "../../../../hooks/user/useEventUserUpdated";
-import { useEventCurrentWorkspaceChanged } from "../../../../hooks/workspace/useEventCurrentWorkspaceChanged";
-import { useIntervalUpdate } from "../../../../fi/hg/frontend/hooks/useIntervalUpdate";
-import { USER_LIST_UPDATE_INTERVAL_IN_MS } from "../../../../constants/frontend";
-import { useCurrentWorkspaceId } from "../../../../hooks/workspace/useCurrentWorkspaceId";
-import { Loader } from "../../../../fi/hg/frontend/components/loader/Loader";
-import { ButtonStyle } from "../../../../fi/hg/core/frontend/button/ButtonStyle";
-import { TableHeaderColumn } from "../../../../fi/hg/frontend/components/table/TableHeaderColumn";
-import { TableHeader } from "../../../../fi/hg/frontend/components/table/TableHeader";
-import { TableBody } from "../../../../fi/hg/frontend/components/table/TableBody";
-import { Table } from "../../../../fi/hg/frontend/components/table/Table";
-import { TableColumn } from "../../../../fi/hg/frontend/components/table/TableColumn";
-import { TableRow } from "../../../../fi/hg/frontend/components/table/TableRow";
-import { User } from "../../../../fi/hg/dashboard/types/User";
+import {USER_LIST_VIEW_CLASS_NAME} from "../../../../constants/appClassName";
+import {TFunction} from "i18next";
+import {useWorkspaceUserList} from "../../../../hooks/user/useWorkspaceUserList";
+import {
+    T_USER_LIST_TITLE,
+    T_USER_TABLE_EMAIL_TITLE,
+    T_USER_TABLE_NAME_TITLE,
+    T_USER_TABLE_NO_RESULTS
+} from "../../../../constants/translation";
+import {map} from "../../../../fi/hg/core/functions/map";
+import {OpenNewUserModalButton} from "../../../common/user/openNewUserModalButton/OpenNewUserModalButton";
+import {useEventUserAdded} from "../../../../hooks/user/useEventUserAdded";
+import {LogService} from "../../../../fi/hg/core/LogService";
+import {useEventUserRemoved} from "../../../../hooks/user/useEventUserRemoved";
+import {useEventUserUpdated} from "../../../../hooks/user/useEventUserUpdated";
+import {useEventCurrentWorkspaceChanged} from "../../../../hooks/workspace/useEventCurrentWorkspaceChanged";
+import {useIntervalUpdate} from "../../../../fi/hg/frontend/hooks/useIntervalUpdate";
+import {USER_LIST_UPDATE_INTERVAL_IN_MS} from "../../../../constants/frontend";
+import {useCurrentWorkspaceId} from "../../../../hooks/workspace/useCurrentWorkspaceId";
+import {Loader} from "../../../../fi/hg/frontend/components/loader/Loader";
+import {TableHeaderColumn} from "../../../../fi/hg/frontend/components/table/TableHeaderColumn";
+import {TableHeader} from "../../../../fi/hg/frontend/components/table/TableHeader";
+import {TableBody} from "../../../../fi/hg/frontend/components/table/TableBody";
+import {Table} from "../../../../fi/hg/frontend/components/table/Table";
+import {TableColumn} from "../../../../fi/hg/frontend/components/table/TableColumn";
+import {TableRow} from "../../../../fi/hg/frontend/components/table/TableRow";
+import {User} from "../../../../fi/hg/dashboard/types/User";
+import {ReactNode} from "react";
+import {OpenEditUserModalButton} from "../../../common/user/openEditUserModalButton/OpenEditUserModalButton";
+import {ButtonStyle} from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 import "./UserListView.scss";
+
 
 const LOG = LogService.createLogger('UserListView');
 
 export interface UserListViewProps {
     readonly t: TFunction;
     readonly className ?: string;
+    readonly children ?: ReactNode;
 }
 
 export function UserListView (props: UserListViewProps) {
@@ -38,6 +46,7 @@ export function UserListView (props: UserListViewProps) {
     const workspaceId = useCurrentWorkspaceId();
     const t = props?.t;
     const className = props?.className;
+
     const [userList, refreshCallback] = useWorkspaceUserList(workspaceId);
 
     useEventUserAdded(() => {
@@ -86,7 +95,7 @@ export function UserListView (props: UserListViewProps) {
                 </div>
             </header>
 
-            <Table className={USER_LIST_VIEW_CLASS_NAME+'-table'}>
+             <Table className={USER_LIST_VIEW_CLASS_NAME+'-table'}>
 
                 <TableHeader>
                     <TableHeaderColumn first={true}>{t(T_USER_TABLE_NAME_TITLE)}</TableHeaderColumn>
@@ -124,16 +133,15 @@ export function UserListView (props: UserListViewProps) {
                                     className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls'}
                                     last={true}
                                 >
-                                        <OpenEditUserModalButton id={item.id} style={ButtonStyle.SECONDARY} />
+                                    <OpenEditUserModalButton id={item.id} parentId={workspaceId} style={ButtonStyle.SECONDARY} />
                                 </TableColumn>
 
                             </TableRow>
                         );
                     })
-                }</TableBody>
+                }
+                </TableBody>
             </Table>
 
-        </div>
-    );
-
-}
+        </div>)
+    }

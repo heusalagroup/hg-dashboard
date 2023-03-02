@@ -19,7 +19,8 @@ import {
     DASHBOARD_API_UPDATE_MY_WORKSPACE_USER_WORKSPACE_ID,
     DASHBOARD_API_UPDATE_MY_WORKSPACE_USER_PATH,
     DASHBOARD_API_UPDATE_MY_WORKSPACE_USER_USER_ID,
-    VALID_ADMIN_DOMAINS
+    VALID_ADMIN_DOMAINS,
+    DASHBOARD_API_GET_MY_WORKSPACE_USER_BY_PROFILE_PATH
 } from "../fi/hg/dashboard/constants/dashboard-api";
 
 import {
@@ -155,6 +156,64 @@ export class DashboardBackendController {
 
         } catch (err) {
             LOG.error(`ERROR: `, err);
+            return ResponseEntity.internalServerError<ErrorDTO>().body(
+                createErrorDTO('Internal Server Error', 500)
+            );
+        }
+    }
+
+    // *********** WORSKPACE USER PROFILE ***********
+
+    /**
+     * Returns profile for a workspace
+     *
+     * @param token
+     * @param parentIdString
+     */
+    @GetMapping(DASHBOARD_API_GET_MY_WORKSPACE_USER_BY_PROFILE_PATH)
+    public static async getMyWorkspaceUserByProfile(
+        @RequestHeader(DASHBOARD_AUTHORIZATION_HEADER_NAME, {
+            required: true
+        })
+            token: string,
+        @PathVariable(DASHBOARD_API_GET_MY_WORKSPACE_USER_LIST_WORKSPACE_ID, {required: true})
+            parentIdString: string
+    ): Promise<User | ResponseEntity<ErrorDTO>> {
+        try {
+
+            if ( !token ) {
+                LOG.warn(`Warning! No authentication token provided.`);
+                return ResponseEntity.internalServerError<ErrorDTO>().body(
+                    createErrorDTO('Access denied', 403)
+                );
+            }
+
+            const workspaceId: string = trim(parentIdString ?? '');
+            LOG.debug(`getMyWorkspaceUserList: workspaceId: `, workspaceId);
+
+            const email: string | undefined = JwtService.decodePayloadSubject(token);
+            if ( !email ) {
+                LOG.warn(`Warning! Token did not have an email address.`, token);
+                return ResponseEntity.internalServerError<ErrorDTO>().body(
+                    createErrorDTO('Access denied', 403)
+                );
+            }
+
+            if ( !this._emailTokenService.verifyToken(email, token, true) ) {
+                LOG.debug(`getMyWorkspaceUserList: Access denied for email: `, email, token);
+                return ResponseEntity.internalServerError<ErrorDTO>().body(
+                    createErrorDTO('Access denied', 403)
+                );
+            }
+
+            const userList: User[] = await this._backend.getUserListForWorkspace(workspaceId);
+
+            const profiles: User[] = userList.filter(user => user.email === email);
+
+            return profiles[0];
+
+        } catch (err) {
+            LOG.error(`getMyWorkspaceUserList: ERROR: `, err);
             return ResponseEntity.internalServerError<ErrorDTO>().body(
                 createErrorDTO('Internal Server Error', 500)
             );

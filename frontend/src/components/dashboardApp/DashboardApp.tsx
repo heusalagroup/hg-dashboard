@@ -1,4 +1,4 @@
-// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2023. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import {
     Navigate,
@@ -6,14 +6,13 @@ import {
     useRoutes
 } from "react-router-dom";
 import {
-    INDEX_ROUTE,
     LOGIN_INDEX_ROUTE,
     MY_PROFILE_INDEX_ROUTE,
     NOT_FOUND_ROUTE,
     USER_LIST_ROUTE,
     USER_ROUTE,
     ABOUT_ROUTE,
-    MY_WORKSPACE_LIST_ROUTE, MY_INDEX_ROUTE
+    MY_WORKSPACE_LIST_ROUTE, MY_INDEX_ROUTE, WORKSPACE_INDEX_ROUTE
 } from "../../constants/route";
 import { LogService } from "../../fi/hg/core/LogService";
 import { useEmailAuthSession } from "../../fi/hg/frontend/hooks/useEmailAuthSession";
@@ -22,14 +21,14 @@ import { LoginView } from "../views/login/LoginView";
 import { AboutView } from "../views/about/AboutView";
 import { DARK_MAIN_LAYOUT_CLASS_NAME, DASHBOARD_APP_CLASS_NAME } from "../../constants/appClassName";
 import { useLanguageService } from "../../fi/hg/frontend/hooks/useLanguageService";
-import { UserView } from "../views/user/item/UserView";
 import { UserListView } from "../views/user/list/UserListView";
 import { WorkspaceListView } from "../views/workspace/list/WorkspaceListView";
 import { useRouteServiceWithNavigate } from "../../fi/hg/frontend/hooks/useRouteServiceWithNavigate";
 import { LayoutComponent } from "../../types/DashboardLayout";
-import "./DashboardApp.scss";
 import { useAppModal } from "../../hooks/modal/useAppModal";
 import { AppModalContainer } from "../common/layout/appModalContainer/AppModalContainer";
+import {EditUserModal} from "../modals/user/editUserModal/EditUserModal";
+import "./DashboardApp.scss";
 
 const LOG = LogService.createLogger('DashboardApp');
 
@@ -82,7 +81,7 @@ export function DashboardApp (
     };
 
     const mainRoutes = {
-        path: INDEX_ROUTE,
+        path: WORKSPACE_INDEX_ROUTE,
         element: (
             <MainLayout t={t}>
                 <WorkspaceLayout t={t}>
@@ -93,10 +92,11 @@ export function DashboardApp (
         ),
         children: [
             {path: ABOUT_ROUTE, element: <AboutView t={t} />},
-            {path: USER_LIST_ROUTE, element: <UserListView t={t} />},
-            {path: USER_ROUTE, element: <UserView t={t} />},
-            {path: '*', element: <Navigate to={ABOUT_ROUTE} />},
-            {path: NOT_FOUND_ROUTE, element: <Navigate to={ABOUT_ROUTE} />}
+            {path: USER_LIST_ROUTE, element: <UserListView t={t} />,
+                children:[
+                    {path:USER_ROUTE, element: <EditUserModal t={t} />}
+                ]},
+            {path: WORKSPACE_INDEX_ROUTE, element: <Navigate to={MY_WORKSPACE_LIST_ROUTE} />}
         ]
     };
 
@@ -112,14 +112,16 @@ export function DashboardApp (
         ),
         children: [
             {path: MY_WORKSPACE_LIST_ROUTE, element: <WorkspaceListView t={t} />},
-            {path: MY_PROFILE_INDEX_ROUTE, element: <ProfileView t={t} />}
+            {path: MY_PROFILE_INDEX_ROUTE, element: <ProfileView t={t} />},
+            {path: '*', element: <Navigate to={ABOUT_ROUTE} />},
+            {path: MY_INDEX_ROUTE, element: <Navigate to={WORKSPACE_INDEX_ROUTE} />}
         ]
     };
 
     const main = useRoutes(
         [
-            mainRoutes
-            , profileRoutes
+            mainRoutes,
+            profileRoutes
         ]
     );
 
@@ -129,10 +131,9 @@ export function DashboardApp (
         ]
     );
 
+
     return <div className={DASHBOARD_APP_CLASS_NAME}>
-
         { isLoggedIn ? main : login}
-
     </div>;
 
 }

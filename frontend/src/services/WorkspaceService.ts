@@ -8,6 +8,7 @@ import { Workspace } from "../fi/hg/dashboard/types/Workspace";
 import { LogService } from "../fi/hg/core/LogService";
 import { RouteService } from "../fi/hg/frontend/services/RouteService";
 import { MY_WORKSPACE_LIST_ROUTE } from "../constants/route";
+import {ProfileService} from "./ProfileService";
 
 export enum WorkspaceServiceEvent {
 
@@ -114,24 +115,21 @@ export class WorkspaceService {
         return await client.getMyWorkspaceList();
     }
 
-    public static setCurrentWorkspace (workspace: Workspace | undefined) {
+    public static async setCurrentWorkspace (workspace: Workspace | undefined) {
         if ( workspace !== this._workspace ) {
+            LOG.info("setCurrentWorkspace;", workspace)
             this._workspace = workspace;
             if ( this._observer.hasCallbacks(WorkspaceServiceEvent.CURRENT_WORKSPACE_CHANGED) ) {
+               await ProfileService.initialize();
+                LOG.info("setCurrentWorkspace;", workspace)
+
                 this._observer.triggerEvent(WorkspaceServiceEvent.CURRENT_WORKSPACE_CHANGED);
             }
         }
     }
 
     private static async _initializeWorkspace () {
-        const list : readonly Workspace[] = await WorkspaceService.getMyWorkspaceList();
-        if ((list?.length ?? 0) !== 1) {
-            LOG.info(`No workspaces; Moving to workspace view`);
-            RouteService.setRoute(MY_WORKSPACE_LIST_ROUTE);
-        } else {
-            LOG.info(`Selecting workspace: `, list[0]);
-            WorkspaceService.setCurrentWorkspace(list[0]);
-        }
+        RouteService.setRoute(MY_WORKSPACE_LIST_ROUTE);
     }
 
 }
