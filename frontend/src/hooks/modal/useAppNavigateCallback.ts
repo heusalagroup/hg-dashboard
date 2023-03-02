@@ -12,10 +12,9 @@ const LOG = LogService.createLogger('useAppNavigateCallback');
 /**
  * Can be used to create a callback function to open a specific modal
  *
- * Navigate -1, when close the modal. This is where this modal have opened, url will be changed!
- *
  * @param modal
  * @param id
+ * Navigate -1, when close the modal. This is where this modal have opened, url will be changed!
  */
 export function useAppNavigateCallback (
     modal ?: AppModalType | undefined,

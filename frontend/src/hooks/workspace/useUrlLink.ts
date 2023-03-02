@@ -18,7 +18,7 @@ import {AppModalType} from "../../types/AppModalType";
 
 const LOG = LogService.createLogger('useUrlWorkspaceName');
 
-export function useUrlWorkspaceName (
+export function useUrlLink (
     workspaceByUrl ?: string,
     userByUrl ?: string
 ):VoidCallback {

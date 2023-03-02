@@ -5,7 +5,7 @@ import { LayoutProps } from "../../../types/DashboardLayout";
 import { AppHeader } from "../../../components/common/layout/appHeader/AppHeader";
 import {LogService} from "../../../fi/hg/core/LogService";
 import {useParams} from "react-router-dom";
-import {useUrlWorkspaceName} from "../../../hooks/workspace/useUrlWorkspacename";
+import {useUrlLink} from "../../../hooks/workspace/useUrlLink";
 import "./DarkMainLayout.scss";
 import {AppModalType} from "../../../types/AppModalType";
 import {AppModalService} from "../../../services/AppModalService";
@@ -20,7 +20,7 @@ export function DarkMainLayout (props: LayoutProps) {
     const userId = opts?.id ?? undefined;
     const workspaceId = opts?.parentId ?? undefined;
 
-    const openModal = useUrlWorkspaceName(workspaceId, userId);
+    const openModal = useUrlLink(workspaceId, userId);
 
     const workspaceName = useCurrentWorkspaceName();
 
