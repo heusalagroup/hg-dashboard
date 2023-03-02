@@ -1,4 +1,4 @@
-// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2023. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import {
     Navigate,
@@ -6,7 +6,6 @@ import {
     useRoutes
 } from "react-router-dom";
 import {
-    INDEX_ROUTE,
     LOGIN_INDEX_ROUTE,
     MY_PROFILE_INDEX_ROUTE,
     NOT_FOUND_ROUTE,
@@ -121,8 +120,8 @@ export function DashboardApp (
 
     const main = useRoutes(
         [
-            mainRoutes
-            , profileRoutes
+            mainRoutes,
+            profileRoutes
         ]
     );
 
@@ -132,10 +131,9 @@ export function DashboardApp (
         ]
     );
 
+
     return <div className={DASHBOARD_APP_CLASS_NAME}>
-
         { isLoggedIn ? main : login}
-
     </div>;
 
 }

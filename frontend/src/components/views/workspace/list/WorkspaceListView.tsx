@@ -1,4 +1,4 @@
-// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2023. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { WORKSPACE_LIST_VIEW_CLASS_NAME } from "../../../../constants/appClassName";
 import { TFunction } from "i18next";
@@ -38,9 +38,6 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
     const t = props?.t;
     const className = props?.className;
     const [workspaceList, refreshCallback] = useWorkspaceList();
-
-    // const navigate = useNavigate();
-
     const session = useEmailAuthSession();
     const email = session?.email;
     const emailDomain = email ? EmailUtils.getEmailDomain(email) : undefined;
@@ -51,10 +48,8 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
         () => {
             LOG.info(`Workspace changed, move to about view`);
             refreshCallback();
-            //navigate(USER_LIST_ROUTE);
         },
         [
-            //navigate,
             refreshCallback
         ]
     );
@@ -81,42 +76,42 @@ export function WorkspaceListView (props: WorkspaceListViewProps) {
             + (className? ` ${className}` : '')
         }>
             <header className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header'}>
-                        <h3 className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-title'}>{t(T_WORKSPACE_LIST_TITLE)}</h3>
-                        <div className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-controls'}>
-                            {canCreateWorkspace ? (
+                <h3 className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-title'}>{t(T_WORKSPACE_LIST_TITLE)}</h3>
+                <div className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-header-controls'}>
+                    {canCreateWorkspace ? (
                                 <OpenNewWorkspaceModalButton/>
                             ) : null}
-                        </div>
-                    </header>
-
-                    <table className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-table'}>
-                        <thead>
-                        <tr>
-                            <th>{t(T_WORKSPACE_TABLE_NAME_TITLE)}</th>
-                        </tr>
-                        </thead>
-                        <tbody>{
-                            (workspaceList?.length ?? 0) === 0 ? (
-                                <>
-                                    <tr>
-                                        <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-no-results'}>{t(T_WORKSPACE_LIST_VIEW_NO_RESULTS)}</td>
-                                    </tr>
-                                </>
-                            ) : map(workspaceList, (item: Workspace) => {
-                                return (
-                                    <tr key={`workspace-item-${item?.id}`}>
-                                        <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-column-name'}>
-                                            <SelectWorkspaceButton
-                                                className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-workspace-button'}
-                                                workspace={item}>{(item.name === '' ? undefined : item.name) ?? item.id}</SelectWorkspaceButton>
-                                        </td>
-                                    </tr>
-                                );
-                            })
-                        }</tbody>
-                    </table>
-
                 </div>
+            </header>
+
+            <table className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-table'}>
+                <thead>
+                <tr>
+                    <th>{t(T_WORKSPACE_TABLE_NAME_TITLE)}</th>
+                </tr>
+                </thead>
+                <tbody>{
+                    (workspaceList?.length ?? 0) === 0 ? (
+                        <>
+                            <tr>
+                                <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-no-results'}>{t(T_WORKSPACE_LIST_VIEW_NO_RESULTS)}</td>
+                            </tr>
+                        </>
+                    ) : map(workspaceList, (item: Workspace) => {
+                        return (
+                            <tr key={`workspace-item-${item?.id}`}>
+                                <td className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-column-name'}>
+                                    <SelectWorkspaceButton
+                                        className={WORKSPACE_LIST_VIEW_CLASS_NAME + '-workspace-button'}
+                                        workspace={item}>{(item.name === '' ? undefined : item.name) ?? item.id}</SelectWorkspaceButton>
+                                </td>
+                            </tr>
+                        );
+                    })
+                }</tbody>
+            </table>
+
+        </div>
     );
 
 }

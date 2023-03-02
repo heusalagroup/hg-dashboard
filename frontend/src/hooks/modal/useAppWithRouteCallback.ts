@@ -5,33 +5,37 @@ import { AppModalType } from "../../types/AppModalType";
 import { AppModalService } from "../../services/AppModalService";
 import { ButtonClickCallback } from "../../fi/hg/frontend/components/button/Button";
 import { LogService } from "../../fi/hg/core/LogService";
-import {useNavigate} from "react-router-dom";
+import {RouteService} from "../../fi/hg/frontend/services/RouteService";
+import {getUserRoute, MY_WORKSPACE_LIST_ROUTE} from "../../constants/route";
 
-const LOG = LogService.createLogger('useAppNavigateCallback');
+const LOG = LogService.createLogger('useAppWithRouteCallback');
 
 /**
  * Can be used to create a callback function to open a specific modal
  *
- * Navigate -1, when close the modal. This is where this modal have opened, url will be changed!
- *
  * @param modal
  * @param id
  */
-export function useAppNavigateCallback (
+export function useAppWithRouteCallback (
     modal ?: AppModalType | undefined,
+    parentId ?:string | undefined,
     id    ?: string | undefined
 ) : ButtonClickCallback {
-    const navigate = useNavigate();
-
     return useCallback(
         () => {
-            LOG.info(`Opening modal `, modal, id);
+            const workspaceId = parentId;
+            const editedUserRoute = workspaceId && id? getUserRoute(workspaceId, id): MY_WORKSPACE_LIST_ROUTE;
+
+            LOG.info(`Opening modal `, modal, id, workspaceId);
+            LOG.info(`Set Route `, editedUserRoute);
+
             AppModalService.setCurrentModal(modal, id);
-            navigate(-1)
+            RouteService.setRoute(editedUserRoute);
         },
         [
             modal,
-            id
+            id,
+            parentId
         ]
     );
 }

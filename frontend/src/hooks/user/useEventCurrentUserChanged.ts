@@ -1,4 +1,4 @@
-// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2023. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { UserService, UserServiceEvent } from "../../services/UserService";
 import { VoidCallback } from "../../fi/hg/core/interfaces/callbacks";

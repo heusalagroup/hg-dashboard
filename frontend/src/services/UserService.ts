@@ -7,6 +7,7 @@ import { User } from "../fi/hg/dashboard/types/User";
 import { DashboardClient } from "../fi/hg/dashboard/services/DashboardClient";
 import { LogService } from "../fi/hg/core/LogService";
 import {WorkspaceService} from "./WorkspaceService";
+import {ProfileService} from "./ProfileService";
 
 const LOG = LogService.createLogger('UserService');
 
@@ -122,6 +123,7 @@ export class UserService {
 
     }
 
+    /** Check all needed information when initialize profileService, email && workspace*/
     public static async setCurrentUser (user: User | undefined) {
 
         if ( user !== this._user ) {
@@ -129,33 +131,12 @@ export class UserService {
             this._user = user;
             if ( this._observer.hasCallbacks(UserServiceEvent.CURRENT_USER_CHANGED) ) {
                 if (user){
-                    const email: string | undefined = EmailAuthSessionService.getEmailAddress();
-                    LOG.debug("User email;", email)
-
-                    const workspace = WorkspaceService.getCurrentWorkspaceId()
-                    if (email && workspace){
-                        const userList = await UserService.getWorkspaceUserList(workspace)
-
-                        if (userList  ) {
-
-                            const result = userList.filter(user => user.email === email)
-
-                            if (result ){
-                                LOG.info("Set user: ", result[0])
-                                this._user = result[0];
-                            } else {
-                                LOG.debug(`useSelectWorkspaceUserCallback: Did not find user to this email `, email);
-                            }
-
-                        }
-
-                    }
-
+                    this._user = user;
+                }else {
+                    LOG.debug(`useSelectWorkspaceUserCallback: Did not find user `);
                 }
 
                 this._observer.triggerEvent(UserServiceEvent.CURRENT_USER_CHANGED);
-
-
             }
         }
     }
@@ -168,23 +149,7 @@ export class UserService {
     }
 
     public static async _initializeUser () {
-        const email: string | undefined = EmailAuthSessionService.getEmailAddress();
-        LOG.debug("User email;", email)
-        const workspace = WorkspaceService.getCurrentWorkspaceId()
-        if (email && workspace) {
-            const userList = await UserService.getWorkspaceUserList(workspace)
-
-            if (userList) {
-                const result = userList.filter(user => user.email === email)
-
-                if (result) {
-                    LOG.info("Initialize user: ", result[0])
-                    await UserService.setCurrentUser(result[0]);
-                }
-            }
-        } else {
-            LOG.info("NOT yet User email: ", email, ' or workspace ', workspace)
-        }
+        ProfileService.initialize();
     }
 
 }

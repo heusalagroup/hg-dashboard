@@ -1,15 +1,27 @@
-// Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
+// Copyright (c) 2023. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
+/**
+ * If user has url link... this
+ * find user's workspaces and check if urls workspace is there
+ * set current workspace
+ * set route
+ * open modal
+ * and return it
+ * */
 import {useCallback, useEffect, useState} from "react";
 import {WorkspaceService} from "../../services/WorkspaceService";
 import {Workspace} from "../../fi/hg/dashboard/types/Workspace";
 import {VoidCallback} from "../../fi/hg/core/interfaces/callbacks";
 import {LogService} from "../../fi/hg/core/LogService";
+import {RouteService} from "../../fi/hg/frontend/services/RouteService";
+import {AppModalService} from "../../services/AppModalService";
+import {AppModalType} from "../../types/AppModalType";
 
 const LOG = LogService.createLogger('useUrlWorkspaceName');
 
 export function useUrlWorkspaceName (
-    workspaceByUrl ?: string
+    workspaceByUrl ?: string,
+    userByUrl ?: string
 ):  [Workspace | undefined, VoidCallback ] {
 
     const [ workspace, setWorkspace ] = useState<Workspace | undefined>();
@@ -19,12 +31,18 @@ export function useUrlWorkspaceName (
             try {
 
                 const workspaceList = await WorkspaceService.getMyWorkspaceList();
-                const workspace = workspaceList?.filter(listItem => listItem.id === workspaceByUrl)
+                const workspace = workspaceList?.find(listItem => listItem.id === workspaceByUrl)
 
-                setWorkspace(workspace[0])
+                LOG.info("Set current workspace: ", workspace )
+                setWorkspace(workspace)
 
-                await WorkspaceService.setCurrentWorkspace(workspace[0]);
-                LOG.info("Set current workspace: ", workspaceByUrl )
+               await WorkspaceService.setCurrentWorkspace(workspace).then(()=> {
+                    LOG.info("Current workspace has set: ", workspace?.name )
+                    RouteService.setRoute('/workspace/'+ workspace?.id +'/users/'+ userByUrl);
+                    AppModalService.setCurrentModal(AppModalType.EDIT_USER_MODAL, userByUrl);
+                   return;
+                });
+
 
             } catch (err) {
                 LOG.debug(`Failed to load workspace list: `, err);
@@ -35,14 +53,15 @@ export function useUrlWorkspaceName (
         ]
     );
 
-    // Update list initially
+    //Update initially
     useEffect(
         () => {
-
-            if (workspaceByUrl !== undefined && workspace?.id === undefined){
+            if (workspaceByUrl !== undefined && workspace?.id === undefined && userByUrl !== undefined) {
                 urlWorkspaceCallback().then(
-                    ()=>{
-                        LOG.debug("Workspace DONE")}
+                    () => {
+                        LOG.info("Workspace DONE")
+                        return;
+                    }
                 );
             }
         },
@@ -50,7 +69,5 @@ export function useUrlWorkspaceName (
             urlWorkspaceCallback, workspaceByUrl, workspace?.id
         ]
     );
-
     return [ workspace, urlWorkspaceCallback ];
-
 }

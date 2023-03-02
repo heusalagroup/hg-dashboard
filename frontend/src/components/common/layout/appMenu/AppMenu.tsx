@@ -11,6 +11,7 @@ import { SetProfileMenuOpenCallback } from "../../../../fi/hg/frontend/hooks/use
 import { TranslationFunction } from "../../../../fi/hg/core/types/TranslationFunction";
 import {useCurrentWorkspaceId} from "../../../../hooks/workspace/useCurrentWorkspaceId";
 import {LogService} from "../../../../fi/hg/core/LogService";
+import {getWorkspaceUserListRoute, MY_WORKSPACE_LIST_ROUTE} from "../../../../constants/route";
 import "./AppMenu.scss";
 
 export interface MenuProps {
@@ -26,7 +27,8 @@ export function AppMenu (props: MenuProps) {
     const setMenuOpen = props.changeMenuState;
     const session = useEmailAuthSession();
 
-    const workspace = useCurrentWorkspaceId();
+    const workspaceId = useCurrentWorkspaceId();
+    const workspaceUserListRoute = workspaceId ? getWorkspaceUserListRoute(workspaceId): MY_WORKSPACE_LIST_ROUTE;
 
     const closeMenuCallback = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
@@ -67,8 +69,7 @@ export function AppMenu (props: MenuProps) {
 
                             <NavLink
                                 className={`${APP_MENU_CLASS_NAME}-content-nav-item`}
-                                // to={USER_LIST_ROUTE}
-                                to={"/"+ `${workspace}` + "/users"}
+                                 to={workspaceUserListRoute}
                             >{t(T_APP_HEADER_NAV_USERS)}</NavLink>
 
                         </nav>

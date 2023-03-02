@@ -27,11 +27,11 @@ import {Table} from "../../../../fi/hg/frontend/components/table/Table";
 import {TableColumn} from "../../../../fi/hg/frontend/components/table/TableColumn";
 import {TableRow} from "../../../../fi/hg/frontend/components/table/TableRow";
 import {User} from "../../../../fi/hg/dashboard/types/User";
-import {AppModalType} from "../../../../types/AppModalType";
 import {ReactNode} from "react";
-import {UserView} from "../item/UserView";
-import {AppModalContainer} from "../../../common/layout/appModalContainer/AppModalContainer";
+import {OpenEditUserModalButton} from "../../../common/user/openEditUserModalButton/OpenEditUserModalButton";
+import {ButtonStyle} from "../../../../fi/hg/core/frontend/button/ButtonStyle";
 import "./UserListView.scss";
+
 
 const LOG = LogService.createLogger('UserListView');
 
@@ -87,11 +87,6 @@ export function UserListView (props: UserListViewProps) {
             USER_LIST_VIEW_CLASS_NAME
             + (className? ` ${className}` : '')
         }>
-            {
-            props.children ?
-                <AppModalContainer t={t} modal={AppModalType.EDIT_USER_MODAL} />
-                : null
-                }
 
             <header className={USER_LIST_VIEW_CLASS_NAME+'-header'}>
                 <h3 className={USER_LIST_VIEW_CLASS_NAME+'-header-title'}>{t(T_USER_LIST_TITLE)}</h3>
@@ -117,16 +112,31 @@ export function UserListView (props: UserListViewProps) {
                                 className={USER_LIST_VIEW_CLASS_NAME+'-no-results'}
                                 colSpan={3}>{t(T_USER_TABLE_NO_RESULTS)}</TableColumn>
                         </TableRow>
-                    ) : map(userList, (item : User, index:number, arr: User[]) => {
+                    ) : map(userList, (item : User, index:number, arr) => {
                         return (
-                            <UserView
-                                t={t}
+                            <TableRow
                                 key={`user-list-item-${item?.id}`}
-                                index={index}
-                                item={item}
-                                arr={arr}
-                            />
+                                first={index === 0}
+                                last={index +1 === arr.length}
+                            >
 
+                                <TableColumn
+                                    first={true}
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-name'}
+                                >{item.name}</TableColumn>
+
+                                <TableColumn
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-email'}
+                                >{item.email}</TableColumn>
+
+                                <TableColumn
+                                    className={USER_LIST_VIEW_CLASS_NAME+'-column ' + USER_LIST_VIEW_CLASS_NAME+'-column-controls'}
+                                    last={true}
+                                >
+                                    <OpenEditUserModalButton id={item.id} parentId={workspaceId} style={ButtonStyle.SECONDARY} />
+                                </TableColumn>
+
+                            </TableRow>
                         );
                     })
                 }

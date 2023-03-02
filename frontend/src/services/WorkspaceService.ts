@@ -8,7 +8,7 @@ import { Workspace } from "../fi/hg/dashboard/types/Workspace";
 import { LogService } from "../fi/hg/core/LogService";
 import { RouteService } from "../fi/hg/frontend/services/RouteService";
 import { MY_WORKSPACE_LIST_ROUTE } from "../constants/route";
-import {UserService} from "./UserService";
+import {ProfileService} from "./ProfileService";
 
 export enum WorkspaceServiceEvent {
 
@@ -117,44 +117,19 @@ export class WorkspaceService {
 
     public static async setCurrentWorkspace (workspace: Workspace | undefined) {
         if ( workspace !== this._workspace ) {
-            LOG.debug("setCurrentWorkspace;", workspace)
+            LOG.info("setCurrentWorkspace;", workspace)
             this._workspace = workspace;
             if ( this._observer.hasCallbacks(WorkspaceServiceEvent.CURRENT_WORKSPACE_CHANGED) ) {
-                if (workspace){
+               await ProfileService.initialize();
+                LOG.info("setCurrentWorkspace;", workspace)
 
-                    // user, set current user !!!
-                    const workspaceId = workspace.id;
-                    const email: string | undefined = EmailAuthSessionService.getEmailAddress();
-
-                    LOG.debug("User email;", email)
-                    if (email && workspaceId) {
-                        const userList = await UserService.getWorkspaceUserList(workspaceId)
-
-                        if (userList  ) {
-                            const result = userList.filter(user => user.email === email)
-                            if (result ) {
-                               await UserService.setCurrentUser(result[0]);
-                           }
-                        } else {
-                            LOG.debug(`useSelectWorkspaceUserCallback: Did not find user to this email `, email);
-                        }
-                    }
-
-                }
                 this._observer.triggerEvent(WorkspaceServiceEvent.CURRENT_WORKSPACE_CHANGED);
             }
         }
     }
 
     private static async _initializeWorkspace () {
-      /*  const list : readonly Workspace[] = await WorkspaceService.getMyWorkspaceList();
-        if ((list?.length ?? 0) !== 1) {
-            LOG.info(`No workspaces; Moving to workspace view`);*/
-            RouteService.setRoute(MY_WORKSPACE_LIST_ROUTE);
-       /* } else {
-            LOG.info(`Selecting workspace: `, list[0]);
-            WorkspaceService.setCurrentWorkspace(list[0]);
-        }*/
+        RouteService.setRoute(MY_WORKSPACE_LIST_ROUTE);
     }
 
 }

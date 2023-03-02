@@ -13,7 +13,9 @@ export const ABOUT_ROUTE = '/workspace/:parentId/about'; //about
 export const USER_LIST_ROUTE = '/workspace/:parentId/users';
 export const USER_ROUTE = '/workspace/:parentId/users/:id';
 export const getUserRoute = (c: string, d:string) => `/workspace/${q(c)}/users/${q(d)}`;
+export const getWorkspaceUserListRoute = (workspaceId: string) => `/workspace/${q(workspaceId)}/users`;
 export const getWorkspaceRoute = (c: string) => `/workspace/${q(c)}`;
+export const getWorkspaceAboutRoute = (c: string) => `/workspace/${q(c)}/about`;
 
 function q(value: string): string {
     return encodeURIComponent(value);
